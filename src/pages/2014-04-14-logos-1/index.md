@@ -1,5 +1,5 @@
 ---
-title: Logo - Illustration 1
+title: Logo - Illustration I
 date: "2014-04-14"
 ---
 
