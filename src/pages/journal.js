@@ -1,27 +1,18 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import get from 'lodash/get';
-import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 
-class BlogIndex extends React.Component {
+class Journal extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
     const posts = get(this, 'props.data.allMarkdownRemark.edges');
-
     return (
       <div>
-        <Helmet title={siteTitle} />
-        I'm Giu Magnani.
-        I <strong>code</strong> websites and apps.
-        I also make <strong>art.</strong>
-
-        {/*on verb hover, show projects. If not hover rotate as default.*/}
-        <div>
-          PROJECT (active category)
-          PROJECT (active category)
-          PROJECT (active category)
-        </div>
-        {/*small container with latest posts ?*/}
+        Filter by:
+        <ul>
+          <li>Art</li>
+          <li>Code</li>
+          <li>Other stuff</li>
+        </ul>
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug;
           return (
@@ -41,15 +32,10 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex;
+export default Journal;
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
+  query JournalQuery {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {

@@ -3,10 +3,9 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
 
-import Bio from '../components/Bio'
-
 class BlogPostTemplate extends React.Component {
   render() {
+    console.log(this.props.data);
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const { previous, next } = this.props.pathContext
@@ -18,7 +17,6 @@ class BlogPostTemplate extends React.Component {
         <p>{post.frontmatter.date}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />
-        <Bio />
 
         <ul>
           {previous && (
