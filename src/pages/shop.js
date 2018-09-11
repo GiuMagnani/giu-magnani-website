@@ -1,19 +1,20 @@
 import React from 'react';
+import Img from 'gatsby-image';
+import Link from 'gatsby-link';
 
 class Shop extends React.Component {
   render() {
-    const products = this.props.data.allMarkdownRemark.edges;
-    console.log(products);
+    const items = this.props.data.allMarkdownRemark.edges;
     return (
       <div>
-        {products.map((product, key) => (
+        {items.map((item, key) => (
           <div key={key}>
-            <img
-              src={`./${product.node.frontmatter.featuredImage.childImageSharp.sizes.src}`}
-              alt={product.node.frontmatter.title}
+            <Img
+              sizes={item.node.frontmatter.featuredImage.childImageSharp.sizes}
+              alt={item.node.frontmatter.title}
             />
-            <h3>{product.node.frontmatter.title}</h3>
-            <p>{product.node.excerpt}</p>
+            <Link to={item.node.fields.slug}><h3>{item.node.frontmatter.title}</h3></Link>
+            <p>{item.node.excerpt}</p>
           </div>
         ))}
       </div>
@@ -38,8 +39,8 @@ export const pageQuery = graphql`
             tags
             featuredImage {
               childImageSharp {
-                sizes(maxWidth: 200) {
-                  src
+                sizes(quality: 90, maxWidth: 1240) {
+                  ...GatsbyImageSharpSizes
                 }
               }
             }

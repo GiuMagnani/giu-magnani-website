@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import styled from 'styled-components';
 
 class Header extends React.Component {
   render() {
     return (
-      <div>
+      <HeaderNav>
         <h1>
           <Link to={'/'}>Giu Magnani</Link>
         </h1>
@@ -18,9 +19,15 @@ class Header extends React.Component {
           <button>ES</button>
           <button>IT</button>
         </div>
-      </div>
+      </HeaderNav>
     );
   }
 }
+
+const HeaderNav = styled.nav`
+  height: 60px;
+  background-color: #2222ff;
+  color: white;
+`;
 
 export default Header;

@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import './styles.css';
 
 class Template extends React.Component {
   render() {
@@ -18,11 +19,5 @@ class Template extends React.Component {
     );
   }
 }
-
-Template.propTypes = {
-  children: React.PropTypes.func,
-  location: React.PropTypes.object,
-  route: React.PropTypes.object,
-};
 
 export default Template;
