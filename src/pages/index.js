@@ -26,6 +26,7 @@ class BlogIndex extends React.Component {
         {/*category)*/}
         {/*</div>*/}
         {/*small container with latest posts ?*/}
+        <LatestPostsContainer>
         <LatestPostsHeading>Latest posts on my Journal:</LatestPostsHeading>
         <LatestPosts>
           {posts.map(({ node }) => {
@@ -42,6 +43,7 @@ class BlogIndex extends React.Component {
         <LatestPostsSeeMore>
           <Link to={'/journal'}>See my Journal</Link>
         </LatestPostsSeeMore>
+        </LatestPostsContainer>
         <AboutSection>
           <AboutSectionBody>
             <h2>Front-End Developer and UI/UX Designer based in
@@ -228,7 +230,7 @@ const LatestPostsSeeMore = styled.div`
   text-align: right;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 
   a {
     font-size: 14px;
@@ -244,6 +246,10 @@ const LatestPostsSeeMore = styled.div`
     text-align: left;
     //text-transform: uppercase;
   }
+`;
+
+const LatestPostsContainer = styled.div`
+  margin-bottom: 100px;
 `;
 
 const AboutSection = styled.div`

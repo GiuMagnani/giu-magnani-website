@@ -63,6 +63,7 @@ const HeaderNav = styled.nav`
 
 const NavLogo = styled(Link)`
   padding-left: 30px;
+  padding-top: 7px;
   
   span {
     visibility: hidden;
