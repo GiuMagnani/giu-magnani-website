@@ -3,7 +3,7 @@ title: Biographical Dictionary of Colonial Chile
 date: "2018-10-13"
 featuredImage: "dictionary-15.jpg"
 tags: [editorial, book, design, graphic, illustration, graphic]
-category: [graphic design, illustration, editorial design]
+category: "graphic design"
 ---
 
 Academic project that consisted in the reinterpretation through editorial design and illustration, of the "Diccionario Biográfico Colonial de Chile" (Biographical Dictionary of Colonial Chile), written in 1906 by the historian Jose Toribio Medina. The dictionary is a compendium of biographical details of rulers, soldiers, priests, writers, among other characters who populated the chilean territory during the colonial period.
@@ -18,7 +18,7 @@ Paperback. 17 x 13 cm.
 500 printed and free distributed books
 The original text is in the public domain: http://www.memoriachilena.cl/602/w3-article-8209.html
 
-*Book cover designed by Gloria Ñanculeo: https://www.behance.net/gnanculeo*
+Book cover designed by Gloria Ñanculeo: https://www.behance.net/gnanculeo
 
 The book was selected for the final presentation of students projects in the Sixth Meeting of the Latin American Biennial of Design (BID) in Spain, in the category "Graphic and Visual Communication".
 

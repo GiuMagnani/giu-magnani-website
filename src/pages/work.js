@@ -86,7 +86,6 @@ export const pageQuery = graphql`
             date(formatString: "DD MMMM, YYYY")
             title
             tags
-            category
             featuredImage {
               childImageSharp {
                 sizes(quality: 90, maxWidth: 1240) {
