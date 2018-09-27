@@ -14,11 +14,11 @@ class BlogIndex extends React.Component {
       <div>
         <Helmet title={siteTitle} />
         <HeroDiv>
-          <MainH1>
-            <span>I'm Giu Magnani.</span>
-            I code and design<strong>websites and apps.</strong>
-            I also make <strong>art.</strong>
-          </MainH1>
+          <MainHeading>
+            <h1>I'm Giu Magnani.</h1>
+            <h2>I code and design<strong>websites and apps.</strong></h2>
+            <h2>I also make <strong>art.</strong></h2>
+          </MainHeading>
         </HeroDiv>
         {/*on verb hover, show projects. If not hover rotate as default.*/}
         {/*<div>*/}
@@ -161,22 +161,26 @@ const HeroDiv = styled.div`
   padding: 20px;
 `;
 
-const MainH1 = styled.h1`
-  font-size: 38px;
-  font-weight: bold;
-  padding-left: 10px;
-
+const MainHeading = styled.div`
   strong {
     text-decoration: underline;
     color: #2222ff;
     padding: 5px;
+    font-weight: 700;
   }
 
-  span {
-    font-size: 60px;
+  h1 {
+    font-size: 70px;
     line-height: 1;
-    font-weight: bold;
+    font-weight: 700;
     display: block;
+  }
+  
+  h2 {
+    font-size: 36px;
+    font-weight: 400;
+    padding-right: 5px;
+    display: inline-block;
   }
 `;
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Teko:300,400,600');
+@import url('https://fonts.googleapis.com/css?family=Chakra+Petch:400,700|Roboto:400,700');
 
 /* Define the "system" font family */
 @font-face {
@@ -66,11 +66,13 @@ html {
 }
 
 body {
-  font-family: "system", sans-serif;
+  font-family: "Roboto", "system", sans-serif;
   border: 20px solid #2222ff;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 button, input, textarea {
@@ -78,5 +80,6 @@ button, input, textarea {
 }
 
 h1, h2, h3, h4 {
-  font-family: "Teko", sans-serif;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 700;
 }
