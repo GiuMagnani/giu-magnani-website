@@ -17,7 +17,7 @@ class BlogIndex extends React.Component {
           <MainHeading>
             <h1>I'm Giu Magnani.</h1>
             <h2>I code and design<strong>websites and apps.</strong></h2>
-            <h2>I also make <strong>art.</strong></h2>
+            <h2>I also <strong>draw.</strong></h2>
           </MainHeading>
         </HeroDiv>
         {/*on verb hover, show projects. If not hover rotate as default.*/}
@@ -206,10 +206,10 @@ const LatestPostsItem = styled(Link)`
   }
 
   small {
-    font-size: 14px;
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'Teko', sans-serif;
+    letter-spacing: 3px;
+    font-family: 'Chakra Petch', sans-serif;
     display: block;
     padding-bottom: 4px;
   }
@@ -218,6 +218,7 @@ const LatestPostsItem = styled(Link)`
     font-size: 20px;
     font-weight: bold;
     padding-bottom: 10px;
+    line-height: 1.3;
   }
 
   p {
@@ -344,7 +345,7 @@ text-align: center;
   font-size: 11px;
   //letter-spacing: 1px;
   //text-transform: uppercase;
-    //font-family: monospace;
+  //  font-family: monospace;
     color: white;
   }
 `;
@@ -356,7 +357,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(limit: 5, sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           excerpt

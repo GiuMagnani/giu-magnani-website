@@ -1,6 +1,7 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 
 class Work extends React.Component {
   render() {
@@ -8,10 +9,11 @@ class Work extends React.Component {
     return (
       <div>
         <h2>WORKS</h2>
-        <p>mis trabajos:</p>
+        <p>Filter by:</p>
+        <p>Show me everything</p>
         <WorksContainer>
           {items.map((item, key) => (
-            <WorkItem key={key}>
+            <WorkItem key={key} to={item.node.fields.slug}>
               <Img
                 sizes={
                   item.node.frontmatter.featuredImage.childImageSharp.sizes
@@ -38,15 +40,17 @@ const WorksContainer = styled.div`
   padding: 10px;
 `;
 
-const WorkItem = styled.div`
+const WorkItem = styled(Link)`
   width: 25%;
   padding: 10px;
+  text-decoration: none;
+  color: black;
 
   small {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-family: 'Teko', sans-serif;
+    font-family: monospace;
     display: block;
     padding-bottom: 4px;
   }
