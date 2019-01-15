@@ -1,14 +1,14 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import get from 'lodash/get';
-import Helmet from 'react-helmet';
-import styled from 'styled-components';
-import placeholderImgWork from './depto-work.png';
+import React from "react";
+import Link from "gatsby-link";
+import get from "lodash/get";
+import Helmet from "react-helmet";
+import styled from "styled-components";
+import placeholderImgWork from "./depto-work.png";
 
 class BlogIndex extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-    const posts = get(this, 'props.data.allMarkdownRemark.edges');
+    const siteTitle = get(this, "props.data.site.siteMetadata.title");
+    const posts = get(this, "props.data.allMarkdownRemark.edges");
 
     return (
       <div>
@@ -16,8 +16,13 @@ class BlogIndex extends React.Component {
         <HeroDiv>
           <MainHeading>
             <h1>I'm Giu Magnani.</h1>
-            <h2>I code and design<strong>websites and apps.</strong></h2>
-            <h2>I also <strong>draw.</strong></h2>
+            <h2>
+              I code and design
+              <strong>websites and apps.</strong>
+            </h2>
+            <h2>
+              I also <strong>draw.</strong>
+            </h2>
           </MainHeading>
         </HeroDiv>
         {/*on verb hover, show projects. If not hover rotate as default.*/}
@@ -26,35 +31,17 @@ class BlogIndex extends React.Component {
         {/*category)*/}
         {/*</div>*/}
         {/*small container with latest posts ?*/}
-        <LatestPostsContainer>
-        <LatestPostsHeading>Latest posts on my Journal:</LatestPostsHeading>
-        <LatestPosts>
-          {posts.map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug;
-            return (
-              <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
-                <small>{node.frontmatter.date}</small>
-                <h3>{title}</h3>
-                <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-              </LatestPostsItem>
-            );
-          })}
-        </LatestPosts>
-        <LatestPostsSeeMore>
-          <Link to={'/journal'}>See my Journal</Link>
-        </LatestPostsSeeMore>
-        </LatestPostsContainer>
         <AboutSection>
           <AboutSectionBody>
-            <h2>Front-End Developer and UI/UX Designer based in
-              Milan, Italy.</h2>
+            <h2>
+              Front-End Developer and UI/UX Designer based in Milan, Italy.
+            </h2>
             <p>
-              I'm a creative and passionate professional who loves
-              Web as much as Design.
+              I'm a creative and passionate professional who loves Web as much
+              as Design.
               <br />
-              <br />
-              I started working with small business and participating in design
-              contests to build a strong portfolio and references. With
+              <br />I started working with small business and participating in
+              design contests to build a strong portfolio and references. With
               perseverance and hard work, in 2012 I was contacted to work
               remotely with a company in USA which produces logo and print
               design services. In 2013, I went to London, UK to find new
@@ -67,7 +54,7 @@ class BlogIndex extends React.Component {
               <br />
               Right now I'm living in Milan, Italy, working as a Front-End
               Developer, I keep learning and facing new challenges to improve
-              every day more and more.
+              every day more and more.{" "}
             </p>
             <AboutSectionSocialLinks>
               <ul>
@@ -144,6 +131,25 @@ class BlogIndex extends React.Component {
             </PlaceHolderWorkImg>
           </AboutSectionWorks>
         </AboutSection>
+        <LatestPostsContainer>
+          <LatestPostsHeading>Latest posts on my Journal:</LatestPostsHeading>
+          <LatestPosts>
+            {posts.map(({ node }) => {
+              console.log(node);
+              const title = get(node, "frontmatter.title") || node.fields.slug;
+              return (
+                <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
+                  <small>{node.frontmatter.date}</small>
+                  <h3>{title}</h3>
+                  <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                </LatestPostsItem>
+              );
+            })}
+          </LatestPosts>
+          <LatestPostsSeeMore>
+            <Link to={"/journal"}>See my Journal</Link>
+          </LatestPostsSeeMore>
+        </LatestPostsContainer>
       </div>
     );
   }
@@ -157,7 +163,7 @@ const HeroDiv = styled.div`
   //justify-content: center;
   align-items: center;
   background-size: unset;
-  background: url('giu-magnani.jpg') no-repeat 100% 100%;
+  background: url("giu-magnani.jpg") no-repeat 100% 100%;
   padding: 20px;
 `;
 
@@ -175,7 +181,7 @@ const MainHeading = styled.div`
     font-weight: 700;
     display: block;
   }
-  
+
   h2 {
     font-size: 36px;
     font-weight: 400;
@@ -209,7 +215,7 @@ const LatestPostsItem = styled(Link)`
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: "Chakra Petch", sans-serif;
     display: block;
     padding-bottom: 4px;
   }
@@ -234,7 +240,7 @@ const LatestPostsItem = styled(Link)`
 const LatestPostsHeading = styled.h2`
   font-size: 30px;
   padding: 10px 30px;
-  margin-top: -50px;
+  //margin-top: -50px;
 `;
 
 const LatestPostsSeeMore = styled.div`
@@ -334,18 +340,19 @@ const AboutSectionWorks = styled.div`
 `;
 
 const PlaceHolderWorkImg = styled.div`
-text-align: center;
+  text-align: center;
   img {
     border: 20px solid white;
+    border-top: none;
     display: block;
     margin: 0 auto;
   }
-  
+
   small {
-  font-size: 11px;
-  //letter-spacing: 1px;
-  //text-transform: uppercase;
-  //  font-family: monospace;
+    font-size: 11px;
+    //letter-spacing: 1px;
+    //text-transform: uppercase;
+    //  font-family: monospace;
     color: white;
   }
 `;
@@ -357,7 +364,11 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(limit: 5, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      limit: 5
+      sort: { fields: [frontmatter___date], order: DESC },
+      filter: { fileAbsolutePath: {regex : "\\/journal/"} } 
+    ) {
       edges {
         node {
           excerpt
