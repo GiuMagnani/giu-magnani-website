@@ -366,8 +366,8 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       limit: 5
-      sort: { fields: [frontmatter___date], order: DESC },
-      filter: { fileAbsolutePath: {regex : "\\/journal/"} } 
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fileAbsolutePath: { regex: "/journal/" } }
     ) {
       edges {
         node {
