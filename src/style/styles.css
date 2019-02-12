@@ -10,15 +10,19 @@
 
 body,
 button,
-input {
-  font-family: "Barlow", sans-serif;
-  font-weight: 300;
+input,
+textarea {
+  font-family: "Chakra Petch", "system", sans-serif;
+  font-weight: 400;
   font-style: normal;
+  font-size: 16px;
+  line-height: 1.7;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   quotes: "“" "”";
+  color: #2222ff;
 }
 
 strong {
@@ -28,6 +32,7 @@ strong {
 a {
   text-decoration: none;
   font-weight: 400;
+  color: #2222ff;
 }
 
 .anchor-link {
@@ -38,21 +43,11 @@ a {
 }
 
 body {
-  font-family: "system", sans-serif;
   border: 20px solid #2222ff;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
   min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-button, input, textarea {
-  font-family: inherit
-}
-
 h1, h2, h3, h4 {
-  font-family: "Chakra Petch", sans-serif;
   font-weight: 700;
 }

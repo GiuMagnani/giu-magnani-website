@@ -19,8 +19,8 @@ class Journal extends React.Component {
         </ul>
         <JournalContainer className="container">
           {items.map((item, index) => (
-            <JournalItem key={index}>
-              <span>{index}</span>
+            <JournalItem key={index} to={item.node.fields.slug}>
+              <JournalIndex>{index}</JournalIndex>
               <h5>{item.node.frontmatter.date}</h5>
               <h3>{item.node.frontmatter.title}</h3>
               <p>{item.node.excerpt}</p>
@@ -42,13 +42,20 @@ const JournalContainer = styled.div`
   padding-right: 0;
 `;
 
-const JournalItem = styled.div`
+const JournalItem = styled(Link)`
   width: 25%;
   height: 250px;
   border-right: 1px solid #2222ff;
   text-align: left;
   flex-direction: column;
   color: #2222ff;
+`;
+
+const JournalIndex = styled.span`
+  color: black;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 `;
 
 export default Journal;
