@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.text};
     
     p {
-      font-size: 17px;
+      font-size: 44px;
       margin: 0.5rem 0;
       display: block;
       line-height: 1.6;

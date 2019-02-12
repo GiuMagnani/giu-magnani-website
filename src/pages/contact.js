@@ -1,40 +1,43 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
+import Layout from "../layouts/layout";
 
 class Contact extends React.Component {
   render() {
     return (
-      <div>
-        <h2>Contact me!</h2>
-        <label htmlFor="sayHi">Just to say hi</label>
-        <input name="sayHi" id="sayHi"/>
-        <label htmlFor="forWork">Work reasons</label>
-        <input name="forWork" id="forWork"/>
-        <br />
-        <button>Or just copy email to clipboard</button>
-        <FormContainer>
-          <div>
-            <form action="contact">
-              <FormGroup>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" />
-              </FormGroup>
-              <FormGroup>
-                <label htmlFor="email">Email:</label>
-                <input type="text" id="email" />
-              </FormGroup>
-              <FormGroup>
-                <label htmlFor="message">Message:</label>
-                <textarea name="message" id="message" cols="30" rows="10" />
-              </FormGroup>
-              <FormButtonContainer>
-                <FormButton>Send!</FormButton>
-              </FormButtonContainer>
-            </form>
-          </div>
-        </FormContainer>
-      </div>
+      <Layout location={ this.props.location }>
+        <div>
+          <h2>Contact me!</h2>
+          <label htmlFor="sayHi">Just to say hi</label>
+          <input name="sayHi" id="sayHi" />
+          <label htmlFor="forWork">Work reasons</label>
+          <input name="forWork" id="forWork" />
+          <br />
+          <button>Or just copy email to clipboard</button>
+          <FormContainer>
+            <div>
+              <form action="contact">
+                <FormGroup>
+                  <label htmlFor="name">Name:</label>
+                  <input type="text" id="name" />
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor="email">Email:</label>
+                  <input type="text" id="email" />
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor="message">Message:</label>
+                  <textarea name="message" id="message" cols="30" rows="10" />
+                </FormGroup>
+                <FormButtonContainer>
+                  <FormButton>Send!</FormButton>
+                </FormButtonContainer>
+              </form>
+            </div>
+          </FormContainer>
+        </div>
+      </Layout>
     );
   }
 }
@@ -61,7 +64,6 @@ const FormGroup = styled.div`
     font-family: 'Teko', sans-serif;
     //font-weight: bold;
     letter-spacing: 1px;
-    color: #2222ff;
     border-right: 1px solid #2222ff;
   }
 

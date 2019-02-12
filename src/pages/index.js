@@ -1,9 +1,9 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link, graphql } from "gatsby";
 import get from "lodash/get";
-import Helmet from "react-helmet";
 import styled from "styled-components";
-import placeholderImgWork from "./depto-work.png";
+import placeholderImgWork from "../../static/depto-work.png";
+import Layout from "../layouts/layout";
 
 class BlogIndex extends React.Component {
   render() {
@@ -11,8 +11,7 @@ class BlogIndex extends React.Component {
     const posts = get(this, "props.data.allMarkdownRemark.edges");
 
     return (
-      <div>
-        <Helmet title={ siteTitle } />
+      <Layout location={ this.props.location }>
         <HeroDiv className="container">
           <MainHeading>
             <h1>I'm Giu Magnani.</h1>
@@ -137,7 +136,7 @@ class BlogIndex extends React.Component {
             <Link to={ "/journal" }>See my Journal</Link>
           </LatestPostsSeeMore>
         </LatestPostsContainer>
-      </div>
+      </Layout>
     );
   }
 }
@@ -150,14 +149,13 @@ const HeroDiv = styled.div`
   //justify-content: center;
   align-items: center;
   background-size: unset;
-  background: url("giu-magnani.jpg") no-repeat 100% 100%;
+  background: url("../../static/giu-magnani.jpg") no-repeat 100% 100%;
   padding: 20px;
 `;
 
 const MainHeading = styled.div`
   strong {
     text-decoration: underline;
-    color: #2222ff;
     padding: 5px;
     font-weight: 700;
   }
@@ -348,7 +346,9 @@ export const pageQuery = graphql`
   query IndexQuery {
     site {
       siteMetadata {
-        title
+        rssMetadata {
+          title
+        }
       }
     }
     allMarkdownRemark(

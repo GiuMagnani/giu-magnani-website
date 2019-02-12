@@ -1,32 +1,32 @@
-import React from 'react';
-import Img from 'gatsby-image';
-import styled from 'styled-components';
-import Link from 'gatsby-link';
+import React from "react";
+import Img from "gatsby-image";
+import styled from "styled-components";
+import { Link, graphql } from "gatsby";
+import Layout from "../layouts/layout";
 
 class Work extends React.Component {
   render() {
     const items = this.props.data.allMarkdownRemark.edges;
     return (
-      <div>
-        <h2>WORKS</h2>
-        <p>Filter by:</p>
-        <p>Show me everything</p>
-        <WorksContainer>
-          {items.map((item, key) => (
-            <WorkItem key={key} to={item.node.fields.slug}>
-              <Img
-                sizes={
+      <Layout location={ this.props.location }>
+        <div>
+          <h2>WORKS</h2>
+          <p>Filter by:</p>
+          <p>Show me everything</p>
+          <WorksContainer>
+            { items.map((item, key) => (
+              <WorkItem key={ key } to={ item.node.fields.slug }>
+                <Img sizes={
                   item.node.frontmatter.featuredImage.childImageSharp.sizes
-                }
-                alt={item.node.frontmatter.title}
-              />
-              <h4>{item.node.frontmatter.category}</h4>
-              <h3>{item.node.frontmatter.title}</h3>
-              <p>{item.node.excerpt}</p>
-            </WorkItem>
-          ))}
-        </WorksContainer>
-      </div>
+                } alt={ item.node.frontmatter.title } />
+                <h4>{ item.node.frontmatter.category }</h4>
+                <h3>{ item.node.frontmatter.title }</h3>
+                <p>{ item.node.excerpt }</p>
+              </WorkItem>
+            )) }
+          </WorksContainer>
+        </div>
+      </Layout>
     );
   }
 }
