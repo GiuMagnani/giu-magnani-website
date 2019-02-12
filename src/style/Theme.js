@@ -46,4 +46,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export { Theme as default, GlobalStyle };
+export { Theme, GlobalStyle };

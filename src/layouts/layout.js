@@ -5,7 +5,7 @@ import "../style/reset.css";
 import "../style/grid.css";
 import "../style/animations.css";
 import "../style/styles.css";
-import Theme, { GlobalStyle } from "../style/Theme";
+import { Theme, GlobalStyle } from "../style/Theme";
 import { ThemeProvider } from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -14,12 +14,12 @@ import SEO from "../SEO/SEO";
 
 // setConfig({ pureSFC: true });
 
-export default class Layout extends Component {
-  componentDidMount() {
-    console.log("Developed by Giu Magnani.");
-    console.log("Milan, Italy. 2019.");
-    console.log("https://www.giumagnani.com");
-  }
+class Layout extends Component {
+  // componentDidMount() {
+  //   console.log("Developed by Giu Magnani.");
+  //   console.log("Milan, Italy. 2019.");
+  //   console.log("https://www.giumagnani.com");
+  // }
 
   getLocalTitle() {
     const pathPrefix = config.pathPrefix ? config.pathPrefix : "/";
@@ -43,23 +43,19 @@ export default class Layout extends Component {
 
   render() {
     return (
-      <>
+      <div>
         <SEO />
         <Helmet>
           <title>{`${config.siteTitle} |  ${this.getLocalTitle()}`}</title>
         </Helmet>
-        <ThemeProvider theme={Theme}>
-          <>
-            <GlobalStyle />
-            <Header />
-            <main>
-              {this.props.children}
-            </main>
-            <Footer config={config} />
-            <div id="modal-root" />
-          </>
-        </ThemeProvider>
-      </>
+        <Header />
+        <main>
+          {this.props.children}
+        </main>
+        <Footer config={config} />
+      </div>
     );
   }
 }
+
+export default Layout;
