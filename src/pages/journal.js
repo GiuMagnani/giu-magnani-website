@@ -2,32 +2,54 @@ import React from 'react';
 import get from 'lodash/get';
 import Link from 'gatsby-link';
 import Img from "gatsby-image";
+import styled from 'styled-components';
 
 class Journal extends React.Component {
   render() {
     const items = this.props.data.allMarkdownRemark.edges;
     return (
       <div>
+        <h1>My Journal</h1>
+        <p>Here I’ll post my design, development and drawing explorations and processes. Totally experimental stuff.</p>
         Filter by:
         <ul>
           <li>Art</li>
           <li>Code</li>
           <li>Other stuff</li>
         </ul>
-        {items.map((item, key) => (
-          <div key={key}>
-            {/*<img*/}
-            {/*src={`./${item.node.frontmatter.featuredImage.childImageSharp.sizes.src}`}*/}
-            {/*alt={item.node.frontmatter.title}*/}
-            {/*/>*/}
-            <h3>{item.node.frontmatter.title}</h3>
-            <p>{item.node.excerpt}</p>
-          </div>
-        ))}
+        <JournalContainer className="container">
+          {items.map((item, index) => (
+            <JournalItem key={index}>
+              <span>{index}</span>
+              <h5>{item.node.frontmatter.date}</h5>
+              <h3>{item.node.frontmatter.title}</h3>
+              <p>{item.node.excerpt}</p>
+            </JournalItem>
+          ))}
+        </JournalContainer>
       </div>
     );
   }
 }
+
+const JournalContainer = styled.div`
+  border: 1px solid #2222ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 0;
+  padding-right: 0;
+`;
+
+const JournalItem = styled.div`
+  width: 25%;
+  height: 250px;
+  border-right: 1px solid #2222ff;
+  text-align: left;
+  flex-direction: column;
+  color: #2222ff;
+`;
 
 export default Journal;
 

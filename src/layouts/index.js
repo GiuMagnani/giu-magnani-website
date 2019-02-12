@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../components/Header';
-import './styles.css';
+import '../style/reset.css';
+import '../style/grid.css';
+import '../style/styles.css';
 
 class Template extends React.Component {
   render() {
