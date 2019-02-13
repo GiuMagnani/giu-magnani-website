@@ -110,10 +110,10 @@ class BlogIndex extends React.Component {
               </AboutSectionSocialLinks>
             </AboutSectionBody>
             <AboutSectionWorks>
-              <PlaceHolderWorkImg>
-                <img src={ placeholderImgWork } alt="Placeholder Image" />
-                {/*<small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, excepturi! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, sequi.</small>*/ }
-              </PlaceHolderWorkImg>
+              {/*<PlaceHolderWorkImg>*/}
+                {/*<img src={ placeholderImgWork } alt="Placeholder Image" />*/}
+                {/*/!*<small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, excepturi! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, sequi.</small>*/ }*/}
+              {/*</PlaceHolderWorkImg>*/}
             </AboutSectionWorks>
           </div>
         </AboutSection>

@@ -42,11 +42,11 @@ class Header extends React.Component {
           {/*<Link to={'/shop'}>Shop</Link>*/}
           <Link to={'/contact'}>Contact</Link>
         </NavLinks>
-        <NavLanguages>
-          <button>EN</button>
-          <button>ES</button>
-          <button>IT</button>
-        </NavLanguages>
+        {/*<NavLanguages>*/}
+          {/*<button>EN</button>*/}
+          {/*<button>ES</button>*/}
+          {/*<button>IT</button>*/}
+        {/*</NavLanguages>*/}
       </HeaderNav>
     );
   }
