@@ -98,6 +98,13 @@ module.exports = {
         ]
       }
     },
+    {
+      resolve: `gatsby-source-behance`,
+      options: {
+        username: 'giumagnani',
+        apiKey: 'nKzrALuVbJJ4mzNEqFJSS3T9tDfcYctE',
+      }
+    },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
@@ -106,6 +113,6 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-image",
     "gatsby-remark-copy-linked-files",
-    "gatsby-plugin-netlify"
+    "gatsby-plugin-netlify",
   ]
 };

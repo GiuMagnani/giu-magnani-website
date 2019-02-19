@@ -13,12 +13,12 @@ const Theme = {
   sm: "576px",
   md: "768px",
   lg: "992px",
-  xl: "1200px",
+  xl: "1200px"
 };
 
 const GlobalStyle = createGlobalStyle`
   body {
-    color: ${props => props.theme.text};
+    color: #2222ff;
     
     p {
       font-size: 44px;
@@ -31,14 +31,9 @@ const GlobalStyle = createGlobalStyle`
       font-weight: bold;
     }
   }
-  
-  ::selection {
-    background-color: ${props => props.theme.main};
-    color: white;
-  }
 
   a {
-    color: ${props => props.theme.main};
+    color: ${ props => props.theme.main };
   }
   
   strong {
