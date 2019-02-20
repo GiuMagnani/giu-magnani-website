@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-const LatestProjectItems = ({ items }) => <div>{JSON.stringify(items)}</div>;
+const LatestProjectItems = ({ projects }) => {
+  console.log(projects);
+  return <div>{projects.map(project => project.name)}</div>;
+};
 
 export default LatestProjectItems;
