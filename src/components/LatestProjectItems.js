@@ -4,7 +4,6 @@ import { Link } from "gatsby";
 
 const LatestProjectItems = ({ projects }) => {
   const getExcerpt = (string) => {
-    console.log(string);
     return `${ string.split(" ").slice(0, 20).join(" ") }...`;
   };
 
@@ -13,7 +12,7 @@ const LatestProjectItems = ({ projects }) => {
       <div className="container">
         <h2>UX/UI and Front-End Development Projects</h2>
         { projects.map(({ node }, index) => (
-          <Project>
+          <Project key={index}>
             <ProjectIndex>0{ index + 1 }</ProjectIndex>
             <ProjectImage>
               <img src={ node.covers.size_original } alt={ node.name } />
@@ -46,12 +45,6 @@ const Project = styled.article`
   position: relative;
   margin-top: 2rem;
   //border-bottom: 1px solid ${ props => props.theme.main };
-
-  img {
-    width: 100%;
-    display: block;
-    margin: 0 auto;
-  }
 
   @media (min-width: ${ props => props.theme.lg }) {
       height: 300px;
@@ -100,8 +93,13 @@ const ProjectAreas = styled.h3`
 const ProjectImage = styled.div`
   border: 1px solid ${ props => props.theme.main };
   margin-bottom: 1rem;
+  
+  img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
 `;
-
 
 const ProjectDate = styled.span`
 

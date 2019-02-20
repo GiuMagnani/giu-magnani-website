@@ -31,7 +31,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    allBehanceProjects(limit: 5) {
+    allBehanceProjects(
+      limit: 5
+      filter: { areas: { in: "Web Design" } }
+    ) {
       edges {
         node {
           id
