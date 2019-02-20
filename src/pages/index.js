@@ -2,7 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import get from "lodash/get";
 import styled from "styled-components";
-import placeholderImgWork from "../../static/depto-work.png";
+import giuNeon from "../../static/giu-magnani.jpg";
 import Layout from "../layouts/layout";
 import SocialLinks from "../components/SocialLinks";
 
@@ -15,23 +15,30 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={ this.props.location }>
-        <HeroDiv className="container">
-          <MainHeading>
-            <h1>I'm Giu Magnani.</h1>
-            <h2>
-              I’m a Front-End Developer and UI/UX Designer from Chile working and living in Milan, Italy. </h2>
-            <p>
-              I'm a creative and passionate professional who loves Web as much as Design.
+        <HeroDivWrapper>
+          <HeroDiv className="container">
+            <MainHeading>
+              <h1>I'm Giu Magnani.</h1>
+              <h2>
+                I’m a Front-End Developer and UI/UX Designer from Chile working and living in Milan, Italy. </h2>
+              <p>
+                I'm a creative and passionate professional who loves Web as much as Design.
 
-              I started working with small business and participating in design contests to build a strong portfolio and
-              references. With perseverance and hard work, in 2012 I was contacted to work remotely with a company in USA
-              which produces logo and print design services. In 2013, I went to London, UK. </p>
-            <strong>
-              See what I’ve been sharing on Social Media:
-            </strong>
-            <SocialLinks isBlue={true} />
-          </MainHeading>
-        </HeroDiv>
+                I started working with small business and participating in design contests to build a strong portfolio
+                and
+                references. With perseverance and hard work, in 2012 I was contacted to work remotely with a company in
+                USA
+                which produces logo and print design services. In 2013, I went to London, UK. </p>
+              <strong>
+                See what I’ve been sharing on Social Media:
+              </strong>
+              <SocialLinks isBlue={ true } />
+            </MainHeading>
+            <HeroImg>
+              <img src={ giuNeon } alt="Giu Magnani 3D Neon Logo" />
+            </HeroImg>
+          </HeroDiv>
+        </HeroDivWrapper>
         <div className="container">
           <LatestPostsContainer>
             <LatestPostsHeading>Latest on my Journal</LatestPostsHeading>
@@ -62,14 +69,17 @@ export default BlogIndex;
 const HeroDiv = styled.div`
   height: 90vh;
   display: flex;
-  //justify-content: center;
   align-items: center;
-  background-size: unset;
-  background: url("../../static/giu-magnani.jpg") no-repeat 100% 100%;
-  padding: 20px;
+`;
+
+const HeroDivWrapper = styled.div`
+  border: 1px solid #2222ff;
+  border-width: 0 0 1px;
 `;
 
 const MainHeading = styled.div`
+  width: 55%;
+  
   h1 {
     font-size: 70px;
     line-height: 1;
@@ -85,6 +95,17 @@ const MainHeading = styled.div`
   }
 `;
 
+const HeroImg = styled.div`
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  
+  img {
+    width: 100%;
+  }
+`;
+
 const LatestPosts = styled.div`
   border-width: 1px;
   border-style: solid;
@@ -95,10 +116,10 @@ const LatestPosts = styled.div`
 const LatestPostsItem = styled(Link)`
   border: 0 solid #2222ff;
   border-right-width: 1px;
-  padding: 30px 20px;
   width: 25%;
-  //height: 230px;
+  min-height: 280px;
   text-decoration: none;
+  padding: 30px 30px 40px;
 
   &&:last-of-type {
     border: 0;
@@ -108,7 +129,6 @@ const LatestPostsItem = styled(Link)`
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-family: "Chakra Petch", sans-serif;
     display: block;
     padding-bottom: 4px;
   }
@@ -133,7 +153,7 @@ const LatestPostsItem = styled(Link)`
 const LatestPostsHeading = styled.h2`
   font-size: 30px;
   padding: 10px 30px;
-  //margin-top: -50px;
+  margin: 1.5rem 0;
 `;
 
 const LatestPostsSeeMore = styled.div`
@@ -155,54 +175,11 @@ const LatestPostsSeeMore = styled.div`
     letter-spacing: 1px;
     padding-left: 20px;
     text-align: left;
-    //text-transform: uppercase;
   }
 `;
 
 const LatestPostsContainer = styled.div`
   margin-bottom: 100px;
-`;
-
-const AboutSection = styled.div`
-  background: #2222ff;
-  padding: 40px 20px;
-  display: flex;
-`;
-
-const AboutSectionBody = styled.div`
-  width: 40%;
-  color: white;
-
-  h2 {
-    font-size: 40px;
-    padding-bottom: 20px;
-    line-height: 1;
-    padding-right: 20px;
-  }
-`;
-
-const AboutSectionWorks = styled.div`
-  width: 60%;
-  text-align: center;
-  margin-top: -110px;
-`;
-
-const PlaceHolderWorkImg = styled.div`
-  text-align: center;
-  img {
-    border: 20px solid white;
-    border-top: none;
-    display: block;
-    margin: 0 auto;
-  }
-
-  small {
-    font-size: 11px;
-    //letter-spacing: 1px;
-    //text-transform: uppercase;
-    //  font-family: monospace;
-    color: white;
-  }
 `;
 
 export const pageQuery = graphql`

@@ -13,7 +13,6 @@
 //   text-transform: uppercase;
 //   letter-spacing: 3px;
 //   font-weight: 700;
-//   font-family: "Chakra Petch", sans-serif;
 //   margin-bottom: 1rem;
 // `;
 //
