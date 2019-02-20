@@ -54,7 +54,7 @@ class Header extends React.Component {
 
 const HeaderNav = styled.nav`
   height: 60px;
-  background-color: #2222ff;
+  background-color: ${ props => props.theme.main };
   color: white;
   display: flex;
   align-items: center;

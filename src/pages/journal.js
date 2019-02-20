@@ -41,7 +41,7 @@ const JournalWrapper = styled.div`
 `;
 
 const JournalList = styled.div`
-  border: 1px solid #2222ff;
+  border: 1px solid ${ props => props.theme.main };
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -51,7 +51,7 @@ const JournalList = styled.div`
 const JournalItem = styled(Link)`
   width: 25%;
   height: 280px;
-  border-right: 1px solid #2222ff;
+  border-right: 1px solid ${ props => props.theme.main };
   text-align: left;
   flex-direction: column;
   position: relative;
@@ -83,7 +83,7 @@ const JournalDate = styled.span`
 const JournalIndex = styled.span`
   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #2222ff;
+  -webkit-text-stroke-color: ${ props => props.theme.main };
   font-size: 40px;
   font-weight: bold;
   position: absolute;

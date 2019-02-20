@@ -45,14 +45,14 @@ class Contact extends React.Component {
 const FormContainer = styled.div`
   margin: 0 auto;
   //max-width: 800px;
-  border: 0 solid #2222ff;
+  border: 0 solid ${ props => props.theme.main };
   border-width: 4px 0;
 `;
 
 const FormGroup = styled.div`
   width: 100%;
   display: flex;
-  border: 0 solid #2222ff;
+  border: 0 solid ${ props => props.theme.main };
   border-bottom-width: 1px;
   //margin-bottom: -2px;
 
@@ -64,7 +64,7 @@ const FormGroup = styled.div`
     font-family: 'Teko', sans-serif;
     //font-weight: bold;
     letter-spacing: 1px;
-    border-right: 1px solid #2222ff;
+    border-right: 1px solid ${ props => props.theme.main };
   }
 
   textarea,
@@ -88,15 +88,15 @@ const FormGroup = styled.div`
 const FormButtonContainer = styled.div`
   width: 100%;
   border-style: solid;
-  border-color: #2222ff;
+  border-color: ${ props => props.theme.main };
   border-width: 0;
 `;
 
 const FormButton = styled.button`
-  background-color: #2222ff;
+  background-color: ${ props => props.theme.main };
   font-size: 20px;
   color: white;
-  border: 0 solid #2222ff;
+  border: 0 solid ${ props => props.theme.main };
   border-width: 2px 0;
   margin: 0;
   padding: 20px;

@@ -73,13 +73,13 @@ const SocialLinksWrapper = styled.div`
     text-align: center;
     width: 40px;
     display: block;
-    border: 1px solid ${props => props['is-blue'] ? '#2222ff' : 'white'};
+    border: 1px solid ${props => props['is-blue'] ? props.theme.main : 'white'};
     line-height: 44px;
     margin-right: -1px;
   }
 
   svg {
-    fill: ${props => props['is-blue'] ? '#2222ff' : 'white'};
+    fill: ${props => props['is-blue'] ? props.theme.main : 'white'};
     height: 16px;
     width: 16px;
   }

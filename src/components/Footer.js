@@ -46,7 +46,7 @@ class Footer extends React.Component {
 }
 
 const FooterWrapper = styled.footer`
-  background-color: #2222ff;
+  background-color: ${ props => props.theme.main };
   color: white;
   display: flex;
   align-items: center;

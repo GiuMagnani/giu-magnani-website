@@ -21,7 +21,7 @@
 //     console.log(this.props.data);
 //     const post = this.props.data.markdownRemark;
 //     const siteTitle = get(this.props, "data.site.siteMetadata.title");
-//     const { previous, next } = this.props.pathContext;
+//     const { previous, next } = this.props.pageContext;
 //
 //     return (
 //       <div>

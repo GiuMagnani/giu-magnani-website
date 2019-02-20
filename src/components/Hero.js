@@ -37,7 +37,7 @@ const HeroDiv = styled.div`
 `;
 
 const HeroDivWrapper = styled.div`
-  border: 1px solid #2222ff;
+  border: 1px solid ${ props => props.theme.main };
   border-width: 0 0 1px;
 `;
 
@@ -61,7 +61,7 @@ const MainHeading = styled.div`
 
 const HeroImg = styled.div`
   width: 45%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: flex-end;
 

@@ -27,24 +27,24 @@ const LatestJournalItems = ({ posts }) => (
 const LatestPosts = styled.div`
   border-width: 1px;
   border-style: solid;
-  border-color: #2222ff;
+  border-color: ${ props => props.theme.main };
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 900px) {
+  @media (min-width: ${ props => props.theme.lg }) {
     flex-direction: row;
   }
 `;
 
 const LatestPostsItem = styled(Link)`
-  border: 0 solid #2222ff;
+  border: 0 solid ${ props => props.theme.main };
   border-bottom-width: 1px;
   width: 100%;
   min-height: 280px;
   text-decoration: none;
   padding: 30px 30px 40px;
 
-  @media (min-width: 900px) {
+  @media (min-width: ${ props => props.theme.lg }) {
     width: 25%;
     border: 0;
     border-right-width: 1px;
@@ -80,7 +80,6 @@ const LatestPostsItem = styled(Link)`
 `;
 
 const LatestPostsHeading = styled.h2`
-  font-size: 30px;
   padding: 10px 30px;
   margin: 1.5rem 0;
 `;
@@ -92,7 +91,7 @@ const LatestPostsSeeMore = styled.div`
 
   a {
     font-size: 14px;
-    background: #2222ff;
+    background: ${ props => props.theme.main };
     color: white;
     height: 40px;
     line-height: 38px;
@@ -104,13 +103,13 @@ const LatestPostsSeeMore = styled.div`
     width: 100%;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: ${ props => props.theme.lg }) {
     a {
       width: calc(50% + 7px);
     }
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: ${ props => props.theme.lg }) {
     a {
       width: calc(20% + 7px);
     }

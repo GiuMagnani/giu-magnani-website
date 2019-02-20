@@ -48,11 +48,16 @@ class Layout extends Component {
         <Helmet>
           <title>{`${config.siteTitle} |  ${this.getLocalTitle()}`}</title>
         </Helmet>
-        <Header />
-        <main>
-          {this.props.children}
-        </main>
-        <Footer config={config} />
+        <ThemeProvider theme={Theme}>
+          <>
+            <GlobalStyle />
+            <Header />
+            <main>
+              {this.props.children}
+            </main>
+            <Footer config={config} />
+          </>
+        </ThemeProvider>
       </div>
     );
   }
