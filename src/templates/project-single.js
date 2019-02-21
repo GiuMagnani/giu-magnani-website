@@ -12,6 +12,7 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location}>
         <p>{post.name}</p>
         <div dangerouslySetInnerHTML={{ __html: post.description }} />
+        <p>{post.description}</p>
       </Layout>
     );
   }
@@ -19,17 +20,25 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate;
 
-// behanceProjects(id: $id) {
-//   id
-//   name
-// }
-
 export const projectQuery = graphql`
   query projectQuery($id: String) {
     behanceProjects(id: { eq: $id }) {
       id
       name
       description
+      published_on
+      url
+      fields
+      covers {
+        404
+      }
+      stats {
+        views
+        appreciations
+      }
+      featured_on
+      owners
+      modules
     }
   }
 `;
