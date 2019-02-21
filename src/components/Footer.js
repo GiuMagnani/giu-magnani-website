@@ -1,21 +1,20 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
 import SocialLinks from "./SocialLinks";
 
 class Footer extends React.Component {
   render() {
     return (
       <FooterWrapper>
-        <Logo to={'/'}>
+        <Logo to={"/"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             width="39"
-            height="40"
-          >
+            height="40">
             <defs>
-              <path id="a" d="M38.9264.0746v39.3698H.0001V.0746z"/>
+              <path id="a" d="M38.9264.0746v39.3698H.0001V.0746z" />
             </defs>
             <g fill="none" fillRule="evenodd">
               <path
@@ -24,7 +23,7 @@ class Footer extends React.Component {
               />
               <g transform="translate(0 .481)">
                 <mask id="b" fill="#fff">
-                  <use xlinkHref="#a"/>
+                  <use xlinkHref="#a" />
                 </mask>
                 <path
                   fill="#FFF"
@@ -35,32 +34,43 @@ class Footer extends React.Component {
             </g>
           </svg>
         </Logo>
-        <div><a href="mailto:hello@giumagnani.com">hello@giumagnani.com</a></div>
+        <FooterEmailLink>
+          <a href="mailto:hello@giumagnani.com">hello@giumagnani.com</a>
+        </FooterEmailLink>
         <SocialLinks />
-        <div>
+        <FooterCopyright>
           <span> © giu magnani 2019.</span>
-        </div>
+        </FooterCopyright>
       </FooterWrapper>
     );
   }
 }
 
 const FooterWrapper = styled.footer`
-  background-color: ${ props => props.theme.main };
+  background-color: ${props => props.theme.main};
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  //height: 50px;
-  //line-height: 50px;
+  flex-direction: column;
   padding: 30px 0 20px;
-  
-   a {
+
+  a {
     color: white;
-   }
+  }
+
+  @media (min-width: ${props => props.theme.lg}) {
+    flex-direction: row;
+  }
 `;
 
-const Logo = styled.div`
+const Logo = styled.div``;
+const FooterEmailLink = styled.div`
+  margin: 1rem 0;
+`;
+
+const FooterCopyright = styled.div`
+  margin: 1rem 0 0;
 `;
 
 export default Footer;
