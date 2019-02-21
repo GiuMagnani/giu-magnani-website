@@ -21,7 +21,7 @@ const Hero = () => (
           In 2013, I went to London, UK.
         </p>
         <strong>See what I’ve been sharing on Social Media:</strong>
-        <SocialLinks isBlue={true} />
+        <HeroSocialLinks isBlue={true} />
       </MainHeading>
       <HeroImg>
         <img src={giuNeonImage} alt="Giu Magnani 3D Neon Logo" />
@@ -33,41 +33,86 @@ const Hero = () => (
 const HeroDiv = styled.div`
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  position: relative;
+
+  @media (min-width: ${props => props.theme.lg}) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 const HeroDivWrapper = styled.div`
-  border: 1px solid ${ props => props.theme.main };
+  border: 1px solid ${props => props.theme.main};
   border-width: 0 0 1px;
 `;
 
 const MainHeading = styled.div`
   width: 55%;
+  padding-bottom: 2rem;
 
   h1 {
-    font-size: 70px;
+    font-size: 36px;
     line-height: 1;
     font-weight: 700;
     display: block;
+    margin-bottom: 1rem;
   }
 
   h2 {
-    font-size: 36px;
+    font-size: 22px;
     font-weight: 400;
     padding-right: 5px;
     display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: ${props => props.theme.lg}) {
+    padding-bottom: 0;
+
+    h1 {
+      font-size: 70px;
+    }
+
+    h2 {
+      font-size: 36px;
+    }
   }
 `;
 
 const HeroImg = styled.div`
   width: 45%;
-  min-height: 100vh;
   display: flex;
   align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 
   img {
-    width: 100%;
+    height: 300px;
+    width: auto;
   }
+
+  @media (min-width: ${props => props.theme.lg}) {
+    min-height: 100vh;
+    position: relative;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+`;
+
+const HeroSocialLinks = styled(SocialLinks)`
+  margin-bottom: 1rem;
+  width: 100%;
 `;
 
 export default Hero;
