@@ -25,7 +25,7 @@ export default BlogPostTemplate;
 // }
 
 export const projectQuery = graphql`
-  query projectQuery($id: String!) {
+  query projectQuery($id: String) {
     behanceProjects(id: { eq: $id }) {
       id
       name
