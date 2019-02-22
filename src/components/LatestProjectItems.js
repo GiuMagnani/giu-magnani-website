@@ -13,35 +13,29 @@ const LatestProjectItems = ({ projects }) => {
   };
 
   return (
-    <ProjectWrapper>
-      <div className="container">
-        {projects.map(({ node }, index) => (
-          <Project key={index}>
-            <ProjectIndex>0{index + 1}</ProjectIndex>
-            <ProjectImage>
-              <Img
-                sizes={node.frontmatter.featuredImage.childImageSharp.sizes}
-                alt={node.frontmatter.title}
-              />
-            </ProjectImage>
-            <ProjectBody>
-              <ProjectAreas>{node.frontmatter.category}</ProjectAreas>
-              <ProjectName>{node.frontmatter.title}</ProjectName>
-              <ProjectDescription>{node.excerpt}</ProjectDescription>
-              <ProjectLink to={node.fields.slug}>
-                See full project ->
-              </ProjectLink>
-            </ProjectBody>
-          </Project>
-        ))}
-      </div>
-    </ProjectWrapper>
+    <>
+      {projects.map(({ node }, index) => (
+        <Project key={index}>
+          <ProjectIndex>0{index + 1}</ProjectIndex>
+          <ProjectImage>
+            <Img
+              sizes={node.frontmatter.featuredImage.childImageSharp.sizes}
+              alt={node.frontmatter.title}
+            />
+          </ProjectImage>
+          <ProjectBody>
+            <ProjectAreas>{node.frontmatter.category}</ProjectAreas>
+            <ProjectName>{node.frontmatter.title}</ProjectName>
+            <ProjectDescription>{node.excerpt}</ProjectDescription>
+            <ProjectLink to={node.fields.slug}>
+              See full project ->
+            </ProjectLink>
+          </ProjectBody>
+        </Project>
+      ))}
+    </>
   );
 };
-
-const ProjectWrapper = styled.div`
-  padding-top: 3rem;
-`;
 
 const ProjectBody = styled.div`
   @media (min-width: ${props => props.theme.lg}) {

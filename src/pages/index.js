@@ -4,6 +4,7 @@ import Layout from "../layouts/layout";
 import LatestJournalItems from "../components/LatestJournalItems";
 import LatestProjectItems from "../components/LatestProjectItems";
 import Hero from "../components/Hero";
+import styled from "styled-components";
 
 const BlogIndex = ({location, data}) => {
   const journal = data.journal.edges;
@@ -12,12 +13,20 @@ const BlogIndex = ({location, data}) => {
   return (
     <Layout location={location}>
       <Hero />
-      <h2>UX/UI and Front-End Development Projects</h2>
-      <LatestProjectItems projects={projects} />
+      <ProjectsWrapper>
+        <div className="container">
+          <h2>UX/UI and Front-End Development Projects</h2>
+          <LatestProjectItems projects={projects} />
+        </div>
+      </ProjectsWrapper>
       <LatestJournalItems journal={journal} />
     </Layout>
   );
-}
+};
+
+const ProjectsWrapper = styled.section`
+  padding-top: 3rem;
+`;
 
 export default BlogIndex;
 
