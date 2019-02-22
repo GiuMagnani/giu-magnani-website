@@ -5,19 +5,18 @@ import LatestJournalItems from "../components/LatestJournalItems";
 import LatestProjectItems from "../components/LatestProjectItems";
 import Hero from "../components/Hero";
 
-class BlogIndex extends React.Component {
-  render() {
-    const posts = this.props.data.allMarkdownRemark.edges;
-    // const projects = this.props.data.allBehanceProjects.edges;
+const BlogIndex = ({location, data}) => {
+  const journal = data.journal.edges;
+  const projects = data.projects.edges;
 
-    return (
-      <Layout location={this.props.location}>
-        <Hero />
-        {/*<LatestProjectItems projects={projects} />*/}
-        <LatestJournalItems posts={posts} />
-      </Layout>
-    );
-  }
+  return (
+    <Layout location={location}>
+      <Hero />
+      <h2>UX/UI and Front-End Development Projects</h2>
+      <LatestProjectItems projects={projects} />
+      <LatestJournalItems journal={journal} />
+    </Layout>
+  );
 }
 
 export default BlogIndex;
@@ -31,7 +30,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    journal: allMarkdownRemark(
       limit: 4
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fileAbsolutePath: { regex: "/journal/" } }
@@ -45,6 +44,31 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "DD MMMM, YYYY")
             title
+          }
+        }
+      }
+    }
+    projects: allMarkdownRemark(
+      limit: 6
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fileAbsolutePath: { regex: "/projects/" } }
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            category
+            featuredImage{
+              childImageSharp {
+                sizes(quality: 100, maxWidth: 800) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }

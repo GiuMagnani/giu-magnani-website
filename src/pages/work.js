@@ -3,6 +3,7 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import { Link, graphql } from "gatsby";
 import Layout from "../layouts/layout";
+import LatestProjectItems from "../components/LatestProjectItems";
 
 const Work = ({ location, data }) => {
   const items = data.allMarkdownRemark.edges;
@@ -55,7 +56,7 @@ const Work = ({ location, data }) => {
 
   return (
     <Layout location={ location }>
-      <div className="container">
+      <ProjectsWrapper className="container">
         <Intro>
           <p>Latest <a onClick={ () => toggleFilter("graphicDesign") }
                        className={ filters.graphicDesign.value ? "is-active" : "" }>Graphic Design,</a> <a
@@ -65,22 +66,28 @@ const Work = ({ location, data }) => {
             onClick={ () => toggleFilter("illustration") }
             className={ filters.illustration.value ? "is-active" : "" }>Illustration</a> Projects.</p>
         </Intro>
-        <WorksContainer>
-          { items.map((item, key) => (
-            <WorkItem key={ key } to={ item.node.fields.slug }>
-              <Img sizes={
-                item.node.frontmatter.featuredImage.childImageSharp.sizes
-              } alt={ item.node.frontmatter.title } />
-              <h4>{ item.node.frontmatter.category }</h4>
-              <h3>{ item.node.frontmatter.title }</h3>
-              <p>{ item.node.excerpt }</p>
-            </WorkItem>
-          )) }
-        </WorksContainer>
-      </div>
+        <LatestProjectItems projects={items} />
+
+        {/*<WorksContainer>*/}
+          {/*{ items.map((item, key) => (*/}
+            {/*<WorkItem key={ key } to={ item.node.fields.slug }>*/}
+              {/*<Img sizes={*/}
+                {/*item.node.frontmatter.featuredImage.childImageSharp.sizes*/}
+              {/*} alt={ item.node.frontmatter.title } />*/}
+              {/*<h4>{ item.node.frontmatter.category }</h4>*/}
+              {/*<h3>{ item.node.frontmatter.title }</h3>*/}
+              {/*<p>{ item.node.excerpt }</p>*/}
+            {/*</WorkItem>*/}
+          {/*)) }*/}
+        {/*</WorksContainer>*/}
+      </ProjectsWrapper>
     </Layout>
   );
 };
+
+const ProjectsWrapper = styled.section`
+  margin-bottom: 4rem;
+`;
 
 const Intro = styled.header`
   min-height: 40vh;
@@ -182,7 +189,7 @@ export const pageQuery = graphql`
             tags
             featuredImage {
               childImageSharp {
-                sizes(quality: 90, maxWidth: 1240) {
+                sizes(quality: 100, maxWidth: 1240) {
                   ...GatsbyImageSharpSizes
                 }
               }

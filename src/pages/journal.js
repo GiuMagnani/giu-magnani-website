@@ -13,8 +13,7 @@ class Journal extends React.Component {
         <JournalWrapper className="container">
           <Intro>
           <h1>My Journal</h1>
-          <p>Here I’ll post my design, development and drawing explorations and processes. Totally experimental
-          stuff.</p>
+          <p>Here I’ll post my thoughts and experiments on art, design and development.</p>
           {/*Filter by:*/}
           {/*<ul>*/}
             {/*<li>Art</li>*/}
@@ -51,7 +50,7 @@ const Intro = styled.header`
   }
   
   p {
-    font-size: 60px;
+    font-size: 55px;
     line-height: 1.2;
     font-weight: bold;
   }

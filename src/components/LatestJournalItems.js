@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-const LatestJournalItems = ({ posts }) => (
+const LatestJournalItems = ({ journal }) => (
   <div className="container">
     <LatestPostsContainer>
       <LatestPostsHeading>Latest on my Journal</LatestPostsHeading>
       <LatestPosts>
-        {posts.map(({ node }) => {
+        {journal.map(({ node }) => {
           return (
             <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
               <small>{node.frontmatter.date}</small>
