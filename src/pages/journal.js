@@ -11,22 +11,24 @@ class Journal extends React.Component {
     return (
       <Layout location={ this.props.location }>
         <JournalWrapper className="container">
+          <Intro>
           <h1>My Journal</h1>
           <p>Here I’ll post my design, development and drawing explorations and processes. Totally experimental
-            stuff.</p>
-          Filter by:
-          <ul>
-            <li>Art</li>
-            <li>Code</li>
-            <li>Other stuff</li>
-          </ul>
+          stuff.</p>
+          {/*Filter by:*/}
+          {/*<ul>*/}
+            {/*<li>Art</li>*/}
+            {/*<li>Code</li>*/}
+            {/*<li>Other stuff</li>*/}
+          {/*</ul>*/}
+          </Intro>
           <JournalList>
-            { items.map((item, index) => (
-              <JournalItem key={ index } to={ item.node.fields.slug }>
+            { items.map(({node}, index) => (
+              <JournalItem key={ index } to={node.fields.slug}>
                 <JournalIndex>0{ index + 1 }</JournalIndex>
-                <JournalDate>{ item.node.frontmatter.date }</JournalDate>
-                <h3>{ item.node.frontmatter.title }</h3>
-                <p>{ item.node.excerpt }</p>
+                <JournalDate>{ node.frontmatter.date }</JournalDate>
+                <h3>{ node.frontmatter.title }</h3>
+                <p>{ node.excerpt }</p>
               </JournalItem>
             )) }
           </JournalList>
@@ -36,8 +38,40 @@ class Journal extends React.Component {
   }
 }
 
+const Intro = styled.header`
+  min-height: 40vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  h1 {
+    font-size: 30px;
+    padding-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 60px;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+  
+  a {
+    font-size: 60px;
+    text-decoration: line-through;
+    font-weight: bold;
+    opacity: 0.3;
+    cursor: pointer;
+  }
+  
+  .is-active {
+    opacity: 1;
+    text-decoration: underline;
+  }
+`;
+
 const JournalWrapper = styled.div`
-  padding-top: 15vh;
+  //padding-top: 15vh;
 `;
 
 const JournalList = styled.div`
@@ -100,7 +134,10 @@ export default Journal;
 
 export const pageQuery = graphql`
   query JournalQuery {
-    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/journal/" } }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: ASC }
+      filter: { fileAbsolutePath: { regex: "/journal/" } }
+    ) {
       edges {
         node {
           excerpt

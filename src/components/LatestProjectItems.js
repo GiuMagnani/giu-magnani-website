@@ -123,8 +123,8 @@ const ProjectIndex = styled.div`
   font-size: 40px;
   font-weight: bold;
   position: absolute;
-  top: -20px;
-  left: -10px;
+  top: 10px;
+  left: 10px;
 `;
 
 export default LatestProjectItems;

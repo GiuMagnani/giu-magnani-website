@@ -3,55 +3,57 @@ const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = ({ graphql, actions }) => {
+  const projectSingle = path.resolve(`./src/templates/project-single.js`);
+  const journalSingle = path.resolve(`./src/templates/journal-single.js`);
+  const shopSingle = path.resolve(`./src/templates/shop-single.js`);
+
   const { createPage } = actions;
 
-  const blogPost = path.resolve(`./src/templates/project-single.js`);
-
-  graphql(`
-    {
-      allBehanceProjects {
-        edges {
-          node {
-            id
-            name
-          }
-        }
-      }
-    }
-  `).then(result => {
+  const createPageByType = (result, type) => {
     if (result.errors) {
       throw result.errors;
     }
 
     // Create blog posts pages.
-    const posts = result.data.allBehanceProjects.edges;
-
+    const posts = result.data.allMarkdownRemark.edges;
     posts.forEach((post, index) => {
-      const slug = slugify(post.node.name);
-
       const previous =
         index === posts.length - 1 ? null : posts[index + 1].node;
       const next = index === 0 ? null : posts[index - 1].node;
 
+      const getComponent = () => {
+        switch (type) {
+          case 'journal':
+            return journalSingle;
+          case 'projects':
+            return projectSingle;
+          case 'shop':
+            return shopSingle;
+          default:
+            return null;
+        }
+      };
+
+      console.log(post.node.fields.slug);
+
       createPage({
-        path: slug,
-        component: blogPost,
+        path: post.node.fields.slug,
+        component: getComponent(),
         context: {
-          id: post.node.id,
-          slug: slug,
+          slug: post.node.fields.slug,
           previous,
           next,
         },
       });
     });
-  });
+  };
 
-  return graphql(
+  graphql(
     `
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
+          filter: { fileAbsolutePath: { regex: "/journal/" } }
         ) {
           edges {
             node {
@@ -66,29 +68,51 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors;
-    }
+  ).then(result => createPageByType(result, 'journal'));
 
-    // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges;
-    posts.forEach((post, index) => {
-      const previous =
-        index === posts.length - 1 ? null : posts[index + 1].node;
-      const next = index === 0 ? null : posts[index - 1].node;
+  graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          filter: { fileAbsolutePath: { regex: "/projects/" } }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+      }
+    `
+  ).then(result => createPageByType(result, 'projects'));
 
-      createPage({
-        path: post.node.fields.slug,
-        component: blogPost,
-        context: {
-          slug: post.node.fields.slug,
-          previous,
-          next,
-        },
-      });
-    });
-  });
+  graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          filter: { fileAbsolutePath: { regex: "/shop/" } }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+      }
+    `
+  ).then(result => createPageByType(result, 'shop'));
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

@@ -98,13 +98,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-source-behance`,
-      options: {
-        username: "giumagnani",
-        apiKey: process.env.behance_api_key,
-      },
-    },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",

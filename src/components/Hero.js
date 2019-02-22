@@ -20,7 +20,7 @@ const Hero = () => (
           with a company in USA which produces logo and print design services.
           In 2013, I went to London, UK.
         </p>
-        <strong>See what I’ve been sharing on Social Media:</strong>
+        <HeroSocialLinksText>See what I’ve been sharing on Social Media:</HeroSocialLinksText>
         <HeroSocialLinks isBlue={true} />
       </MainHeading>
       <HeroImg>
@@ -31,14 +31,10 @@ const Hero = () => (
 );
 
 const HeroDiv = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   position: relative;
 
   @media (min-width: ${props => props.theme.lg}) {
-    flex-direction: row;
-    align-items: center;
+    height: calc(100vh - 60px);
   }
 `;
 
@@ -48,8 +44,11 @@ const HeroDivWrapper = styled.div`
 `;
 
 const MainHeading = styled.div`
-  width: 55%;
-  padding-bottom: 2rem;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   h1 {
     font-size: 36px;
@@ -65,54 +64,87 @@ const MainHeading = styled.div`
     padding-right: 5px;
     display: inline-block;
     margin-bottom: 1rem;
+    line-height: 1.1;
   }
 
   p {
     line-height: 1.2;
     margin-bottom: 2rem;
   }
+  
+  @media (min-width: ${props => props.theme.md}) {
+    h1 {
+      font-size: 50px;
+    }
+    
+    h2 {
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
 
   @media (min-width: ${props => props.theme.lg}) {
     padding-bottom: 0;
+    max-width: 60%;
 
     h1 {
       font-size: 70px;
+      margin-bottom: 1.5rem;
     }
 
     h2 {
-      font-size: 36px;
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    p {
+      font-size: 20px; 
     }
   }
 `;
 
 const HeroImg = styled.div`
-  width: 45%;
-  display: flex;
-  align-items: flex-end;
+  width: 100%;
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: -1;
 
   img {
-    height: 300px;
-    width: auto;
+    height: 40vh;
+    opacity: 0.3;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 
   @media (min-width: ${props => props.theme.lg}) {
-    min-height: 100vh;
-    position: relative;
+    height: 100%;
 
     img {
-      height: auto;
-      width: 100%;
+      height: 60vh;
+      opacity: 1;
     }
+  }
+`;
+
+const HeroSocialLinksText = styled.strong`
+  text-align: center;
+  
+  @media (min-width: ${props => props.theme.md}) {
+    text-align: left;
+    margin-bottom: 1rem;
   }
 `;
 
 const HeroSocialLinks = styled(SocialLinks)`
   margin-bottom: 1rem;
   width: 100%;
+
+  ul {
+    justify-content: flex-start;  
+  }
 `;
 
 export default Hero;

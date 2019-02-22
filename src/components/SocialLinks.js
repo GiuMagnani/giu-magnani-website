@@ -79,13 +79,13 @@ const SocialLinksWrapper = styled.div`
   }
 
   li {
-    height: 40px;
+    height: 36px;
+    width: 36px;
     text-align: center;
-    width: 40px;
     display: block;
     border: 1px solid
       ${props => (props["is-blue"] ? props.theme.main : "white")};
-    line-height: 44px;
+    line-height: 40px;
     margin-right: -1px;
     margin-bottom: -1px;
   }
@@ -99,6 +99,12 @@ const SocialLinksWrapper = styled.div`
   @media (min-width: ${props => props.theme.md}) {
     ul {
       justify-content: flex-start;
+    }
+    
+    li {
+      height: 40px;
+      width: 40px;
+      line-height: 44px;
     }
   }
 `;

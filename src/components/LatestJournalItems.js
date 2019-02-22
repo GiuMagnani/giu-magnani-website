@@ -46,7 +46,7 @@ const LatestPostsItem = styled(Link)`
 
   @media (min-width: ${ props => props.theme.lg }) {
     width: 25%;
-    border: 0;
+    border-bottom-width: 0;
     border-right-width: 1px;
   }
 

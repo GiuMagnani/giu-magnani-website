@@ -6,7 +6,7 @@ import "../style/grid.css";
 import "../style/animations.css";
 import "../style/styles.css";
 import { Theme, GlobalStyle } from "../style/Theme";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SEO from "../SEO/SEO";
@@ -52,9 +52,9 @@ class Layout extends Component {
           <>
             <GlobalStyle />
             <Header />
-            <main>
+            <Main>
               {this.props.children}
-            </main>
+            </Main>
             <Footer config={config} />
           </>
         </ThemeProvider>
@@ -62,5 +62,9 @@ class Layout extends Component {
     );
   }
 }
+
+const Main = styled.main`
+  min-height: calc(100vh - 179px);
+`;
 
 export default Layout;

@@ -1,39 +1,41 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../layouts/layout";
-import styled from "styled-components";
+import styled from 'styled-components';
 
-class ProjectSingle extends React.Component {
+class JournalSingle extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
     const { previous, next } = this.props.pageContext;
-    console.log(post);
+
     return (
       <Layout location={ this.props.location } title={ siteTitle }>
+        {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/ }
         <ContentWrapper className="container">
-          {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/ }
-          <Intro>
-            <small>{ post.frontmatter.date }</small>
-            <SingleTitle>{ post.frontmatter.title }</SingleTitle>
-          </Intro>
-          <Content dangerouslySetInnerHTML={ { __html: post.html } } />
-          <Pagination>
-            <li>
-              { previous && (
-                <Link to={ previous.fields.slug } rel="prev">
-                  ← { previous.frontmatter.title }
-                </Link>
-              ) }
-            </li>
-            <li>
-              { next && (
-                <Link to={ next.fields.slug } rel="next">
-                  { next.frontmatter.title } →
-                </Link>
-              ) }
-            </li>
-          </Pagination>
+            <Intro>
+              <small>{ post.frontmatter.date }</small>
+              <SingleTitle>{ post.frontmatter.title }</SingleTitle>
+            </Intro>
+
+            <Content dangerouslySetInnerHTML={ { __html: post.html } } />
+
+            <Pagination>
+              <li>
+                { previous && (
+                  <Link to={ previous.fields.slug } rel="prev">
+                    ← { previous.frontmatter.title }
+                  </Link>
+                ) }
+              </li>
+              <li>
+                { next && (
+                  <Link to={ next.fields.slug } rel="next">
+                    { next.frontmatter.title } →
+                  </Link>
+                ) }
+              </li>
+            </Pagination>
         </ContentWrapper>
       </Layout>
     );
@@ -102,10 +104,10 @@ const Pagination = styled.ul`
   }
 `;
 
-export default ProjectSingle;
+export default JournalSingle;
 
 export const pageQuery = graphql`
-  query ProjectSingleBySlug($slug: String!) {
+  query JournalSingleBySlug($slug: String!) {
     site {
       siteMetadata {
         title

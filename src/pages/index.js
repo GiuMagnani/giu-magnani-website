@@ -8,12 +8,12 @@ import Hero from "../components/Hero";
 class BlogIndex extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges;
-    const projects = this.props.data.allBehanceProjects.edges;
+    // const projects = this.props.data.allBehanceProjects.edges;
 
     return (
       <Layout location={this.props.location}>
         <Hero />
-        <LatestProjectItems projects={projects} />
+        {/*<LatestProjectItems projects={projects} />*/}
         <LatestJournalItems posts={posts} />
       </Layout>
     );
@@ -28,33 +28,6 @@ export const pageQuery = graphql`
       siteMetadata {
         rssMetadata {
           title
-        }
-      }
-    }
-    allBehanceProjects(limit: 5, filter: { areas: { in: "Web Design" } }) {
-      edges {
-        node {
-          id
-          name
-          description
-          published
-          areas
-          shortURL
-          tags
-          covers {
-            size_original
-          }
-          tools {
-            title
-          }
-          stats {
-            views
-            appreciations
-            comments
-          }
-          owners {
-            username
-          }
         }
       }
     }
