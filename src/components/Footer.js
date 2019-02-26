@@ -7,12 +7,12 @@ class Footer extends React.Component {
   render() {
     return (
       <FooterWrapper>
+        <div className="container">
         <Logo to={"/"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
-            width="39"
-            height="40">
+            viewBox="0 0 39 40">
             <defs>
               <path id="a" d="M38.9264.0746v39.3698H.0001V.0746z" />
             </defs>
@@ -37,10 +37,11 @@ class Footer extends React.Component {
         <FooterEmailLink>
           <a href="mailto:hello@giumagnani.com">hello@giumagnani.com</a>
         </FooterEmailLink>
-        <SocialLinks />
+        <FooterSocialLinks />
         <FooterCopyright>
-          <span> © giu magnani 2019.</span>
+          <span>Designed & Developed by Giu Magnani 2019</span>
         </FooterCopyright>
+        </div>
       </FooterWrapper>
     );
   }
@@ -49,28 +50,62 @@ class Footer extends React.Component {
 const FooterWrapper = styled.footer`
   background-color: ${props => props.theme.main};
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 30px 0 20px;
+  overflow: hidden;
+  //padding: 30px 0 20px;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-style: solid;
+    border-color: white;
+    border-width: 0 1px;
+  }
 
   a {
     color: white;
   }
 
   @media (min-width: ${props => props.theme.lg}) {
-    flex-direction: row;
+    .container {
+      flex-direction: row;  
+    }
   }
 `;
 
-const Logo = styled.div``;
+const Logo = styled.div`
+  border-right: 1px solid white;
+  height: 38px;
+  width: calc(25px + 1rem);
+  
+  svg {
+    height: 25px;
+    position: relative;
+    top: 6px;
+  }
+`;
+
 const FooterEmailLink = styled.div`
-  margin: 1rem 0;
+  //margin: 1rem 0;
+  a {
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 `;
 
 const FooterCopyright = styled.div`
-  margin: 1rem 0 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+`;
+
+const FooterSocialLinks = styled(SocialLinks)`
+  ul {
+    margin-top: -1px;
+  }
 `;
 
 export default Footer;

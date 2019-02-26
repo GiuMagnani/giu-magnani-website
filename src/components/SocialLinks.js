@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const SocialLinks = ({ isBlue }) => {
+const SocialLinks = ({isBlue, className}) => {
   return (
-    <SocialLinksWrapper is-blue={isBlue}>
+    <SocialLinksWrapper is-blue={isBlue} className={className}>
       <ul>
         <li>
           <a href="">
@@ -72,7 +72,6 @@ const SocialLinksWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
     flex-wrap: wrap;
     //border: 0 solid white;
     //border-width: 1px;
