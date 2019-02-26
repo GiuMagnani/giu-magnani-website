@@ -15,20 +15,74 @@ const BlogIndex = ({location, data}) => {
       <Hero />
       <ProjectsWrapper>
         <div className="container">
-          <h2>UX/UI and Front-End Development Projects</h2>
+          <ProjectsHeading>UX/UI and Front-End Development Projects</ProjectsHeading>
           <LatestProjectItems projects={projects} />
         </div>
       </ProjectsWrapper>
+      <div className="container">
+      <LatestPostsHeading>Latest on my Journal</LatestPostsHeading>
       <LatestJournalItems journal={journal} />
+      <LatestPostsSeeMore>
+        <Link to={"/journal"}>See my Journal</Link>
+      </LatestPostsSeeMore>
+      </div>
     </Layout>
   );
 };
 
 const ProjectsWrapper = styled.section`
-  padding-top: 3rem;
+  border-top: 1px solid blue;
+  margin-top: 0.5rem;
+  
+  .container {
+    border: 1px solid ${props => props.theme.main};
+    border-top: 0;
+  }
 `;
 
-export default BlogIndex;
+const ProjectsHeading = styled.h2`
+  border-bottom: 1px solid ${props => props.theme.main};
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
+  padding: 3rem 0 3rem 1rem;
+`;
+
+const LatestPostsHeading = styled.h2`
+  padding: 0.5rem 0;
+  margin: 1.5rem 0;
+`;
+
+const LatestPostsSeeMore = styled.div`
+  margin-bottom: 80px;
+  text-align: center;
+  width: 100%;
+
+  a {
+    font-size: 14px;
+    background: ${ props => props.theme.main };
+    color: white;
+    height: 40px;
+    line-height: 38px;
+    display: block;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding-left: 20px;
+    text-align: left;
+    width: 100%;
+  }
+
+  @media (min-width: ${ props => props.theme.lg }) {
+    a {
+      width: calc(50% + 7px);
+    }
+  }
+
+  @media (min-width: ${ props => props.theme.lg }) {
+    a {
+      width: calc(20% + 7px);
+    }
+  }
+`;
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -71,6 +125,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             category
+            date
             featuredImage{
               childImageSharp {
                 sizes(quality: 100, maxWidth: 800) {
@@ -84,3 +139,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default BlogIndex;

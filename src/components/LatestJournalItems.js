@@ -3,25 +3,21 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 const LatestJournalItems = ({ journal }) => (
-  <div className="container">
-    <LatestPostsContainer>
-      <LatestPostsHeading>Latest on my Journal</LatestPostsHeading>
-      <LatestPosts>
-        {journal.map(({ node }) => {
-          return (
-            <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
-              <small>{node.frontmatter.date}</small>
-              <h3>{node.frontmatter.title}</h3>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </LatestPostsItem>
-          );
-        })}
-      </LatestPosts>
-      <LatestPostsSeeMore>
-        <Link to={"/journal"}>See my Journal</Link>
-      </LatestPostsSeeMore>
-    </LatestPostsContainer>
-  </div>
+  <LatestPostsContainer>
+    <LatestPosts>
+      {journal.map(({ node }, index) => {
+        return (
+          <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
+            <JournalIndex>{`${(index + 1).toString().length === 1 ? '0' + (index + 1) : index + 1}`}</JournalIndex>
+            <small>{node.frontmatter.date}</small>
+            <h3>{node.frontmatter.title}</h3>
+            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+          </LatestPostsItem>
+        );
+      })}
+    </LatestPosts>
+
+  </LatestPostsContainer>
 );
 
 const LatestPosts = styled.div`
@@ -43,6 +39,7 @@ const LatestPostsItem = styled(Link)`
   min-height: 280px;
   text-decoration: none;
   padding: 30px 30px 40px;
+  position: relative;
 
   @media (min-width: ${ props => props.theme.lg }) {
     width: 25%;
@@ -79,45 +76,23 @@ const LatestPostsItem = styled(Link)`
   }
 `;
 
-const LatestPostsHeading = styled.h2`
-  padding: 10px 30px;
-  margin: 1.5rem 0;
-`;
-
-const LatestPostsSeeMore = styled.div`
-  margin-bottom: 80px;
-  text-align: center;
-  width: 100%;
-
-  a {
-    font-size: 14px;
-    background: ${ props => props.theme.main };
-    color: white;
-    height: 40px;
-    line-height: 38px;
-    display: block;
-    text-decoration: none;
-    letter-spacing: 1px;
-    padding-left: 20px;
-    text-align: left;
-    width: 100%;
-  }
-
-  @media (min-width: ${ props => props.theme.lg }) {
-    a {
-      width: calc(50% + 7px);
-    }
-  }
-
-  @media (min-width: ${ props => props.theme.lg }) {
-    a {
-      width: calc(20% + 7px);
-    }
-  }
+const JournalIndex = styled.span`
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: ${ props => props.theme.main };
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
+  text-align: right;
+  display: block;
 `;
 
 const LatestPostsContainer = styled.div`
-  margin-bottom: 100px;
 `;
 
 export default LatestJournalItems;

@@ -8,31 +8,55 @@ import LatestProjectItems from "../components/LatestProjectItems";
 const Work = ({ location, data }) => {
   const items = data.allMarkdownRemark.edges;
   const [filters, setFilters] = useState({
-    graphicDesign: {
-      label: "Graphic Design",
-      value: true,
-    },
-    UXUIDesign: {
-      label: "Graphic Design",
-      value: true,
-    },
-    frontEndDevelopment: {
-      label: "Graphic Design",
-      value: true,
-    },
-    illustration: {
-      label: "Graphic Design",
-      value: true,
-    },
+    "Graphic Design": true,
+    "UX/UI Design": true,
+    "Front-End Development": true,
+    "Illustration": false,
   });
+  // const [filters, setFilters] = useState({
+  //   graphicDesign: {
+  //     label: "Graphic Design",
+  //     value: true,
+  //   },
+  //   UXUIDesign: {
+  //     label: "Graphic Design",
+  //     value: true,
+  //   },
+  //   frontEndDevelopment: {
+  //     label: "Graphic Design",
+  //     value: true,
+  //   },
+  //   illustration: {
+  //     label: "Graphic Design",
+  //     value: true,
+  //   },
+  // });
 
   const toggleFilter = (filter) => {
-    setFilters({ ...filters, [filter]: {...filters[filter], value: !filters[filter].value } });
+    // setFilters({ ...filters, [filter]: {...filters[filter], value: !filters[filter].value } });
+    setFilters({
+      ...filters,
+      [filter]: !filters[filter]
+    });
     filterProjects();
   };
 
   const filterProjects = () => {
-    // let test = [];
+    let test = [];
+
+    items.filter((x) => {
+      Object.keys(filters).map((fKey) => {
+        console.log(x.node.frontmatter.category);
+        if (filters[fKey] && x.node.frontmatter.category === fKey) {
+          console.log(x.node.frontmatter.category);
+          test.push(x);
+        }
+      })
+    });
+
+    console.log(test);
+
+
     // const activeFilters = Object.keys(filters).map(x => {
     //   if (filters[x].value === true) {
     //     return filters[x];
@@ -58,13 +82,13 @@ const Work = ({ location, data }) => {
     <Layout location={ location }>
       <ProjectsWrapper className="container">
         <Intro>
-          <p>Latest <a onClick={ () => toggleFilter("graphicDesign") }
-                       className={ filters.graphicDesign.value ? "is-active" : "" }>Graphic Design,</a> <a
-            onClick={ () => toggleFilter("UXUIDesign") } className={ filters.UXUIDesign.value ? "is-active" : "" }>UX/UI
-            Design,</a> <a onClick={ () => toggleFilter("frontEndDevelopment") }
-                           className={ filters.frontEndDevelopment.value ? "is-active" : "" }>Front-End Development</a> and <a
-            onClick={ () => toggleFilter("illustration") }
-            className={ filters.illustration.value ? "is-active" : "" }>Illustration</a> Projects.</p>
+          <p>Latest <a onClick={ () => toggleFilter("Graphic Design") }
+                       className={ filters["Graphic Design"] ? "is-active" : "" }>Graphic Design,</a> <a
+            onClick={ () => toggleFilter("UX/UI Design") } className={ filters["UX/UI Design"] ? "is-active" : "" }>UX/UI
+            Design,</a> <a onClick={ () => toggleFilter("Front-End Development") }
+                           className={ filters["Front-End Development"] ? "is-active" : "" }>Front-End Development</a> and <a
+            onClick={ () => toggleFilter("Illustration") }
+            className={ filters["Illustration"] ? "is-active" : "" }>Illustration</a> Projects.</p>
         </Intro>
         <LatestProjectItems projects={items} />
 
@@ -106,7 +130,7 @@ const Intro = styled.header`
     font-size: 60px;
     text-decoration: line-through;
     font-weight: bold;
-    opacity: 0.3;
+    //opacity: 0.3;
     cursor: pointer;
   }
   
@@ -187,6 +211,7 @@ export const pageQuery = graphql`
             date(formatString: "DD MMMM, YYYY")
             title
             tags
+            category
             featuredImage {
               childImageSharp {
                 sizes(quality: 100, maxWidth: 1240) {

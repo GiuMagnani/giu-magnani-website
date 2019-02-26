@@ -5,18 +5,11 @@ import { slugify } from "../../utils.js";
 import Img from "gatsby-image";
 
 const LatestProjectItems = ({ projects }) => {
-  const getExcerpt = string => {
-    return `${string
-      .split(" ")
-      .slice(0, 20)
-      .join(" ")}...`;
-  };
-
   return (
     <>
       {projects.map(({ node }, index) => (
         <Project key={index}>
-          <ProjectIndex>0{index + 1}</ProjectIndex>
+          {/*<ProjectIndex>{`${(index + 1).toString().length === 1 ? '0' + (index + 1) : index + 1}`}</ProjectIndex>*/}
           <ProjectImage>
             <Img
               sizes={node.frontmatter.featuredImage.childImageSharp.sizes}
@@ -24,9 +17,12 @@ const LatestProjectItems = ({ projects }) => {
             />
           </ProjectImage>
           <ProjectBody>
-            <ProjectAreas>{node.frontmatter.category}</ProjectAreas>
-            <ProjectName>{node.frontmatter.title}</ProjectName>
-            <ProjectDescription>{node.excerpt}</ProjectDescription>
+            <ProjectDate>{node.frontmatter.date}</ProjectDate>
+            <ProjectBodyInner>
+              <ProjectAreas>{node.frontmatter.category}</ProjectAreas>
+              <ProjectName>{node.frontmatter.title}</ProjectName>
+              <ProjectDescription>{node.excerpt}</ProjectDescription>
+            </ProjectBodyInner>
             <ProjectLink to={node.fields.slug}>
               See full project ->
             </ProjectLink>
@@ -38,9 +34,30 @@ const LatestProjectItems = ({ projects }) => {
 };
 
 const ProjectBody = styled.div`
+  border: 1px solid ${props => props.theme.main};
+  border-width: 0 1px;
+
   @media (min-width: ${props => props.theme.lg}) {
     width: 50%;
-    padding-left: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border: 1px solid ${props => props.theme.main};
+    border-left-width: 0;
+    padding: 0;
+    //padding-left: 2rem;
+  }
+`;
+
+const ProjectBodyInner = styled.div`
+  padding: 1rem;
+  
+  @media (min-width: ${props => props.theme.lg}) {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column; 
   }
 `;
 
@@ -51,26 +68,33 @@ const ProjectIndex = styled.div`
   font-size: 40px;
   font-weight: bold;
   position: absolute;
-  top: 5px;
+  top: 8px;
   left: 10px;
   z-index: 1;
 `;
 
 const Project = styled.article`
   width: 100%;
-  margin-top: 2rem;
+  //margin-top: 2rem;
+  margin-top: -1px;
   position: relative;
 
   @media (min-width: ${props => props.theme.lg}) {
       display: flex;
-      margin-top: 3rem;
+      margin-top: 1rem;      
+      
+      &:last-child {
+        margin-bottom: 1rem;
+      }
       
       &:nth-child(odd) {
         flex-direction: row-reverse;
         
         ${ProjectBody} {
           padding-left: 0;
-          padding-right: 2rem;
+          border-right: 0;
+          border-left-width: 1px;
+          //padding-right: 2rem;
         }
 
         ${ProjectIndex} {
@@ -88,7 +112,7 @@ const ProjectName = styled.h2`
   @media (min-width: ${props => props.theme.lg}) {
     font-size: 32px;
     line-height: 1.3;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -110,7 +134,7 @@ const ProjectAreas = styled.h3`
   margin-bottom: 2rem;
 
   @media (min-width: ${props => props.theme.lg}) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     font-size: 12px;
     letter-spacing: 2px;
   }
@@ -118,7 +142,6 @@ const ProjectAreas = styled.h3`
 
 const ProjectImage = styled.div`
   border: 1px solid ${props => props.theme.main};
-  margin-bottom: 1rem;
   overflow: hidden;
   height: 300px;
 
@@ -134,27 +157,49 @@ const ProjectImage = styled.div`
   }
 `;
 
-const ProjectDate = styled.span``;
+const ProjectDate = styled.span`
+  font-size: 12px;
+  //font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: right;
+  width: 100%;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid ${props => props.theme.main};
+  
+  @media (min-width: ${props => props.theme.lg}) {
+    //font-size: 12px;
+  }
+`;
 
 const ProjectLink = styled(Link)`
   font-size: 14px;
-  background: ${props => props.theme.main};
-  color: white;
+  background: white;
+  color: ${props => props.theme.main};
   height: 56px;
   line-height: 56px;
   display: block;
   text-decoration: none;
   letter-spacing: 1px;
-  padding-left: 20px;
+  padding-left: 1rem;
   text-align: left;
   width: 100%;
   margin-top: 1rem;
+  border: 1px solid ${props => props.theme.main};
+  border-width: 1px 0;
+  
+  &:hover {
+    background: ${props => props.theme.main};
+    color: white;
+  }
+
   
   @media (min-width: ${props => props.theme.lg}) {
     font-size: 16px;
-    margin-top: 2rem;
-    width: 50%;
+    margin-top: 0;
     position: relative;
+    border-width: 1px 0 0;
     
     // &::after {
     //   content: "";

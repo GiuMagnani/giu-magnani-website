@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import Layout from "../layouts/layout";
+import LatestJournalItems from "../components/LatestJournalItems";
 
 class Journal extends React.Component {
   render() {
@@ -21,16 +22,17 @@ class Journal extends React.Component {
             {/*<li>Other stuff</li>*/}
           {/*</ul>*/}
           </Intro>
-          <JournalList>
-            { items.map(({node}, index) => (
-              <JournalItem key={ index } to={node.fields.slug}>
-                <JournalIndex>0{ index + 1 }</JournalIndex>
-                <JournalDate>{ node.frontmatter.date }</JournalDate>
-                <h3>{ node.frontmatter.title }</h3>
-                <p>{ node.excerpt }</p>
-              </JournalItem>
-            )) }
-          </JournalList>
+          <LatestJournalItems journal={items} />
+          {/*<JournalList>*/}
+            {/*{ items.map(({node}, index) => (*/}
+              {/*<JournalItem key={ index } to={node.fields.slug}>*/}
+                {/*<JournalIndex>0{ index + 1 }</JournalIndex>*/}
+                {/*<JournalDate>{ node.frontmatter.date }</JournalDate>*/}
+                {/*<h3>{ node.frontmatter.title }</h3>*/}
+                {/*<p>{ node.excerpt }</p>*/}
+              {/*</JournalItem>*/}
+            {/*)) }*/}
+          {/*</JournalList>*/}
         </JournalWrapper>
       </Layout>
     );
