@@ -19,13 +19,15 @@ const BlogIndex = ({location, data}) => {
           <LatestProjectItems projects={projects} />
         </div>
       </ProjectsWrapper>
-      <div className="container">
-      <LatestPostsHeading>Latest on my Journal</LatestPostsHeading>
-      <LatestJournalItems journal={journal} />
-      <LatestPostsSeeMore>
-        <Link to={"/journal"}>See my Journal</Link>
-      </LatestPostsSeeMore>
-      </div>
+      <JournalWrapper>
+        <div className="container">
+          <LatestPostsHeading>Latest on my Journal</LatestPostsHeading>
+          <LatestJournalItems journal={journal} />
+          <LatestPostsSeeMore>
+            <Link to={"/journal"}>See my Journal →</Link>
+          </LatestPostsSeeMore>
+        </div>
+      </JournalWrapper>
     </Layout>
   );
 };
@@ -48,19 +50,23 @@ const ProjectsHeading = styled.h2`
 `;
 
 const LatestPostsHeading = styled.h2`
-  padding: 0.5rem 0;
-  margin: 1.5rem 0;
+  border-bottom: 1px solid ${props => props.theme.main};
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
+  padding: 3rem 0 3rem 1rem;
 `;
 
 const LatestPostsSeeMore = styled.div`
-  margin-bottom: 80px;
+  padding-bottom: 1rem;
   text-align: center;
   width: 100%;
 
   a {
     font-size: 14px;
-    background: ${ props => props.theme.main };
-    color: white;
+    background: white;
+    color: ${ props => props.theme.main };
+    border: 1px solid ${props => props.theme.main};
+    border-top: 0;
     height: 40px;
     line-height: 38px;
     display: block;
@@ -74,12 +80,39 @@ const LatestPostsSeeMore = styled.div`
   @media (min-width: ${ props => props.theme.lg }) {
     a {
       width: calc(50% + 7px);
+      
+      &:hover {
+        background: ${ props => props.theme.main };
+        color: white;
+      }
     }
   }
 
   @media (min-width: ${ props => props.theme.lg }) {
     a {
       width: calc(20% + 7px);
+      width: 100%;
+      text-align: center;
+    }
+  }
+`;
+
+const JournalWrapper = styled.section`
+  .container {
+    border: 1px solid ${props => props.theme.main};
+    border-top: 0;
+    border-bottom: 0;
+    position: relative;
+    padding-top: 0.5rem;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0.5rem;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: ${props => props.theme.main};
     }
   }
 `;

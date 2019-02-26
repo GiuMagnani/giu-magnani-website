@@ -16,7 +16,6 @@ const LatestJournalItems = ({ journal }) => (
         );
       })}
     </LatestPosts>
-
   </LatestPostsContainer>
 );
 
@@ -26,6 +25,7 @@ const LatestPosts = styled.div`
   border-color: ${ props => props.theme.main };
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 
   @media (min-width: ${ props => props.theme.lg }) {
     flex-direction: row;

@@ -24,7 +24,7 @@ const LatestProjectItems = ({ projects }) => {
               <ProjectDescription>{node.excerpt}</ProjectDescription>
             </ProjectBodyInner>
             <ProjectLink to={node.fields.slug}>
-              See full project ->
+              See full project →
             </ProjectLink>
           </ProjectBody>
         </Project>
