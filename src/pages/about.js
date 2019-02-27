@@ -85,7 +85,7 @@ const AboutWrapper = styled.div`
     border: 1px solid ${props => props.theme.main};
     border-bottom: 0;
     border-top: 0;
-    padding: 1rem;
+    padding: 0 1rem 1rem;
   }
 
   h1 {
@@ -93,7 +93,7 @@ const AboutWrapper = styled.div`
   }
 
   p {
-    font-size: 20px;
+    font-size: 18px;
   }
 `;
 
@@ -101,7 +101,7 @@ const Highlight = styled.strong`
   font-size: 30px;
   font-weight: bold;
   display: block;
-  margin: 0.5rem 0;
+  margin: 1.5rem 0;
 `;
 
 const Colophon = styled.div`
@@ -140,7 +140,8 @@ const Colophon = styled.div`
 `;
 
 const AboutInner = styled.div`
-  padding: 2rem 0;
+  padding: 2rem 1rem 2rem 0;
+  text-align: justify;
   max-width: 590px;
   border-right: 1px solid ${props => props.theme.main};
   position: relative;
