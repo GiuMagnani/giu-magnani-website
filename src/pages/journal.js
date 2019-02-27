@@ -5,36 +5,45 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import Layout from "../layouts/layout";
 import LatestJournalItems from "../components/LatestJournalItems";
+// import posed from "react-pose";
+
+// const Section = posed.section({
+//   enter: { y: 0, opacity: 1 },
+//   exit: { y: 50, opacity: 0, delay: 300 },
+// });
 
 class Journal extends React.Component {
   render() {
     const items = this.props.data.allMarkdownRemark.edges;
     return (
-      <Layout location={ this.props.location }>
+      <>
         <JournalWrapper className="container">
           <Intro>
-          <h1>My Journal</h1>
-          <p>Here I’ll post my thoughts and experiments on art, design and development.</p>
-          {/*Filter by:*/}
-          {/*<ul>*/}
+            <h1>My Journal</h1>
+            <p>
+              Here I’ll post my thoughts and experiments on art, design and
+              development.
+            </p>
+            {/*Filter by:*/}
+            {/*<ul>*/}
             {/*<li>Art</li>*/}
             {/*<li>Code</li>*/}
             {/*<li>Other stuff</li>*/}
-          {/*</ul>*/}
+            {/*</ul>*/}
           </Intro>
           <LatestJournalItems journal={items} />
           {/*<JournalList>*/}
-            {/*{ items.map(({node}, index) => (*/}
-              {/*<JournalItem key={ index } to={node.fields.slug}>*/}
-                {/*<JournalIndex>0{ index + 1 }</JournalIndex>*/}
-                {/*<JournalDate>{ node.frontmatter.date }</JournalDate>*/}
-                {/*<h3>{ node.frontmatter.title }</h3>*/}
-                {/*<p>{ node.excerpt }</p>*/}
-              {/*</JournalItem>*/}
-            {/*)) }*/}
+          {/*{ items.map(({node}, index) => (*/}
+          {/*<JournalItem key={ index } to={node.fields.slug}>*/}
+          {/*<JournalIndex>0{ index + 1 }</JournalIndex>*/}
+          {/*<JournalDate>{ node.frontmatter.date }</JournalDate>*/}
+          {/*<h3>{ node.frontmatter.title }</h3>*/}
+          {/*<p>{ node.excerpt }</p>*/}
+          {/*</JournalItem>*/}
+          {/*)) }*/}
           {/*</JournalList>*/}
         </JournalWrapper>
-      </Layout>
+      </>
     );
   }
 }
@@ -45,18 +54,18 @@ const Intro = styled.header`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  
+
   h1 {
     font-size: 30px;
     padding-bottom: 1rem;
   }
-  
+
   p {
     font-size: 55px;
     line-height: 1.2;
     font-weight: bold;
   }
-  
+
   a {
     font-size: 60px;
     text-decoration: line-through;
@@ -64,7 +73,7 @@ const Intro = styled.header`
     opacity: 0.3;
     cursor: pointer;
   }
-  
+
   .is-active {
     opacity: 1;
     text-decoration: underline;
@@ -76,7 +85,7 @@ const JournalWrapper = styled.div`
 `;
 
 const JournalList = styled.div`
-  border: 1px solid ${ props => props.theme.main };
+  border: 1px solid ${props => props.theme.main};
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -86,21 +95,21 @@ const JournalList = styled.div`
 const JournalItem = styled(Link)`
   width: 25%;
   height: 280px;
-  border-right: 1px solid ${ props => props.theme.main };
+  border-right: 1px solid ${props => props.theme.main};
   text-align: left;
   flex-direction: column;
   position: relative;
   padding: 30px 30px 40px;
-  
+
   h3 {
     font-size: 20px;
     padding-bottom: 0.75rem;
   }
-  
+
   p {
     font-size: 16px;
   }
-  
+
   &:last-of-type {
     border: 0;
   }
@@ -118,7 +127,7 @@ const JournalDate = styled.span`
 const JournalIndex = styled.span`
   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: ${ props => props.theme.main };
+  -webkit-text-stroke-color: ${props => props.theme.main};
   font-size: 40px;
   font-weight: bold;
   position: absolute;
@@ -154,4 +163,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
