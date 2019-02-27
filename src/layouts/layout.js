@@ -64,7 +64,7 @@ class Layout extends Component {
 }
 
 const Main = styled.main`
-  min-height: calc(100vh - 179px);
+  min-height: calc(100vh - 98px);
 `;
 
 export default Layout;
