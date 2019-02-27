@@ -2,68 +2,69 @@ import React from "react";
 import Layout from "../layouts/layout";
 import styled from "styled-components";
 
-class About extends React.Component {
-  render() {
-    return (
-      <>
-        <Intro>
-          <div className="container">
-            <h1>Hi! I'm Giu Magnani.</h1>
-            <p>
-              Front-End Developer and UI/UX Designer based in Milan, Italy. I'm
-              a creative and passionate professional who loves Web as much as
-              Design.
-            </p>
-          </div>
-        </Intro>
-        <AboutWrapper>
-          <div className="container">
-            <AboutInner>
-              <MainText>
-                <p>
-                  I started working with small business and participating in
-                  design contests to build a strong portfolio and references. With
-                </p>
-                <Highlight>Santiago, Chile</Highlight>
-                <p>
-                  perseverance and hard work, in 2012 I was contacted to work
-                  remotely with a company in USA which produces logo and print
-                  design services. In 2013, I went
-                </p>
-                <Highlight>London, UK</Highlight>
-                <p>
-                  to London, UK to find new perspectives and inspiration, where I
-                  had the pleasure to work with a vintage lighting signs company
-                  and a Swedish design studio. In January 2014, with more than 3
-                  years of experience, I launched my new design brand, to fully
-                  pursue what I love, Web Development, Design and Illustration.
-                </p>
-                <Highlight>Milan, Italy</Highlight>
-                <p>
-                  Right now I'm living in Milan, Italy. I'm working as a Front-End
-                  Developer, I keep learning and facing new challenges to improve
-                  every day more and more.
-                </p>
-              </MainText>
-              <MainImage>a</MainImage>
-            </AboutInner>
-            <Colophon>
-              <div>
-                This site was built with <a>React</a>, <a>GatsbyJS</a> and{" "}
-                <a>Styled Components</a>. The font used is <a>Chakra Petch</a> from
-                Google Fonts, designed by <a href="http://font.cadsondemak.com/foundry/">Cadson Demak</a>.
-              </div>
-            </Colophon>
-          </div>
-        </AboutWrapper>
-      </>
-    );
-  }
-}
+const About = () => {
+  const getRandom = (max, min) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+  return (
+    <>
+      <Intro>
+        <div className="container">
+          <h1>Hi! I'm Giu Magnani.</h1>
+          <p>
+            Front-End Developer and UI/UX Designer based in Milan, Italy. I'm a
+            creative and passionate professional who loves Web as much as
+            Design.
+          </p>
+        </div>
+      </Intro>
+      <AboutWrapper>
+        <div className="container">
+          <AboutInner>
+            <MainText>
+              <p>
+                I started working with small business and participating in
+                design contests to build a strong portfolio and references. With
+              </p>
+              <Highlight>Santiago, Chile</Highlight>
+              <p>
+                perseverance and hard work, in 2012 I was contacted to work
+                remotely with a company in USA which produces logo and print
+                design services. In 2013, I went
+              </p>
+              <Highlight>London, UK</Highlight>
+              <p>
+                to London, UK to find new perspectives and inspiration, where I
+                had the pleasure to work with a vintage lighting signs company
+                and a Swedish design studio. In January 2014, with more than 3
+                years of experience, I launched my new design brand, to fully
+                pursue what I love, Web Development, Design and Illustration.
+              </p>
+              <Highlight>Milan, Italy</Highlight>
+              <p>
+                Right now I'm living in Milan, Italy. I'm working as a Front-End
+                Developer, I keep learning and facing new challenges to improve
+                every day more and more.
+              </p>
+            </MainText>
+            <MainImage>a</MainImage>
+          </AboutInner>
+          <Colophon x={getRandom(0, 100)} y={getRandom(0, 100)}>
+            <div>
+              This site was built with <a>React</a>, <a>GatsbyJS</a> and{" "}
+              <a>Styled Components</a>. The font used is <a>Chakra Petch</a>{" "}
+              from Google Fonts, designed by{" "}
+              <a href="http://font.cadsondemak.com/foundry/">Cadson Demak</a>.
+            </div>
+          </Colophon>
+        </div>
+      </AboutWrapper>
+    </>
+  );
+};
 
 const Intro = styled.header`
   border-bottom: 1px solid ${props => props.theme.main};
- 
+
   h1 {
     font-size: 30px;
     padding-bottom: 1rem;
@@ -74,7 +75,7 @@ const Intro = styled.header`
     line-height: 1.2;
     font-weight: bold;
   }
-  
+
   .container {
     border-top: 0;
     min-height: 50vh;
@@ -89,7 +90,7 @@ const Intro = styled.header`
 const AboutWrapper = styled.div`
   margin-top: 0.5rem;
   border-top: 1px solid ${props => props.theme.main};
-  
+
   .container {
     border: 1px solid ${props => props.theme.main};
     border-bottom: 0;
@@ -137,10 +138,20 @@ const Colophon = styled.div`
     &::after {
       content: "";
       position: absolute;
-      bottom: 0;
+      bottom: ${props => props.x}%;
       right: -5px;
       width: 4px;
       height: 1rem;
+      background-color: ${props => props.theme.main};
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: ${props => props.y}%;
+      right: -5px;
+      width: 4px;
+      height: 0.5rem;
       background-color: ${props => props.theme.main};
     }
   }

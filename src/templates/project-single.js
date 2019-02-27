@@ -12,22 +12,31 @@ const ProjectSingle = ({ data, pageContext }) => {
       <ContentWrapper className="container">
         {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/}
         <Intro>
-          <small>{post.frontmatter.date}</small>
-          <SingleTitle>{post.frontmatter.title}</SingleTitle>
-          <small>{post.frontmatter.tags}</small>
-          <small>{post.frontmatter.tools}</small>
-          <small>{post.frontmatter.behance_url}</small>
-          <small>{post.frontmatter.dribbble_url}</small>
-          {post.frontmatter.colors &&
-            post.frontmatter.colors.map(color => (
-              <span
-                style={{
-                  height: "10px",
-                  width: "10px",
-                  backgroundColor: "#" + color,
-                }}
-              />
-            ))}
+          <IntroDetails>
+            <div>
+              <small>{post.frontmatter.date}</small>
+              <SingleTitle>{post.frontmatter.title}</SingleTitle>
+            </div>
+            <ul>
+              <li>{post.frontmatter.tags}</li>
+              <li>{post.frontmatter.tools}</li>
+              <li>{post.frontmatter.behance_url}</li>
+              <li>{post.frontmatter.dribbble_url}</li>
+              <li>
+                {post.frontmatter.colors &&
+                  post.frontmatter.colors.map(color => (
+                    <span
+                      style={{
+                        height: "10px",
+                        width: "10px",
+                        backgroundColor: "#" + color,
+                      }}
+                    />
+                  ))}
+              </li>
+            </ul>
+          </IntroDetails>
+          <IntroImage />
         </Intro>
         <Content dangerouslySetInnerHTML={{ __html: post.html }} />
         <Pagination>
@@ -53,12 +62,50 @@ const ProjectSingle = ({ data, pageContext }) => {
 
 const ContentWrapper = styled.article``;
 
-const Intro = styled.header`
-  min-height: 50vh;
+const IntroDetails = styled.div`
+  border: 1px solid ${props => props.theme.main};
+  flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
-  align-items: flex-start;
+
+  > div {
+    padding: 1rem;
+  }
+
+  ul {
+    border: 1px solid ${props => props.theme.main};
+    border-width: 1px 0 0;
+
+    li {
+      padding: 0.5rem 1rem;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+      min-height: 2rem;
+      line-height: 1.2;
+      border-bottom: 1px solid ${props => props.theme.main};
+      
+      &:last-of-type {
+        border-bottom: 0;
+      }
+    }
+  }
+`;
+
+const IntroImage = styled.div`
+  border: 1px solid ${props => props.theme.main};
+  flex: 1;
+  margin-left: 1rem;
+  background: ${props => props.theme.main};
+`;
+
+const Intro = styled.header`
+  min-height: calc(100vh - 59px);
+  display: flex;
+  border: 1px solid ${props => props.theme.main};
+  border-top: 0;
+  padding: 1rem;
 
   small {
     margin-bottom: 0.75rem;
