@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import Layout from "../layouts/layout";
 import LatestJournalItems from "../components/LatestJournalItems";
 import LatestProjectItems from "../components/LatestProjectItems";
 import Hero from "../components/Hero";

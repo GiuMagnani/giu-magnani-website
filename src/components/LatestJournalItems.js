@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-const LatestJournalItems = ({ journal }) => (
-  <LatestPostsContainer>
+const LatestJournalItems = ({ journal, className }) => (
+  <LatestPostsContainer className={className}>
     <LatestPosts>
       {journal.map(({ node }, index) => {
         return (

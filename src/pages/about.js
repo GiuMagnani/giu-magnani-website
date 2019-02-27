@@ -61,7 +61,9 @@ class About extends React.Component {
   }
 }
 
-const Intro = styled.div`
+const Intro = styled.header`
+  border-bottom: 1px solid ${props => props.theme.main};
+ 
   h1 {
     font-size: 30px;
     padding-bottom: 1rem;
@@ -72,8 +74,8 @@ const Intro = styled.div`
     line-height: 1.2;
     font-weight: bold;
   }
+  
   .container {
-    border: 1px solid ${props => props.theme.main};
     border-top: 0;
     min-height: 50vh;
     padding: 1rem;
@@ -85,6 +87,9 @@ const Intro = styled.div`
 `;
 
 const AboutWrapper = styled.div`
+  margin-top: 0.5rem;
+  border-top: 1px solid ${props => props.theme.main};
+  
   .container {
     border: 1px solid ${props => props.theme.main};
     border-bottom: 0;

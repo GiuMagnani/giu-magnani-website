@@ -1,49 +1,45 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import Layout from "../layouts/layout";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-class JournalSingle extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark;
-    const siteTitle = this.props.data.site.siteMetadata.title;
-    const { previous, next } = this.props.pageContext;
+const JournalSingle = ({ data, pageContext }) => {
+  const post = data.markdownRemark;
+  const siteTitle = data.site.siteMetadata.title;
+  const { previous, next } = pageContext;
 
-    return (
-      <Layout location={ this.props.location } title={ siteTitle }>
-        {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/ }
-        <ContentWrapper className="container">
-            <Intro>
-              <small>{ post.frontmatter.date }</small>
-              <SingleTitle>{ post.frontmatter.title }</SingleTitle>
-            </Intro>
+  return (
+    <>
+      {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/}
+      <ContentWrapper className="container">
+        <Intro>
+          <small>{post.frontmatter.date}</small>
+          <SingleTitle>{post.frontmatter.title}</SingleTitle>
+        </Intro>
 
-            <Content dangerouslySetInnerHTML={ { __html: post.html } } />
+        <Content dangerouslySetInnerHTML={{ __html: post.html }} />
 
-            <Pagination>
-              <li>
-                { previous && (
-                  <Link to={ previous.fields.slug } rel="prev">
-                    ← { previous.frontmatter.title }
-                  </Link>
-                ) }
-              </li>
-              <li>
-                { next && (
-                  <Link to={ next.fields.slug } rel="next">
-                    { next.frontmatter.title } →
-                  </Link>
-                ) }
-              </li>
-            </Pagination>
-        </ContentWrapper>
-      </Layout>
-    );
-  }
-}
+        <Pagination>
+          <li>
+            {previous && (
+              <Link to={previous.fields.slug} rel="prev">
+                ← {previous.frontmatter.title}
+              </Link>
+            )}
+          </li>
+          <li>
+            {next && (
+              <Link to={next.fields.slug} rel="next">
+                {next.frontmatter.title} →
+              </Link>
+            )}
+          </li>
+        </Pagination>
+      </ContentWrapper>
+    </>
+  );
+};
 
-const ContentWrapper = styled.article`
-`;
+const ContentWrapper = styled.article``;
 
 const Intro = styled.header`
   min-height: 50vh;
@@ -51,7 +47,7 @@ const Intro = styled.header`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  
+
   small {
     margin-bottom: 0.75rem;
     font-size: 12px;
@@ -67,13 +63,13 @@ const Content = styled.div`
     max-width: 590px;
     font-size: 18px;
   }
-  
+
   a {
     font-size: 18px;
     font-weight: bold;
     text-decoration: underline;
   }
-  
+
   img,
   .gatsby-resp-image-link {
     display: block;
@@ -93,7 +89,7 @@ const Pagination = styled.ul`
   align-items: center;
   height: 100px;
   list-style-type: none;
-  
+
   li {
     a {
       text-transform: uppercase;

@@ -1,52 +1,82 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import Layout from "../layouts/layout";
 
 class Contact extends React.Component {
   render() {
     return (
       <>
-        <div>
-          <h2>Contact me!</h2>
-          <label htmlFor="sayHi">Just to say hi</label>
-          <input name="sayHi" id="sayHi" />
-          <label htmlFor="forWork">Work reasons</label>
-          <input name="forWork" id="forWork" />
-          <br />
-          <button>Or just copy email to clipboard</button>
-          <FormContainer>
-            <div>
-              <form action="contact">
-                <FormGroup>
-                  <label htmlFor="name">Name:</label>
-                  <input type="text" id="name" />
-                </FormGroup>
-                <FormGroup>
-                  <label htmlFor="email">Email:</label>
-                  <input type="text" id="email" />
-                </FormGroup>
-                <FormGroup>
-                  <label htmlFor="message">Message:</label>
-                  <textarea name="message" id="message" cols="30" rows="10" />
-                </FormGroup>
-                <FormButtonContainer>
-                  <FormButton>Send!</FormButton>
-                </FormButtonContainer>
-              </form>
-            </div>
-          </FormContainer>
-        </div>
+        <Intro>
+          <div className="container">
+            <h1>Contact me!</h1>
+            {/*<label htmlFor="sayHi">Just to say hi</label>*/}
+            {/*<input name="sayHi" id="sayHi" />*/}
+            {/*<label htmlFor="forWork">Work reasons</label>*/}
+            {/*<input name="forWork" id="forWork" />*/}
+            {/*<br />*/}
+            {/*<button>Or just copy email to clipboard</button>*/}
+          </div>
+        </Intro>
+        <FormContainer>
+          <div className="container">
+            <Form action="contact">
+              <FormGroup>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" />
+              </FormGroup>
+              <FormGroup>
+                <label htmlFor="email">Email:</label>
+                <input type="text" id="email" />
+              </FormGroup>
+              <FormGroup>
+                <TextareaLabel htmlFor="message">Message:</TextareaLabel>
+                <textarea name="message" id="message" cols="30" rows="10" />
+              </FormGroup>
+              <FormButtonContainer>
+                <FormButton>Send!</FormButton>
+              </FormButtonContainer>
+            </Form>
+          </div>
+        </FormContainer>
       </>
     );
   }
 }
 
+const Intro = styled.header`
+  min-height: 40vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid ${props => props.theme.main};
+
+  h1 {
+    font-size: 60px;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+`;
+
 const FormContainer = styled.div`
-  margin: 0 auto;
-  //max-width: 800px;
-  border: 0 solid ${props => props.theme.main};
   border-width: 4px 0;
+  margin-top: 0.5rem;
+  border-top: 1px solid ${props => props.theme.main};
+
+  .container {
+    border: 1px solid ${props => props.theme.main};
+    border-top: 0;
+    border-bottom: 0;
+    padding: 1rem;
+  }
+`;
+
+const Form = styled.form`
+  border: 1px solid ${props => props.theme.main};
+`;
+
+const TextareaLabel = styled.label`
+  height: 300px;  
 `;
 
 const FormGroup = styled.div`
@@ -54,26 +84,28 @@ const FormGroup = styled.div`
   display: flex;
   border: 0 solid ${props => props.theme.main};
   border-bottom-width: 1px;
-  //margin-bottom: -2px;
 
   label {
     width: 150px;
     padding: 20px;
     font-size: 16px;
     text-transform: uppercase;
-    font-family: "Teko", sans-serif;
-    //font-weight: bold;
+    font-weight: bold;
     letter-spacing: 1px;
     border-right: 1px solid ${props => props.theme.main};
+    height: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
   }
 
   textarea,
   input {
-    width: 80%;
+    width: 100%;
     font-size: 22px;
-    font-weight: bold;
     padding: 20px;
     border: 0;
+    height: 60px;
 
     &:focus {
       outline: 0;
@@ -81,7 +113,12 @@ const FormGroup = styled.div`
   }
 
   textarea {
-    resize: vertical;
+    resize: none;
+    height: 300px;
+  }
+  
+  ${TextareaLabel} {
+    height: 300px;
   }
 `;
 

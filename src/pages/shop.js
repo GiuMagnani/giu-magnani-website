@@ -1,33 +1,28 @@
 import React from "react";
 import Img from "gatsby-image";
 import { Link, graphql } from "gatsby";
-import Layout from "../layouts/layout";
 
-class Shop extends React.Component {
-  render() {
-    const items = this.props.data.allMarkdownRemark.edges;
-    return (
-      <>
-        <div>
-          {items.map((item, key) => (
-            <div key={key}>
-              <Img
-                sizes={
-                  item.node.frontmatter.featuredImage.childImageSharp.sizes
-                }
-                alt={item.node.frontmatter.title}
-              />
-              <Link to={item.node.fields.slug}>
-                <h3>{item.node.frontmatter.title}</h3>
-              </Link>
-              <p>{item.node.excerpt}</p>
-            </div>
-          ))}
-        </div>
-      </>
-    );
-  }
-}
+const Shop = ({ data }) => {
+  const items = data.allMarkdownRemark.edges;
+  return (
+    <>
+      <div>
+        {items.map((item, key) => (
+          <div key={key}>
+            <Img
+              sizes={item.node.frontmatter.featuredImage.childImageSharp.sizes}
+              alt={item.node.frontmatter.title}
+            />
+            <Link to={item.node.fields.slug}>
+              <h3>{item.node.frontmatter.title}</h3>
+            </Link>
+            <p>{item.node.excerpt}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+};
 
 export default Shop;
 

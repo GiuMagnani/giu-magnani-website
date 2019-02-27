@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { slugify } from "../../utils.js";
 import Img from "gatsby-image";
 
-const LatestProjectItems = ({ projects }) => {
+const LatestProjectItems = ({ projects, className }) => {
   return (
     <>
       {projects.map(({ node }, index) => (
-        <Project key={index}>
+        <Project key={index} className={className}>
           {/*<ProjectIndex>{`${(index + 1).toString().length === 1 ? '0' + (index + 1) : index + 1}`}</ProjectIndex>*/}
           <ProjectImage>
             <Img

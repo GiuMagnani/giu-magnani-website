@@ -1,4 +1,3 @@
-const { slugify } = require("./utils.js");
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import { Link, graphql } from "gatsby";
-import Layout from "../layouts/layout";
 import LatestProjectItems from "../components/LatestProjectItems";
 
 const Work = ({ location, data }) => {
@@ -78,9 +77,9 @@ const Work = ({ location, data }) => {
   };
 
   return (
-    <>
-      <ProjectsWrapper className="container">
-        <Intro>
+    <ProjectsWrapper>
+      <Intro>
+        <div className="container">
           <p>
             Latest{" "}
             <a
@@ -106,28 +105,47 @@ const Work = ({ location, data }) => {
             </a>{" "}
             Projects.
           </p>
-        </Intro>
-        <LatestProjectItems projects={items} />
+        </div>
+      </Intro>
+      <ProjectListWrapper>
+        <div className="container">
+          <ProjectList projects={items} />
+        </div>
+      </ProjectListWrapper>
 
-        {/*<WorksContainer>*/}
-        {/*{ items.map((item, key) => (*/}
-        {/*<WorkItem key={ key } to={ item.node.fields.slug }>*/}
-        {/*<Img sizes={*/}
-        {/*item.node.frontmatter.featuredImage.childImageSharp.sizes*/}
-        {/*} alt={ item.node.frontmatter.title } />*/}
-        {/*<h4>{ item.node.frontmatter.category }</h4>*/}
-        {/*<h3>{ item.node.frontmatter.title }</h3>*/}
-        {/*<p>{ item.node.excerpt }</p>*/}
-        {/*</WorkItem>*/}
-        {/*)) }*/}
-        {/*</WorksContainer>*/}
-      </ProjectsWrapper>
-    </>
+      {/*<WorksContainer>*/}
+      {/*{ items.map((item, key) => (*/}
+      {/*<WorkItem key={ key } to={ item.node.fields.slug }>*/}
+      {/*<Img sizes={*/}
+      {/*item.node.frontmatter.featuredImage.childImageSharp.sizes*/}
+      {/*} alt={ item.node.frontmatter.title } />*/}
+      {/*<h4>{ item.node.frontmatter.category }</h4>*/}
+      {/*<h3>{ item.node.frontmatter.title }</h3>*/}
+      {/*<p>{ item.node.excerpt }</p>*/}
+      {/*</WorkItem>*/}
+      {/*)) }*/}
+      {/*</WorksContainer>*/}
+    </ProjectsWrapper>
   );
 };
 
 const ProjectsWrapper = styled.section`
   margin-bottom: 4rem;
+`;
+
+const ProjectListWrapper = styled.div`
+  margin-top: 0.5rem;
+  border-top: 1px solid ${props => props.theme.main};
+
+  .container {
+    border: 1px solid ${props => props.theme.main};
+    border-top: 0;
+  }
+`;
+
+const ProjectList = styled(LatestProjectItems)`
+  margin-top: 0;
+  padding-top: 1rem;
 `;
 
 const Intro = styled.header`
@@ -136,6 +154,7 @@ const Intro = styled.header`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
+  border-bottom: 1px solid ${props => props.theme.main};
 
   p {
     font-size: 60px;
