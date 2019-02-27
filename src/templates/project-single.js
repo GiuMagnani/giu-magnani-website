@@ -8,30 +8,44 @@ class ProjectSingle extends React.Component {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
     const { previous, next } = this.props.pageContext;
-    console.log(post);
+
     return (
-      <Layout location={ this.props.location } title={ siteTitle }>
+      <Layout location={this.props.location} title={siteTitle}>
         <ContentWrapper className="container">
-          {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/ }
+          {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/}
           <Intro>
-            <small>{ post.frontmatter.date }</small>
-            <SingleTitle>{ post.frontmatter.title }</SingleTitle>
+            <small>{post.frontmatter.date}</small>
+            <SingleTitle>{post.frontmatter.title}</SingleTitle>
+            <small>{post.frontmatter.tags}</small>
+            <small>{post.frontmatter.tools}</small>
+            <small>{post.frontmatter.behance_url}</small>
+            <small>{post.frontmatter.dribbble_url}</small>
+            {post.frontmatter.colors &&
+              post.frontmatter.colors.map(color => (
+                <span
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    backgroundColor: "#" + color,
+                  }}
+                />
+              ))}
           </Intro>
-          <Content dangerouslySetInnerHTML={ { __html: post.html } } />
+          <Content dangerouslySetInnerHTML={{ __html: post.html }} />
           <Pagination>
             <li>
-              { previous && (
-                <Link to={ previous.fields.slug } rel="prev">
-                  ← { previous.frontmatter.title }
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  ← {previous.frontmatter.title}
                 </Link>
-              ) }
+              )}
             </li>
             <li>
-              { next && (
-                <Link to={ next.fields.slug } rel="next">
-                  { next.frontmatter.title } →
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
                 </Link>
-              ) }
+              )}
             </li>
           </Pagination>
         </ContentWrapper>
@@ -40,8 +54,7 @@ class ProjectSingle extends React.Component {
   }
 }
 
-const ContentWrapper = styled.article`
-`;
+const ContentWrapper = styled.article``;
 
 const Intro = styled.header`
   min-height: 50vh;
@@ -49,7 +62,7 @@ const Intro = styled.header`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  
+
   small {
     margin-bottom: 0.75rem;
     font-size: 12px;
@@ -65,13 +78,13 @@ const Content = styled.div`
     max-width: 590px;
     font-size: 18px;
   }
-  
+
   a {
     font-size: 18px;
     font-weight: bold;
     text-decoration: underline;
   }
-  
+
   img,
   .gatsby-resp-image-link {
     display: block;
@@ -91,7 +104,7 @@ const Pagination = styled.ul`
   align-items: center;
   height: 100px;
   list-style-type: none;
-  
+
   li {
     a {
       text-transform: uppercase;
@@ -119,6 +132,12 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
+        category
+        tools
+        behance_url
+        dribbble_url
+        colors
       }
     }
   }

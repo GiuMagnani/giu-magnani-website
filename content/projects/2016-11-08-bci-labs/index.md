@@ -2,11 +2,13 @@
 title: Bci Labs
 date: "2016-11-08"
 featuredImage: "bci-labs-1.jpg"
-tags: [web, design, development, ux, ui, front-end]
-category: "web"
+tags: [front-end, ui, ux, design, web development, wordpress]
+category: "Front-End Development"
+tools: [WordPress, jQuery, HTML5, CSS3, Sketch]
+behance_url: "https://www.behance.com"
+dribbble_url: "https://www.dribbble.com"
+colors: [2222ff, ff0000]
 ---
-
-BCI  LABS
 
 Bci Labs is the corporate accelerator of the Chilean bank: Bci, its goal is to identify and access opportunities of innovation from the FINTECH (LATAM) ecosystem. With this objective, a 12-week acceleration program has been developed to accelerate the integration of selected startups into the bank, so as to complement the value proposition for its clients.
 
