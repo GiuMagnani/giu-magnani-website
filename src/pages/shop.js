@@ -7,18 +7,24 @@ class Shop extends React.Component {
   render() {
     const items = this.props.data.allMarkdownRemark.edges;
     return (
-      <Layout location={ this.props.location }>
+      <>
         <div>
-          { items.map((item, key) => (
-            <div key={ key }>
-              <Img sizes={ item.node.frontmatter.featuredImage.childImageSharp.sizes }
-                   alt={ item.node.frontmatter.title } />
-              <Link to={ item.node.fields.slug }><h3>{ item.node.frontmatter.title }</h3></Link>
-              <p>{ item.node.excerpt }</p>
+          {items.map((item, key) => (
+            <div key={key}>
+              <Img
+                sizes={
+                  item.node.frontmatter.featuredImage.childImageSharp.sizes
+                }
+                alt={item.node.frontmatter.title}
+              />
+              <Link to={item.node.fields.slug}>
+                <h3>{item.node.frontmatter.title}</h3>
+              </Link>
+              <p>{item.node.excerpt}</p>
             </div>
-          )) }
+          ))}
         </div>
-      </Layout>
+      </>
     );
   }
 }

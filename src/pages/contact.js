@@ -6,7 +6,7 @@ import Layout from "../layouts/layout";
 class Contact extends React.Component {
   render() {
     return (
-      <Layout location={ this.props.location }>
+      <>
         <div>
           <h2>Contact me!</h2>
           <label htmlFor="sayHi">Just to say hi</label>
@@ -37,7 +37,7 @@ class Contact extends React.Component {
             </div>
           </FormContainer>
         </div>
-      </Layout>
+      </>
     );
   }
 }
@@ -45,14 +45,14 @@ class Contact extends React.Component {
 const FormContainer = styled.div`
   margin: 0 auto;
   //max-width: 800px;
-  border: 0 solid ${ props => props.theme.main };
+  border: 0 solid ${props => props.theme.main};
   border-width: 4px 0;
 `;
 
 const FormGroup = styled.div`
   width: 100%;
   display: flex;
-  border: 0 solid ${ props => props.theme.main };
+  border: 0 solid ${props => props.theme.main};
   border-bottom-width: 1px;
   //margin-bottom: -2px;
 
@@ -61,10 +61,10 @@ const FormGroup = styled.div`
     padding: 20px;
     font-size: 16px;
     text-transform: uppercase;
-    font-family: 'Teko', sans-serif;
+    font-family: "Teko", sans-serif;
     //font-weight: bold;
     letter-spacing: 1px;
-    border-right: 1px solid ${ props => props.theme.main };
+    border-right: 1px solid ${props => props.theme.main};
   }
 
   textarea,
@@ -88,21 +88,21 @@ const FormGroup = styled.div`
 const FormButtonContainer = styled.div`
   width: 100%;
   border-style: solid;
-  border-color: ${ props => props.theme.main };
+  border-color: ${props => props.theme.main};
   border-width: 0;
 `;
 
 const FormButton = styled.button`
-  background-color: ${ props => props.theme.main };
+  background-color: ${props => props.theme.main};
   font-size: 20px;
   color: white;
-  border: 0 solid ${ props => props.theme.main };
+  border: 0 solid ${props => props.theme.main};
   border-width: 2px 0;
   margin: 0;
   padding: 20px;
   min-width: 50%;
   border: 0;
-width: 100%;
+  width: 100%;
 
   &:focus {
     outline: 0;

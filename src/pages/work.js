@@ -11,7 +11,7 @@ const Work = ({ location, data }) => {
     "Graphic Design": true,
     "UX/UI Design": true,
     "Front-End Development": true,
-    "Illustration": false,
+    Illustration: false,
   });
   // const [filters, setFilters] = useState({
   //   graphicDesign: {
@@ -32,11 +32,11 @@ const Work = ({ location, data }) => {
   //   },
   // });
 
-  const toggleFilter = (filter) => {
+  const toggleFilter = filter => {
     // setFilters({ ...filters, [filter]: {...filters[filter], value: !filters[filter].value } });
     setFilters({
       ...filters,
-      [filter]: !filters[filter]
+      [filter]: !filters[filter],
     });
     filterProjects();
   };
@@ -44,18 +44,17 @@ const Work = ({ location, data }) => {
   const filterProjects = () => {
     let test = [];
 
-    items.filter((x) => {
-      Object.keys(filters).map((fKey) => {
+    items.filter(x => {
+      Object.keys(filters).map(fKey => {
         console.log(x.node.frontmatter.category);
         if (filters[fKey] && x.node.frontmatter.category === fKey) {
           console.log(x.node.frontmatter.category);
           test.push(x);
         }
-      })
+      });
     });
 
     console.log(test);
-
 
     // const activeFilters = Object.keys(filters).map(x => {
     //   if (filters[x].value === true) {
@@ -79,33 +78,51 @@ const Work = ({ location, data }) => {
   };
 
   return (
-    <Layout location={ location }>
+    <>
       <ProjectsWrapper className="container">
         <Intro>
-          <p>Latest <a onClick={ () => toggleFilter("Graphic Design") }
-                       className={ filters["Graphic Design"] ? "is-active" : "" }>Graphic Design,</a> <a
-            onClick={ () => toggleFilter("UX/UI Design") } className={ filters["UX/UI Design"] ? "is-active" : "" }>UX/UI
-            Design,</a> <a onClick={ () => toggleFilter("Front-End Development") }
-                           className={ filters["Front-End Development"] ? "is-active" : "" }>Front-End Development</a> and <a
-            onClick={ () => toggleFilter("Illustration") }
-            className={ filters["Illustration"] ? "is-active" : "" }>Illustration</a> Projects.</p>
+          <p>
+            Latest{" "}
+            <a
+              onClick={() => toggleFilter("Graphic Design")}
+              className={filters["Graphic Design"] ? "is-active" : ""}>
+              Graphic Design,
+            </a>{" "}
+            <a
+              onClick={() => toggleFilter("UX/UI Design")}
+              className={filters["UX/UI Design"] ? "is-active" : ""}>
+              UX/UI Design,
+            </a>{" "}
+            <a
+              onClick={() => toggleFilter("Front-End Development")}
+              className={filters["Front-End Development"] ? "is-active" : ""}>
+              Front-End Development
+            </a>{" "}
+            and{" "}
+            <a
+              onClick={() => toggleFilter("Illustration")}
+              className={filters["Illustration"] ? "is-active" : ""}>
+              Illustration
+            </a>{" "}
+            Projects.
+          </p>
         </Intro>
         <LatestProjectItems projects={items} />
 
         {/*<WorksContainer>*/}
-          {/*{ items.map((item, key) => (*/}
-            {/*<WorkItem key={ key } to={ item.node.fields.slug }>*/}
-              {/*<Img sizes={*/}
-                {/*item.node.frontmatter.featuredImage.childImageSharp.sizes*/}
-              {/*} alt={ item.node.frontmatter.title } />*/}
-              {/*<h4>{ item.node.frontmatter.category }</h4>*/}
-              {/*<h3>{ item.node.frontmatter.title }</h3>*/}
-              {/*<p>{ item.node.excerpt }</p>*/}
-            {/*</WorkItem>*/}
-          {/*)) }*/}
+        {/*{ items.map((item, key) => (*/}
+        {/*<WorkItem key={ key } to={ item.node.fields.slug }>*/}
+        {/*<Img sizes={*/}
+        {/*item.node.frontmatter.featuredImage.childImageSharp.sizes*/}
+        {/*} alt={ item.node.frontmatter.title } />*/}
+        {/*<h4>{ item.node.frontmatter.category }</h4>*/}
+        {/*<h3>{ item.node.frontmatter.title }</h3>*/}
+        {/*<p>{ item.node.excerpt }</p>*/}
+        {/*</WorkItem>*/}
+        {/*)) }*/}
         {/*</WorksContainer>*/}
       </ProjectsWrapper>
-    </Layout>
+    </>
   );
 };
 
@@ -119,13 +136,13 @@ const Intro = styled.header`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  
+
   p {
     font-size: 60px;
     line-height: 1.2;
-    font-weight: bold;    
+    font-weight: bold;
   }
-  
+
   a {
     font-size: 60px;
     text-decoration: line-through;
@@ -133,7 +150,7 @@ const Intro = styled.header`
     //opacity: 0.3;
     cursor: pointer;
   }
-  
+
   .is-active {
     opacity: 1;
     text-decoration: underline;
@@ -183,12 +200,12 @@ const WorkItem = styled(Link)`
     overflow: hidden;
     margin-bottom: 5px;
   }
-  
-  @media (min-width: ${ props => props.theme.md }) {
+
+  @media (min-width: ${props => props.theme.md}) {
     width: 50%;
   }
 
-  @media (min-width: ${ props => props.theme.lg }) {
+  @media (min-width: ${props => props.theme.lg}) {
     width: 33.33%;
   }
 `;

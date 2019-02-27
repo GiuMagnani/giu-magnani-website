@@ -5,7 +5,7 @@ import styled from "styled-components";
 class About extends React.Component {
   render() {
     return (
-      <Layout location={this.props.location}>
+      <>
         <Intro>
           <div className="container">
             <h1>Hi! I'm Giu Magnani.</h1>
@@ -19,30 +19,30 @@ class About extends React.Component {
         <AboutWrapper>
           <div className="container">
             <AboutInner>
-            <p>
-              I started working with small business and participating in design
-              contests to build a strong portfolio and references. With
-            </p>
-            <Highlight>Santiago, Chile</Highlight>
-            <p>
-              perseverance and hard work, in 2012 I was contacted to work
-              remotely with a company in USA which produces logo and print
-              design services. In 2013, I went
-            </p>
-            <Highlight>London, UK</Highlight>
-            <p>
-              to London, UK to find new perspectives and inspiration, where I
-              had the pleasure to work with a vintage lighting signs company and
-              a Swedish design studio. In January 2014, with more than 3 years
-              of experience, I launched my new design brand, to fully pursue
-              what I love, Web Development, Design and Illustration.
-            </p>
-            <Highlight>Milan, Italy</Highlight>
-            <p>
-              Right now I'm living in Milan, Italy. I'm working as a Front-End
-              Developer, I keep learning and facing new challenges to improve
-              every day more and more.
-            </p>
+              <p>
+                I started working with small business and participating in
+                design contests to build a strong portfolio and references. With
+              </p>
+              <Highlight>Santiago, Chile</Highlight>
+              <p>
+                perseverance and hard work, in 2012 I was contacted to work
+                remotely with a company in USA which produces logo and print
+                design services. In 2013, I went
+              </p>
+              <Highlight>London, UK</Highlight>
+              <p>
+                to London, UK to find new perspectives and inspiration, where I
+                had the pleasure to work with a vintage lighting signs company
+                and a Swedish design studio. In January 2014, with more than 3
+                years of experience, I launched my new design brand, to fully
+                pursue what I love, Web Development, Design and Illustration.
+              </p>
+              <Highlight>Milan, Italy</Highlight>
+              <p>
+                Right now I'm living in Milan, Italy. I'm working as a Front-End
+                Developer, I keep learning and facing new challenges to improve
+                every day more and more.
+              </p>
             </AboutInner>
             <Colophon>
               <div>
@@ -53,7 +53,7 @@ class About extends React.Component {
             </Colophon>
           </div>
         </AboutWrapper>
-      </Layout>
+      </>
     );
   }
 }
@@ -123,20 +123,18 @@ const Colophon = styled.div`
     padding: 1rem;
     max-width: 400px;
     margin: 0 auto;
-      position:relative;
+    position: relative;
 
-      &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: -5px;
-    width: 4px;
-    height: 1rem;
-    background-color: ${props => props.theme.main};
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: -5px;
+      width: 4px;
+      height: 1rem;
+      background-color: ${props => props.theme.main};
+    }
   }
-  }
-  
-
 `;
 
 const AboutInner = styled.div`
@@ -145,7 +143,7 @@ const AboutInner = styled.div`
   max-width: 590px;
   border-right: 1px solid ${props => props.theme.main};
   position: relative;
-  
+
   &::after {
     content: "";
     position: absolute;
@@ -163,7 +161,7 @@ const AboutInner = styled.div`
     left: -2.4rem;
     width: 2rem;
     height: 2rem;
-    border: 1px solid ${props => props.theme.main}; 
+    border: 1px solid ${props => props.theme.main};
   }
 `;
 

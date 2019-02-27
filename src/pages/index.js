@@ -6,16 +6,18 @@ import LatestProjectItems from "../components/LatestProjectItems";
 import Hero from "../components/Hero";
 import styled from "styled-components";
 
-const BlogIndex = ({location, data}) => {
+const BlogIndex = ({ location, data }) => {
   const journal = data.journal.edges;
   const projects = data.projects.edges;
 
   return (
-    <Layout location={location}>
+    <>
       <Hero />
       <ProjectsWrapper>
         <div className="container">
-          <ProjectsHeading>UX/UI and Front-End Development Projects</ProjectsHeading>
+          <ProjectsHeading>
+            UX/UI and Front-End Development Projects
+          </ProjectsHeading>
           <LatestProjectItems projects={projects} />
         </div>
       </ProjectsWrapper>
@@ -28,14 +30,14 @@ const BlogIndex = ({location, data}) => {
           </LatestPostsSeeMore>
         </div>
       </JournalWrapper>
-    </Layout>
+    </>
   );
 };
 
 const ProjectsWrapper = styled.section`
   border-top: 1px solid blue;
   margin-top: 0.5rem;
-  
+
   .container {
     border: 1px solid ${props => props.theme.main};
     border-top: 0;
@@ -64,7 +66,7 @@ const LatestPostsSeeMore = styled.div`
   a {
     font-size: 14px;
     background: white;
-    color: ${ props => props.theme.main };
+    color: ${props => props.theme.main};
     border: 1px solid ${props => props.theme.main};
     border-top: 0;
     height: 40px;
@@ -77,18 +79,18 @@ const LatestPostsSeeMore = styled.div`
     width: 100%;
   }
 
-  @media (min-width: ${ props => props.theme.lg }) {
+  @media (min-width: ${props => props.theme.lg}) {
     a {
       width: calc(50% + 7px);
-      
+
       &:hover {
-        background: ${ props => props.theme.main };
+        background: ${props => props.theme.main};
         color: white;
       }
     }
   }
 
-  @media (min-width: ${ props => props.theme.lg }) {
+  @media (min-width: ${props => props.theme.lg}) {
     a {
       width: calc(20% + 7px);
       width: 100%;
@@ -104,7 +106,7 @@ const JournalWrapper = styled.section`
     border-bottom: 0;
     position: relative;
     padding-top: 0.5rem;
-    
+
     &::after {
       content: "";
       position: absolute;
@@ -159,7 +161,7 @@ export const pageQuery = graphql`
             title
             category
             date
-            featuredImage{
+            featuredImage {
               childImageSharp {
                 sizes(quality: 100, maxWidth: 800) {
                   ...GatsbyImageSharpSizes

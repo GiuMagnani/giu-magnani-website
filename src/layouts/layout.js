@@ -10,17 +10,24 @@ import styled, { ThemeProvider } from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SEO from "../SEO/SEO";
-// import { setConfig } from "react-hot-loader";
+import posed, { PoseGroup } from "react-pose";
 
-// setConfig({ pureSFC: true });
+const transitionDuration = 150;
+const transitionDelay = 200;
+
+const Transition = posed.div({
+  enter: {
+    opacity: 1,
+    transition: {
+      duration: transitionDuration,
+    },
+    delay: transitionDelay,
+    beforeChildren: true,
+  },
+  exit: { opacity: 0, transition: { duration: transitionDuration } },
+});
 
 class Layout extends Component {
-  // componentDidMount() {
-  //   console.log("Developed by Giu Magnani.");
-  //   console.log("Milan, Italy. 2019.");
-  //   console.log("https://www.giumagnani.com");
-  // }
-
   getLocalTitle() {
     const pathPrefix = config.pathPrefix ? config.pathPrefix : "/";
     const currentPath = this.props.location.pathname
@@ -52,9 +59,11 @@ class Layout extends Component {
           <>
             <GlobalStyle />
             <Header />
-            <Main>
-              {this.props.children}
-            </Main>
+            <PoseGroup>
+              <Transition key={this.props.location.pathname}>
+                <Main>{this.props.children}</Main>
+              </Transition>
+            </PoseGroup>
             <Footer config={config} />
           </>
         </ThemeProvider>
