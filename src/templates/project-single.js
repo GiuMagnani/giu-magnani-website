@@ -18,13 +18,38 @@ const ProjectSingle = ({ data, pageContext }) => {
               <SingleTitle>{post.frontmatter.title}</SingleTitle>
             </div>
             <ul>
-              <li>{post.frontmatter.tags}</li>
-              <li>{post.frontmatter.tools}</li>
-              <li>{post.frontmatter.behance_url}</li>
-              <li>{post.frontmatter.dribbble_url}</li>
-              <li>
-                {post.frontmatter.colors &&
-                  post.frontmatter.colors.map(color => (
+              {post.frontmatter.tags && (
+                <li>
+                  {post.frontmatter.tags.map(tag => (
+                    <span>{tag} </span>
+                  ))}
+                </li>
+              )}
+              {post.frontmatter.tools && (
+                <li>
+                  {post.frontmatter.tools.map(tool => (
+                    <span>{tool} </span>
+                  ))}
+                </li>
+              )}
+              {(post.frontmatter.dribbble_url ||
+                post.frontmatter.behance_url ||
+                post.frontmatter.github_url) && (
+                <li>
+                  {post.frontmatter.dribbble_url && (
+                    <a href={post.frontmatter.dribbble_url}>dribbble</a>
+                  )}
+                  {post.frontmatter.behance_url && (
+                    <a href={post.frontmatter.behance_url}>behance</a>
+                  )}
+                  {post.frontmatter.github_url && (
+                    <a href={post.frontmatter.github_url}>GitHub</a>
+                  )}
+                </li>
+              )}
+              {post.frontmatter.colors && (
+                <li>
+                  {post.frontmatter.colors.map(color => (
                     <span
                       style={{
                         height: "10px",
@@ -33,7 +58,8 @@ const ProjectSingle = ({ data, pageContext }) => {
                       }}
                     />
                   ))}
-              </li>
+                </li>
+              )}
             </ul>
           </IntroDetails>
           <IntroImage />
@@ -85,7 +111,7 @@ const IntroDetails = styled.div`
       min-height: 2rem;
       line-height: 1.2;
       border-bottom: 1px solid ${props => props.theme.main};
-      
+
       &:last-of-type {
         border-bottom: 0;
       }
