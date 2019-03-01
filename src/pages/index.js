@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, graphql } from "gatsby";
 import LatestJournalItems from "../components/LatestJournalItems";
 import LatestProjectItems from "../components/LatestProjectItems";
 import Hero from "../components/Hero";
 import styled from "styled-components";
+import Menu from "../components/Menu";
 
 const BlogIndex = ({ location, data }) => {
   const journal = data.journal.edges;
   const projects = data.projects.edges;
+  const [isMenuOpen, setMenuVisibility] = useState(false);
 
   return (
     <>
+      <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
+      <button onClick={() => setMenuVisibility(!isMenuOpen)}>MENU</button>
       <Hero />
       <ProjectsWrapper>
         <div className="container">
