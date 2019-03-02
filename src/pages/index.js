@@ -166,7 +166,7 @@ export const pageQuery = graphql`
             date
             featuredImage {
               childImageSharp {
-                sizes(quality: 100, maxWidth: 800) {
+                sizes(quality: 100, maxWidth: 800, duotone: { highlight: "#ffffff", shadow: "#2222ff" }, toFormat: PNG) {
                   ...GatsbyImageSharpSizes
                 }
               }
