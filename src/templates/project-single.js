@@ -1,11 +1,24 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
+import posed from "react-pose";
 
-const ProjectSingle = ({ data, pageContext }) => {
+const IntroProps = {
+  enter: { opacity: 1, y: "0%", transition: { duration: 150 } },
+  exit: { opacity: 0, y: "15%", transition: { duration: 150, delay: 150 } },
+};
+
+const H1Props = {
+  enter: { opacity: 1, x: "0%", transition: { duration: 150, delay: 150 } },
+  exit: { opacity: 0, x: "15%", transition: { duration: 150, delay: 150 } },
+};
+
+const ProjectSingle = ({ data, pageContext }, ...props) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
+
+  console.log(props);
 
   return (
     <>
@@ -88,7 +101,7 @@ const ProjectSingle = ({ data, pageContext }) => {
 
 const ContentWrapper = styled.article``;
 
-const IntroDetails = styled.div`
+const IntroDetails = styled(posed.div(IntroProps))`
   border: 1px solid ${props => props.theme.main};
   flex: 1;
   display: flex;
@@ -162,7 +175,7 @@ const Content = styled.div`
   }
 `;
 
-const SingleTitle = styled.h1`
+const SingleTitle = styled(posed.h1(H1Props))`
   font-size: 50px;
   margin-bottom: 1rem;
 `;
