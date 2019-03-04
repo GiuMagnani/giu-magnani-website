@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import posed from "react-pose";
 
 const fullScreenMenuProps = {
-  open: { x: 0, transition: { duration: 350 }},
+  open: { x: 0, transition: { duration: 350 } },
   closed: { x: "100%", transition: { duration: 350 } },
 };
 
@@ -22,9 +22,18 @@ const Menu = ({ isMenuOpen, setMenuVisibility }) => (
   <MenuWrapper pose={isMenuOpen ? "open" : "closed"}>
     <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>MENU</MenuButton>
     <MenuGroup pose={isMenuOpen ? "open" : "closed"}>
-      <Item key="0">A</Item>
-      <Item key="1">B</Item>
-      <Item key="2">C</Item>
+      <Item key="0">
+        <Link to={"/about"}>About</Link>
+      </Item>
+      <Item key="1">
+        <Link to={"/work"}>Projects</Link>
+      </Item>
+      <Item key="2">
+        <Link to={"/journal"}>Journal</Link>
+      </Item>
+      <Item key="3">
+        <Link to={"/contact"}>Contact</Link>
+      </Item>
     </MenuGroup>
   </MenuWrapper>
 );
@@ -54,9 +63,13 @@ const MenuGroup = styled(posed.nav(MenuProps))`
   flex-direction: column;
   height: 100%;
   padding: 1rem;
-  
+
   li {
     list-style-type: none;
+
+    a {
+      color: white;
+    }
   }
 `;
 

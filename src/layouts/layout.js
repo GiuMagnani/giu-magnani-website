@@ -15,6 +15,19 @@ import posed, { PoseGroup } from "react-pose";
 const transitionDuration = 150;
 const transitionDelay = 200;
 
+const CurtainProps = {
+  enter: {
+    scaleY: "0",
+    transition: {
+      duration: 300,
+    },
+  },
+  exit: {
+    scaleY: "1",
+    transition: { duration: 300 },
+  },
+};
+
 const Transition = posed.div({
   enter: {
     opacity: 1,
@@ -61,6 +74,7 @@ class Layout extends Component {
             <Header />
             <PoseGroup>
               <Transition key={this.props.location.pathname}>
+                <Curtain />
                 <Main>{this.props.children}</Main>
               </Transition>
             </PoseGroup>
@@ -74,6 +88,15 @@ class Layout extends Component {
 
 const Main = styled.main`
   min-height: calc(100vh - 98px);
+`;
+
+const Curtain = styled(posed.div(CurtainProps))`
+  // background-color: ${props => props.theme.main};
+  // height: 100vh;
+  // width: 100vh;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
 `;
 
 export default Layout;
