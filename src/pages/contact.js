@@ -1,47 +1,85 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-class Contact extends React.Component {
-  render() {
-    return (
-      <>
-        <Intro>
-          <div className="container">
-            <h1>Contact me!</h1>
-            {/*<label htmlFor="sayHi">Just to say hi</label>*/}
-            {/*<input name="sayHi" id="sayHi" />*/}
-            {/*<label htmlFor="forWork">Work reasons</label>*/}
-            {/*<input name="forWork" id="forWork" />*/}
-            {/*<br />*/}
-            {/*<button>Or just copy email to clipboard</button>*/}
-          </div>
-        </Intro>
-        <FormContainer>
-          <div className="container">
-            <Form action="contact">
+const Contact = () => {
+  const [isNonProfit, setNonProfit] = useState(false);
+
+  return (
+    <>
+      <Intro>
+        <div className="container">
+          <h1>Contact me!</h1>
+          <label htmlFor="sayHi">Just to say hi</label>
+          <input name="reason" id="sayHi" type="radio" />
+          <label htmlFor="forWork">Work</label>
+          <input name="reason" id="forWork" type="radio" />
+          Non-profit? If you have an idea please let me know. I'd love to get
+          involved in organizations pro-animals, vegetarianism/veganism,
+          environmental issues.
+          <input
+            name="nonProfit"
+            id="nonProfit"
+            type="checkbox"
+            value={isNonProfit}
+            onChange={() => setNonProfit(!isNonProfit)}
+          />
+          <br />
+          <button>Just copy email to clipboard</button>
+        </div>
+      </Intro>
+      <FormContainer>
+        <div className="container">
+          // if reason === work // development | design | illustration
+          <label htmlFor="app">App</label>
+          <input name="projectType" id="app" type="radio" />
+          <label htmlFor="website">Website</label>
+          <input name="projectType" id="website" type="radio" />
+          <label htmlFor="other">E-Commerce</label>
+          <input name="projectType" id="other" type="radio" />
+          <div>Budget - Slider</div>
+          <div>Timeline - Slider</div>
+          <div>Company name Current Website</div>
+          // Steps of form
+          <Form action="contact">
+            {isNonProfit && (
               <FormGroup>
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Project Name:</label>
                 <input type="text" id="name" />
               </FormGroup>
-              <FormGroup>
-                <label htmlFor="email">Email:</label>
-                <input type="text" id="email" />
-              </FormGroup>
-              <FormGroup>
-                <TextareaLabel htmlFor="message">Message:</TextareaLabel>
-                <textarea name="message" id="message" cols="30" rows="10" />
-              </FormGroup>
-              <FormButtonContainer>
-                <FormButton>Send!</FormButton>
-              </FormButtonContainer>
-            </Form>
-          </div>
-        </FormContainer>
-      </>
-    );
-  }
-}
+            )}
+            <FormGroup>
+              <TextareaLabel htmlFor="projectDetails">
+                Project details
+              </TextareaLabel>
+              <textarea
+                name="projectDetails"
+                id="projectDetails"
+                cols="30"
+                rows="10"
+              />
+            </FormGroup>
+            <FormGroup>
+              <label htmlFor="name">Name:</label>
+              <input type="text" id="name" />
+            </FormGroup>
+            <FormGroup>
+              <label htmlFor="email">Email:</label>
+              <input type="text" id="email" />
+            </FormGroup>
+            <FormGroup>
+              <TextareaLabel htmlFor="message">Message:</TextareaLabel>
+              <textarea name="message" id="message" cols="30" rows="10" />
+            </FormGroup>
+            <FormButtonContainer>
+              <FormButton>Send!</FormButton>
+            </FormButtonContainer>
+          </Form>
+        </div>
+      </FormContainer>
+    </>
+  );
+};
 
 const Intro = styled.header`
   min-height: 40vh;
@@ -76,7 +114,7 @@ const Form = styled.form`
 `;
 
 const TextareaLabel = styled.label`
-  height: 300px;  
+  height: 300px;
 `;
 
 const FormGroup = styled.div`
@@ -116,7 +154,7 @@ const FormGroup = styled.div`
     resize: none;
     height: 300px;
   }
-  
+
   ${TextareaLabel} {
     height: 300px;
   }
