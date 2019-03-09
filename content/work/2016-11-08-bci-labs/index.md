@@ -3,7 +3,7 @@ title: Bci Labs
 date: "2016-11-08"
 featuredImage: "bci-labs-1.jpg"
 tags: [front-end, ui, ux, design, web development, wordpress]
-category: "Front-End Development"
+categories: [Front-End Development, UX/UI Design]
 tools: [WordPress, jQuery, HTML5, CSS3, Sketch]
 behance_url: "https://www.behance.com"
 dribbble_url: "https://www.dribbble.com"

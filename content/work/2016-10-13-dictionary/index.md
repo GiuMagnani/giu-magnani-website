@@ -3,7 +3,7 @@ title: Biographical Dictionary of Colonial Chile
 date: "2018-10-13"
 featuredImage: "dictionary-15.jpg"
 tags: [editorial, book, design, graphic, illustration, graphic]
-category: "graphic design"
+categories: [graphic design]
 ---
 
 ##Academic project that consisted in the reinterpretation through editorial design and illustration, of the "Diccionario Biográfico Colonial de Chile" (Biographical Dictionary of Colonial Chile), written in 1906 by the historian Jose Toribio Medina.

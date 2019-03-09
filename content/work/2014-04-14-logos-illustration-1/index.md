@@ -3,7 +3,7 @@ title: Logo - Illustration 1
 date: "2014-04-14"
 featuredImage: "logos-illustration-1.jpg"
 tags: [logo, illustration, icon, animated, cartoon]
-category: "design"
+categories: [graphic design]
 ---
 
 Designed to be part of logos, these are some of my Illustration Collection.

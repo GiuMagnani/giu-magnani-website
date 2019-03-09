@@ -3,7 +3,7 @@ title: Logo Collection 2
 date: "2013-08-09"
 featuredImage: "logo-collection-2-0.jpg"
 tags: [logo, illustration, icon, animated, cartoon]
-category: "design"
+categories: [graphic design, logo design]
 ---
 
 This is my second collection of Logos (marks). These were designed between 2012-2013 and for the same US company.

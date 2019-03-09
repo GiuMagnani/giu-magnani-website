@@ -3,7 +3,7 @@ title: 3D Logo
 date: "2014-05-27"
 featuredImage: "3d_logo.jpg"
 tags: [3d, logo, neon, branding]
-category: "design"
+categories: [graphic design, logo design, 3D]
 ---
 
 This is my 3D neon logo made in Cinema4D.

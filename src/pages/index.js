@@ -166,7 +166,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            category
+            categories
             date
             featuredImage {
               childImageSharp {

@@ -3,7 +3,7 @@ title: Illustrated Bookmarks
 date: "2014-06-23"
 featuredImage: "read-book.jpg"
 tags: [illustration, bookmark, illustrator, drawing, kid]
-category: "illustration"
+categories: [Illustration]
 ---
 
 Illustrations made for a bookmarks competition from Chile, the theme was the reading encouragement. 

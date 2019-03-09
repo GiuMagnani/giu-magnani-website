@@ -3,7 +3,7 @@ title: Logo Collection 1
 date: "2013-08-09"
 featuredImage: "logo-collection-1-1.jpg"
 tags: [logo, illustration, icon, animated, cartoon]
-category: "design"
+categories: [graphic design, logo design]
 ---
 
 Collection of Logos (marks) designed between 2012 and 2013 for a logo provider of United States. Featuring some of almost 800 concepts.

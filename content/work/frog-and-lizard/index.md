@@ -3,7 +3,7 @@ title: Frog & Lizard
 date: "2013-01-01"
 featuredImage: "lagar.jpg"
 tags: [illustration]
-category: "illustration"
+categories: [Illustration]
 ---
 
 Lizard and Frog illustrations.

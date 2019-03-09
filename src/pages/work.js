@@ -10,6 +10,7 @@ const Work = ({ location, data }) => {
     "Graphic Design": true,
     "UX/UI Design": true,
     "Front-End Development": true,
+    "Logo Design": true,
     Illustration: true,
   });
 
@@ -27,7 +28,7 @@ const Work = ({ location, data }) => {
       if (!filters[key]) return;
 
       items.map(item => {
-        item.node.frontmatter.tags.map(tag => {
+        item.node.frontmatter.categories.map(tag => {
           if (tag.toLowerCase() === key.toLowerCase()) filteredItems.push(item);
         });
       });
@@ -46,6 +47,11 @@ const Work = ({ location, data }) => {
               onClick={() => toggleFilter("Graphic Design")}
               className={filters["Graphic Design"] ? "is-active" : ""}>
               Graphic Design,
+            </a>{" "}
+            <a
+              onClick={() => toggleFilter("Logo Design")}
+              className={filters["Logo Design"] ? "is-active" : ""}>
+              Logo Design,
             </a>{" "}
             <a
               onClick={() => toggleFilter("UX/UI Design")}
@@ -194,7 +200,7 @@ export const pageQuery = graphql`
             date(formatString: "DD MMMM, YYYY")
             title
             tags
-            category
+            categories
             featuredImage {
               childImageSharp {
                 sizes(quality: 100, maxWidth: 1240) {

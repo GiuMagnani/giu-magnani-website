@@ -240,7 +240,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         tags
-        category
+        categories
         tools
         behance_url
         dribbble_url

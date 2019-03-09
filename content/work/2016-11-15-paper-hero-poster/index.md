@@ -3,7 +3,7 @@ title: Paper Hero Poster Design
 date: "2016-11-15"
 featuredImage: "paper-1.jpg"
 tags: [design, paper, crafts, graphic design, heart]
-category: "design"
+categories: [graphic design]
 ---
 
 Second version of the competition organized by Antalis-GMS and the INACAP Apoquindo Graphic Design school, aimed at students from universities and institutes throughout Chile. The purpose of this call was to visually reinterpret the destiny, use or role of the paper, incorporating concepts of innovation and sustainability.

@@ -18,7 +18,7 @@ const LatestProjectItems = ({ projects, className }) => {
           <ProjectBody>
             <ProjectDate>{node.frontmatter.date}</ProjectDate>
             <ProjectBodyInner>
-              <ProjectAreas>{node.frontmatter.category}</ProjectAreas>
+              <ProjectAreas>{node.frontmatter.categories}</ProjectAreas>
               <ProjectName>{node.frontmatter.title}</ProjectName>
               <ProjectDescription>{node.excerpt}</ProjectDescription>
             </ProjectBodyInner>
