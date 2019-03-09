@@ -38,8 +38,8 @@ const Layout = ({location, children}) => {
       title = "Home";
     } else if (currentPath === "about") {
       title = "About";
-    } else if (currentPath === "projects") {
-      title = "Projects";
+    } else if (currentPath === "work") {
+      title = "Work";
     } else if (currentPath === "contact") {
       title = "Contact";
     } else if (currentPath === "journal") {

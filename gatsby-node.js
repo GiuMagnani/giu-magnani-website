@@ -2,7 +2,7 @@ const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = ({ graphql, actions }) => {
-  const projectSingle = path.resolve(`./src/templates/project-single.js`);
+  const projectSingle = path.resolve(`./src/templates/work-single.js`);
   const journalSingle = path.resolve(`./src/templates/journal-single.js`);
   const shopSingle = path.resolve(`./src/templates/shop-single.js`);
 
@@ -24,7 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
         switch (type) {
           case 'journal':
             return journalSingle;
-          case 'projects':
+          case 'work':
             return projectSingle;
           case 'shop':
             return shopSingle;
@@ -74,7 +74,7 @@ exports.createPages = ({ graphql, actions }) => {
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/projects/" } }
+          filter: { fileAbsolutePath: { regex: "/work/" } }
         ) {
           edges {
             node {
@@ -89,7 +89,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => createPageByType(result, 'projects'));
+  ).then(result => createPageByType(result, 'work'));
 
   graphql(
     `

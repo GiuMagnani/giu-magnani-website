@@ -13,7 +13,7 @@ const H1Props = {
   exit: { opacity: 0, x: "15%", transition: { duration: 150, delay: 150 } },
 };
 
-const ProjectSingle = props => {
+const WorkSingle = props => {
   const post = props.data.markdownRemark;
   const siteTitle = props.data.site.siteMetadata.title;
   const { previous, next } = props.pageContext;
@@ -222,7 +222,7 @@ const Pagination = styled.ul`
   }
 `;
 
-export default ProjectSingle;
+export default WorkSingle;
 
 export const pageQuery = graphql`
   query ProjectSingleBySlug($slug: String!) {

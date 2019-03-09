@@ -22,6 +22,9 @@ const BlogIndex = ({ location, data }) => {
             UX/UI and Front-End Development Projects
           </ProjectsHeading>
           <LatestProjectItems projects={projects} />
+          <LatestProjectSeeMore>
+            <Link to={"/work"}>See all my Work →</Link>
+          </LatestProjectSeeMore>
         </div>
       </ProjectsWrapper>
       <JournalWrapper>
@@ -122,6 +125,8 @@ const JournalWrapper = styled.section`
   }
 `;
 
+const LatestProjectSeeMore = styled(LatestPostsSeeMore)``;
+
 export const pageQuery = graphql`
   query IndexQuery {
     site {
@@ -150,9 +155,9 @@ export const pageQuery = graphql`
       }
     }
     projects: allMarkdownRemark(
-      limit: 6
+      limit: 8
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/projects/" } }
+      filter: { fileAbsolutePath: { regex: "/work/" } }
     ) {
       edges {
         node {
@@ -166,7 +171,12 @@ export const pageQuery = graphql`
             date
             featuredImage {
               childImageSharp {
-                sizes(quality: 100, maxWidth: 800, duotone: { highlight: "#ffffff", shadow: "#2222ff" }, toFormat: PNG) {
+                sizes(
+                  quality: 100
+                  maxWidth: 800
+                  duotone: { highlight: "#ffffff", shadow: "#2222ff" }
+                  toFormat: PNG
+                ) {
                   ...GatsbyImageSharpSizes
                 }
               }

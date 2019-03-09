@@ -1,18 +1,17 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import styled from 'styled-components';
+import React from "react";
+import Link from "gatsby-link";
+import styled from "styled-components";
 
 class Header extends React.Component {
   render() {
     return (
       <HeaderNav>
-        <NavLogo to={'/'}>
+        <NavLogo to={"/"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             width="39"
-            height="40"
-          >
+            height="40">
             <defs>
               <path id="a" d="M38.9264.0746v39.3698H.0001V.0746z" />
             </defs>
@@ -36,16 +35,16 @@ class Header extends React.Component {
           <span>Giu Magnani Website</span>
         </NavLogo>
         <NavLinks>
-          <Link to={'/about'}>About</Link>
-          <Link to={'/work'}>Projects</Link>
-          <Link to={'/journal'}>Journal</Link>
+          <Link to={"/about"}>About</Link>
+          <Link to={"/work"}>Work</Link>
+          <Link to={"/journal"}>Journal</Link>
           {/*<Link to={'/shop'}>Shop</Link>*/}
-          <Link to={'/contact'}>Contact</Link>
+          <Link to={"/contact"}>Contact</Link>
         </NavLinks>
         {/*<NavLanguages>*/}
-          {/*<button>EN</button>*/}
-          {/*<button>ES</button>*/}
-          {/*<button>IT</button>*/}
+        {/*<button>EN</button>*/}
+        {/*<button>ES</button>*/}
+        {/*<button>IT</button>*/}
         {/*</NavLanguages>*/}
       </HeaderNav>
     );
@@ -54,7 +53,7 @@ class Header extends React.Component {
 
 const HeaderNav = styled.nav`
   height: 60px;
-  background-color: ${ props => props.theme.main };
+  background-color: ${props => props.theme.main};
   color: white;
   display: flex;
   align-items: center;
@@ -64,7 +63,7 @@ const HeaderNav = styled.nav`
 const NavLogo = styled(Link)`
   padding-left: 30px;
   padding-top: 7px;
-  
+
   span {
     visibility: hidden;
     width: 0;
@@ -78,11 +77,11 @@ const NavLinks = styled.div`
   display: flex;
   justify-content: flex-start;
   padding-left: 30px;
-  
+
   a {
-  color: white;
-  text-decoration: none;
-  padding-right: 30px;
+    color: white;
+    text-decoration: none;
+    padding-right: 30px;
   }
 `;
 

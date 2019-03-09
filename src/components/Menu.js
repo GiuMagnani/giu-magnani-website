@@ -26,7 +26,7 @@ const Menu = ({ isMenuOpen, setMenuVisibility }) => (
         <Link to={"/about"}>About</Link>
       </Item>
       <Item key="1">
-        <Link to={"/work"}>Projects</Link>
+        <Link to={"/work"}>Work</Link>
       </Item>
       <Item key="2">
         <Link to={"/journal"}>Journal</Link>

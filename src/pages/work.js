@@ -232,10 +232,10 @@ const WorkItem = styled(Link)`
 export default Work;
 
 export const pageQuery = graphql`
-  query WorkQuery {
+  query ProjectsQuery {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: ASC }
-      filter: { fileAbsolutePath: { regex: "/projects/" } }
+      filter: { fileAbsolutePath: { regex: "/work/" } }
     ) {
       edges {
         node {
