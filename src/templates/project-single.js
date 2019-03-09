@@ -13,12 +13,10 @@ const H1Props = {
   exit: { opacity: 0, x: "15%", transition: { duration: 150, delay: 150 } },
 };
 
-const ProjectSingle = ({ data, pageContext }, ...props) => {
-  const post = data.markdownRemark;
-  const siteTitle = data.site.siteMetadata.title;
-  const { previous, next } = pageContext;
-
-  console.log(props);
+const ProjectSingle = props => {
+  const post = props.data.markdownRemark;
+  const siteTitle = props.data.site.siteMetadata.title;
+  const { previous, next } = props.pageContext;
 
   return (
     <>
@@ -33,15 +31,15 @@ const ProjectSingle = ({ data, pageContext }, ...props) => {
             <ul>
               {post.frontmatter.tags && (
                 <li>
-                  {post.frontmatter.tags.map(tag => (
-                    <span>{tag} </span>
+                  {post.frontmatter.tags.map((tag, index) => (
+                    <span key={index}>{tag} </span>
                   ))}
                 </li>
               )}
               {post.frontmatter.tools && (
                 <li>
-                  {post.frontmatter.tools.map(tool => (
-                    <span>{tool} </span>
+                  {post.frontmatter.tools.map((tool, index) => (
+                    <span key={index}>{tool} </span>
                   ))}
                 </li>
               )}
@@ -62,8 +60,9 @@ const ProjectSingle = ({ data, pageContext }, ...props) => {
               )}
               {post.frontmatter.colors && (
                 <li>
-                  {post.frontmatter.colors.map(color => (
+                  {post.frontmatter.colors.map((color, index) => (
                     <span
+                      key={index}
                       style={{
                         height: "10px",
                         width: "10px",
@@ -156,21 +155,45 @@ const Intro = styled.header`
 `;
 
 const Content = styled.div`
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    max-width: 700px;
+    margin: 2rem auto;
+  }
+
+  h2 {
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+
+  em {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+
+    a {
+      font-size: 14px;
+    }
+  }
+
   p {
     margin: 1rem auto;
-    max-width: 590px;
-    font-size: 18px;
+    font-size: 21px;
   }
 
   a {
-    font-size: 18px;
+    font-size: 21px;
     font-weight: bold;
     text-decoration: underline;
   }
 
-  img,
-  .gatsby-resp-image-link {
-    display: block;
+  .gatsby-resp-image-wrapper {
     margin: 3rem auto;
   }
 `;

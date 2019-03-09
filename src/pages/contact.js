@@ -99,12 +99,12 @@ const Intro = styled.header`
 const FormContainer = styled.div`
   border-width: 4px 0;
   margin-top: 0.5rem;
+  margin-bottom: 4rem;
   border-top: 1px solid ${props => props.theme.main};
 
   .container {
     border: 1px solid ${props => props.theme.main};
     border-top: 0;
-    border-bottom: 0;
     padding: 1rem;
   }
 `;

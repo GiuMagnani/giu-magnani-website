@@ -89,11 +89,11 @@ const Intro = styled.header`
 
 const AboutWrapper = styled.div`
   margin-top: 0.5rem;
+  margin-bottom: 4rem;
   border-top: 1px solid ${props => props.theme.main};
 
   .container {
     border: 1px solid ${props => props.theme.main};
-    border-bottom: 0;
     border-top: 0;
     padding: 0 1rem 1rem;
   }

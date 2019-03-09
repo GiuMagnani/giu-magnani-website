@@ -71,6 +71,7 @@ const Intro = styled.header`
 `;
 
 const JournalWrapper = styled.div`
+  margin-bottom: 4rem;
 `;
 
 const JournalListWrapper = styled.div`

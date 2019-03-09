@@ -28,6 +28,7 @@ module.exports = {
     },
   },
   plugins: [
+    "gatsby-mdx",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -42,7 +43,10 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 1200,
+              linkImagesToOriginal: false,
+              quality: 100,
+              withWebp: true,
             },
           },
           {

@@ -8,7 +8,11 @@ const LatestJournalItems = ({ journal, className }) => (
       {journal.map(({ node }, index) => {
         return (
           <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
-            <JournalIndex>{`${(index + 1).toString().length === 1 ? '0' + (index + 1) : index + 1}`}</JournalIndex>
+            <JournalIndex>{`${
+              (index + 1).toString().length === 1
+                ? "0" + (index + 1)
+                : index + 1
+            }`}</JournalIndex>
             <small>{node.frontmatter.date}</small>
             <h3>{node.frontmatter.title}</h3>
             <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
@@ -22,18 +26,19 @@ const LatestJournalItems = ({ journal, className }) => (
 const LatestPosts = styled.div`
   border-width: 1px;
   border-style: solid;
-  border-color: ${ props => props.theme.main };
+  border-color: ${props => props.theme.main};
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
 
-  @media (min-width: ${ props => props.theme.lg }) {
+  @media (min-width: ${props => props.theme.lg}) {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 
 const LatestPostsItem = styled(Link)`
-  border: 0 solid ${ props => props.theme.main };
+  border: 0 solid ${props => props.theme.main};
   border-bottom-width: 1px;
   width: 100%;
   min-height: 280px;
@@ -41,14 +46,24 @@ const LatestPostsItem = styled(Link)`
   padding: 30px 30px 40px;
   position: relative;
 
-  @media (min-width: ${ props => props.theme.lg }) {
-    width: 25%;
+  &&:last-of-type {
     border-bottom-width: 0;
-    border-right-width: 1px;
   }
 
-  &&:last-of-type {
-    border: 0;
+  @media (min-width: ${props => props.theme.lg}) {
+    width: 25%;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+    height: 300px;
+    margin-bottom: -1px;
+
+    &&:last-of-type {
+      border-bottom-width: 1px;
+    }
+
+    &&:nth-child(4n) {
+      border-right-width: 0;
+    }
   }
 
   small {
@@ -79,7 +94,7 @@ const LatestPostsItem = styled(Link)`
 const JournalIndex = styled.span`
   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: ${ props => props.theme.main };
+  -webkit-text-stroke-color: ${props => props.theme.main};
   font-size: 40px;
   font-weight: bold;
   position: absolute;
@@ -92,7 +107,6 @@ const JournalIndex = styled.span`
   display: block;
 `;
 
-const LatestPostsContainer = styled.div`
-`;
+const LatestPostsContainer = styled.div``;
 
 export default LatestJournalItems;

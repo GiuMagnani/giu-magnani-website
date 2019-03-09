@@ -7,10 +7,13 @@
     "url": "https://github.com/GiuMagnani/giu-magnani-website/issues"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^0.20.3",
+    "@mdx-js/tag": "^0.20.3",
     "babel-plugin-styled-components": "^1.8.0",
     "dotenv": "^6.0.0",
     "gatsby": "^2.0.118",
     "gatsby-image": "^2.0.29",
+    "gatsby-mdx": "^0.4.2",
     "gatsby-plugin-feed": "^2.0.13",
     "gatsby-plugin-google-analytics": "^2.0.13",
     "gatsby-plugin-manifest": "^2.0.17",

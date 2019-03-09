@@ -15,19 +15,6 @@ import posed, { PoseGroup } from "react-pose";
 const transitionDuration = 150;
 const transitionDelay = 200;
 
-const CurtainProps = {
-  enter: {
-    scaleY: "0",
-    transition: {
-      duration: 300,
-    },
-  },
-  exit: {
-    scaleY: "1",
-    transition: { duration: 300 },
-  },
-};
-
 const Transition = posed.div({
   enter: {
     opacity: 1,
@@ -40,10 +27,10 @@ const Transition = posed.div({
   exit: { opacity: 0, transition: { duration: transitionDuration } },
 });
 
-class Layout extends Component {
-  getLocalTitle() {
+const Layout = ({location, children}) => {
+  const getLocalTitle = () => {
     const pathPrefix = config.pathPrefix ? config.pathPrefix : "/";
-    const currentPath = this.props.location.pathname
+    const currentPath = location.pathname
       .replace(pathPrefix, "")
       .replace("/", "");
     let title = "";
@@ -59,44 +46,32 @@ class Layout extends Component {
       title = "Journal";
     }
     return title;
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <SEO />
-        <Helmet>
-          <title>{`${config.siteTitle} |  ${this.getLocalTitle()}`}</title>
-        </Helmet>
-        <ThemeProvider theme={Theme}>
-          <>
-            <GlobalStyle />
-            <Header />
-            <PoseGroup>
-              <Transition key={this.props.location.pathname}>
-                <Curtain />
-                <Main>{this.props.children}</Main>
-              </Transition>
-            </PoseGroup>
-            <Footer config={config} />
-          </>
-        </ThemeProvider>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <SEO />
+      <Helmet>
+        <title>{`${config.siteTitle} |  ${getLocalTitle()}`}</title>
+      </Helmet>
+      <ThemeProvider theme={Theme}>
+        <>
+          <GlobalStyle />
+          <Header />
+          <PoseGroup>
+            <Transition key={location.pathname}>
+              <Main>{children}</Main>
+            </Transition>
+          </PoseGroup>
+          <Footer config={config} />
+        </>
+      </ThemeProvider>
+    </div>
+  );
+};
 
 const Main = styled.main`
   min-height: calc(100vh - 98px);
-`;
-
-const Curtain = styled(posed.div(CurtainProps))`
-  // background-color: ${props => props.theme.main};
-  // height: 100vh;
-  // width: 100vh;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
 `;
 
 export default Layout;
