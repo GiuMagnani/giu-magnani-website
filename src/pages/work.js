@@ -10,70 +10,30 @@ const Work = ({ location, data }) => {
     "Graphic Design": true,
     "UX/UI Design": true,
     "Front-End Development": true,
-    Illustration: false,
+    Illustration: true,
   });
-  // const [filters, setFilters] = useState({
-  //   graphicDesign: {
-  //     label: "Graphic Design",
-  //     value: true,
-  //   },
-  //   UXUIDesign: {
-  //     label: "Graphic Design",
-  //     value: true,
-  //   },
-  //   frontEndDevelopment: {
-  //     label: "Graphic Design",
-  //     value: true,
-  //   },
-  //   illustration: {
-  //     label: "Graphic Design",
-  //     value: true,
-  //   },
-  // });
 
   const toggleFilter = filter => {
-    // setFilters({ ...filters, [filter]: {...filters[filter], value: !filters[filter].value } });
     setFilters({
       ...filters,
       [filter]: !filters[filter],
     });
-    filterProjects();
   };
 
-  const filterProjects = () => {
-    let test = [];
+  const getFilteredItems = () => {
+    let filteredItems = [];
 
-    items.filter(x => {
-      Object.keys(filters).map(fKey => {
-        console.log(x.node.frontmatter.category);
-        if (filters[fKey] && x.node.frontmatter.category === fKey) {
-          console.log(x.node.frontmatter.category);
-          test.push(x);
-        }
+    Object.keys(filters).map(key => {
+      if (!filters[key]) return;
+
+      items.map(item => {
+        item.node.frontmatter.tags.map(tag => {
+          if (tag.toLowerCase() === key.toLowerCase()) filteredItems.push(item);
+        });
       });
     });
 
-    console.log(test);
-
-    // const activeFilters = Object.keys(filters).map(x => {
-    //   if (filters[x].value === true) {
-    //     return filters[x];
-    //   }
-    // });
-    //
-    // console.log(activeFilters);
-
-    // items.map((x) => {
-    //   x.node.frontmatter.tags.map(i => {
-    //     activeFilters.map(filter => {
-    //       // console.log(key);
-    //       // console.log(filters[key].label);
-    //       if (i.toLowerCase() === filter.label.toLowerCase()) test.push(x);
-    //     });
-    //   });
-    // });
-
-    // console.log(test);
+    return filteredItems;
   };
 
   return (
@@ -109,22 +69,9 @@ const Work = ({ location, data }) => {
       </Intro>
       <ProjectListWrapper>
         <div className="container">
-          <ProjectList projects={items} />
+          <ProjectList projects={getFilteredItems()} />
         </div>
       </ProjectListWrapper>
-
-      {/*<WorksContainer>*/}
-      {/*{ items.map((item, key) => (*/}
-      {/*<WorkItem key={ key } to={ item.node.fields.slug }>*/}
-      {/*<Img sizes={*/}
-      {/*item.node.frontmatter.featuredImage.childImageSharp.sizes*/}
-      {/*} alt={ item.node.frontmatter.title } />*/}
-      {/*<h4>{ item.node.frontmatter.category }</h4>*/}
-      {/*<h3>{ item.node.frontmatter.title }</h3>*/}
-      {/*<p>{ item.node.excerpt }</p>*/}
-      {/*</WorkItem>*/}
-      {/*)) }*/}
-      {/*</WorksContainer>*/}
     </ProjectsWrapper>
   );
 };

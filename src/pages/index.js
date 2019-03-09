@@ -98,7 +98,6 @@ const LatestPostsSeeMore = styled.div`
 
   @media (min-width: ${props => props.theme.lg}) {
     a {
-      width: calc(20% + 7px);
       width: 100%;
       text-align: center;
     }
