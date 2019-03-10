@@ -10,7 +10,6 @@ const Work = ({ location, data }) => {
     "Graphic Design": true,
     "UX/UI Design": true,
     "Front-End Development": true,
-    "Logo Design": true,
     Illustration: true,
   });
 
@@ -29,7 +28,9 @@ const Work = ({ location, data }) => {
 
       items.map(item => {
         item.node.frontmatter.categories.map(tag => {
-          if (tag.toLowerCase() === key.toLowerCase()) filteredItems.push(item);
+          if (tag.toLowerCase() === key.toLowerCase()) {
+            filteredItems = [...filteredItems, item];
+          }
         });
       });
     });
@@ -47,11 +48,6 @@ const Work = ({ location, data }) => {
               onClick={() => toggleFilter("Graphic Design")}
               className={filters["Graphic Design"] ? "is-active" : ""}>
               Graphic Design,
-            </a>{" "}
-            <a
-              onClick={() => toggleFilter("Logo Design")}
-              className={filters["Logo Design"] ? "is-active" : ""}>
-              Logo Design,
             </a>{" "}
             <a
               onClick={() => toggleFilter("UX/UI Design")}
