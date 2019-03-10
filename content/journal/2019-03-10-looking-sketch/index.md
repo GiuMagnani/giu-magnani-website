@@ -3,7 +3,7 @@ title: Looking ~
 date: "2019-02-04"
 ---
 
-Looking ~
+![Eye Sketch](./eyes.jpg)
 
 Quick eye sketch done digitally with Adobe Photoshop. I think that brush looks almost like the real thing...
 
