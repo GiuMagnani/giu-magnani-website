@@ -8,22 +8,17 @@ const Hero = () => (
   <HeroDivWrapper>
     <HeroDiv className="container">
       <MainHeading>
-        <FormattedMessage id="home.heading" />
-        <h1>I'm Giu Magnani.</h1>
+        <h1>
+          <FormattedMessage id="home.heading1" />
+        </h1>
         <h2>
-          I’m a Front-End Developer and UI/UX Designer from Chile working and
-          living in Milan, Italy.
+          <FormattedMessage id="home.heading2" />
         </h2>
         <p>
-          I'm a creative and passionate professional who loves Web as much as
-          Design. I started working with small business and participating in
-          design contests to build a strong portfolio and references. With
-          perseverance and hard work, in 2012 I was contacted to work remotely
-          with a company in USA which produces logo and print design services.
-          In 2013, I went to London, UK.
+          <FormattedMessage id="home.summary" />
         </p>
         <HeroSocialLinksText>
-          See what I’ve been sharing on Social Media:
+          <FormattedMessage id="home.socialIntro" />
         </HeroSocialLinksText>
         <HeroSocialLinks isBlue={true} />
       </MainHeading>

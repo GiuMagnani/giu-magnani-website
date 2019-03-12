@@ -5,13 +5,17 @@ import { injectIntl } from "react-intl";
 import languages from "../i18n/languages";
 
 const Header = ({ intl: { locale } }) => {
+  const getTo = to => {
+    return languages[locale].default ? to : `/${languages[locale].locale}${to}`;
+  };
   return (
     <HeaderNav>
       {Object.keys(languages).map(key => (
         <Link
           style={{ color: key === locale ? "white" : "red" }}
           key={languages[key].locale}
-          to={languages[key].default ? "/" : `/${languages[key].locale}`}>
+          to={languages[key].default ? "/" : `/${languages[key].locale}`}
+          state={{ stopTransition: true }}>
           {languages[key].locale}
         </Link>
       ))}
@@ -44,11 +48,11 @@ const Header = ({ intl: { locale } }) => {
         <span>Giu Magnani Website</span>
       </NavLogo>
       <NavLinks>
-        <Link to={"/about"}>About</Link>
-        <Link to={"/work"}>Work</Link>
-        <Link to={"/journal"}>Journal</Link>
-        {/*<Link to={'/shop'}>Shop</Link>*/}
-        <Link to={"/contact"}>Contact</Link>
+        <Link to={getTo("/about")}>About</Link>
+        <Link to={getTo("/work")}>Work</Link>
+        <Link to={getTo("/journal")}>Journal</Link>
+        {/*<Link to={getTo('/shop')}>Shop</Link>*/}
+        <Link to={getTo("/contact")}>Contact</Link>
       </NavLinks>
       {/*<NavLanguages>*/}
       {/*<button>EN</button>*/}

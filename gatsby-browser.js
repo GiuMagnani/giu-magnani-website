@@ -10,7 +10,19 @@ export const wrapPageElement = ({ element, props }) => {
 export const shouldUpdateScroll = ({
   routerProps: { location },
   getSavedScrollPosition,
+  // prevRouterProps,
+  // pathname,
 }) => {
+  // console.log(props);
+  // const shouldAnimate = () => {
+  //   return (
+  //     prevRouterProps.pathname.split("/").length === 1 &&
+  //     pathname !== "/es" &&
+  //     pathname !== "/it"
+  //   );
+  // };
+  // pathname.split('/').length > 1
+
   if (location.action === "PUSH") {
     window.setTimeout(() => window.scrollTo(0, 0), transitionDelay);
   } else {

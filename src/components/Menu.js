@@ -35,6 +35,7 @@ const Menu = ({ isMenuOpen, setMenuVisibility }) => (
         <Link to={"/contact"}>Contact</Link>
       </Item>
     </MenuGroup>
+    {/* random featured work with link, maybe another thing... */}
   </MenuWrapper>
 );
 

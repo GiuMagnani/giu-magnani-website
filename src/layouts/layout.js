@@ -29,17 +29,24 @@ const transitionDelay = 200;
 const Transition = posed.div({
   enter: {
     opacity: 1,
-    transition: {
-      duration: transitionDuration,
+    transition: ({ shouldAnimate }) => {
+      return { duration: shouldAnimate ? transitionDuration : 0 };
     },
     delay: transitionDelay,
     beforeChildren: true,
   },
-  exit: { opacity: 0, transition: { duration: transitionDuration } },
+  exit: {
+    opacity: ({ shouldAnimate }) => shouldAnimate ? 0 : 1,
+    transition: ({ shouldAnimate }) => {
+      return { duration: shouldAnimate ? transitionDuration : 0 };
+    },
+  },
 });
 
 const Layout = ({ location, children, pageContext }) => {
   const { locale } = pageContext;
+
+  const shouldAnimate = !(location.state && location.state.stopTransition);
 
   const defaultLocale =
     languages[Object.keys(languages).find(key => languages[key].default)]
@@ -78,7 +85,7 @@ const Layout = ({ location, children, pageContext }) => {
             <GlobalStyle />
             <Header />
             <PoseGroup>
-              <Transition key={location.pathname}>
+              <Transition key={location.pathname} shouldAnimate={shouldAnimate}>
                 <Main>{children}</Main>
               </Transition>
             </PoseGroup>
