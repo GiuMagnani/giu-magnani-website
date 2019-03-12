@@ -4,9 +4,8 @@ import { IntlProvider, addLocaleData } from "react-intl";
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
 import { messages, defaultLocale } from "./src/i18n/i18n";
-addLocaleData([...esData, ...enData]);
 
-const transitionDelay = 200;
+addLocaleData([...esData, ...enData]);
 
 export const wrapPageElement = ({ props, element }) => {
   const locale = props.pageContext.locale;
@@ -19,20 +18,4 @@ export const wrapPageElement = ({ props, element }) => {
       </Layout>
     </IntlProvider>
   );
-};
-
-export const shouldUpdateScroll = ({
-  routerProps: { location },
-  getSavedScrollPosition,
-}) => {
-  if (location.action === "PUSH") {
-    window.setTimeout(() => window.scrollTo(0, 0), transitionDelay);
-  } else {
-    const savedPosition = getSavedScrollPosition(location);
-    window.setTimeout(
-      () => window.scrollTo(...(savedPosition || [0, 0])),
-      transitionDelay
-    );
-  }
-  return false;
 };
