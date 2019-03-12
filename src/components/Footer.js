@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import SocialLinks from "./SocialLinks";
+import { FormattedMessage } from "react-intl";
 
 class Footer extends React.Component {
   render() {
@@ -39,7 +40,7 @@ class Footer extends React.Component {
           </FooterEmailLink>
           <FooterSocialLinks />
           <FooterCopyright>
-            <span>Designed & Developed by Giu Magnani 2019</span>
+            <span><FormattedMessage id="footer.copyright" /></span>
           </FooterCopyright>
         </div>
       </FooterWrapper>

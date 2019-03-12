@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import LatestJournalItems from "../components/LatestJournalItems";
+import { FormattedMessage } from "react-intl";
 // import posed from "react-pose";
 
 // const Section = posed.section({
@@ -17,11 +18,8 @@ const Journal = ({ data }) => {
       <JournalWrapper>
         <Intro>
           <div className="container">
-            <h1>My Journal</h1>
-            <p>
-              Here I’ll post my thoughts and experiments on art, design and
-              development.
-            </p>
+            <h1><FormattedMessage id="journal.heading1" /></h1>
+            <p><FormattedMessage id="journal.heading2" /></p>
           </div>
           {/*Filter by:*/}
           {/*<ul>*/}

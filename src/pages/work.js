@@ -3,6 +3,7 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import { Link, graphql } from "gatsby";
 import LatestProjectItems from "../components/LatestProjectItems";
+import { FormattedMessage } from "react-intl";
 
 const Work = ({ location, data }) => {
   const items = data.allMarkdownRemark.edges;
@@ -43,29 +44,28 @@ const Work = ({ location, data }) => {
       <Intro>
         <div className="container">
           <p>
-            Latest{" "}
+            <FormattedMessage id="projects.latest" />{" "}
             <a
               onClick={() => toggleFilter("Graphic Design")}
               className={filters["Graphic Design"] ? "is-active" : ""}>
-              Graphic Design,
+              <FormattedMessage id="projects['Graphic Design']" />
             </a>{" "}
             <a
               onClick={() => toggleFilter("UX/UI Design")}
               className={filters["UX/UI Design"] ? "is-active" : ""}>
-              UX/UI Design,
+              <FormattedMessage id="projects['UX/UI Design']" />
             </a>{" "}
             <a
               onClick={() => toggleFilter("Front-End Development")}
               className={filters["Front-End Development"] ? "is-active" : ""}>
-              Front-End Development
+              <FormattedMessage id="projects['Front-End Development']" />
             </a>{" "}
-            and{" "}
+            <FormattedMessage id="projects.and" />{" "}
             <a
               onClick={() => toggleFilter("Illustration")}
               className={filters["Illustration"] ? "is-active" : ""}>
-              Illustration
-            </a>{" "}
-            Projects.
+              <FormattedMessage id="projects['Illustration']" />
+            </a><FormattedMessage id="projects.projects" />
           </p>
         </div>
       </Intro>

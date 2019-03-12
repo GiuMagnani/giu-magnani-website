@@ -5,6 +5,7 @@ import LatestProjectItems from "../components/LatestProjectItems";
 import Hero from "../components/Hero";
 import styled from "styled-components";
 import Menu from "../components/Menu";
+import { FormattedMessage } from "react-intl";
 
 const BlogIndex = ({ location, data }) => {
   const journal = data.journal.edges;
@@ -19,20 +20,20 @@ const BlogIndex = ({ location, data }) => {
       <ProjectsWrapper>
         <div className="container">
           <ProjectsHeading>
-            UX/UI and Front-End Development Projects
+            <FormattedMessage id="projects.intro" />
           </ProjectsHeading>
           <LatestProjectItems projects={projects} />
           <LatestProjectSeeMore>
-            <Link to={"/work"}>See all my Work →</Link>
+            <Link to={"/work"}><FormattedMessage id="projects.seeProjects" /> →</Link>
           </LatestProjectSeeMore>
         </div>
       </ProjectsWrapper>
       <JournalWrapper>
         <div className="container">
-          <LatestPostsHeading>Latest on my Journal</LatestPostsHeading>
+          <LatestPostsHeading><FormattedMessage id="journal.intro" /></LatestPostsHeading>
           <LatestJournalItems journal={journal} />
           <LatestPostsSeeMore>
-            <Link to={"/journal"}>See my Journal →</Link>
+            <Link to={"/journal"}><FormattedMessage id="journal.seeJournal" /> →</Link>
           </LatestPostsSeeMore>
         </div>
       </JournalWrapper>

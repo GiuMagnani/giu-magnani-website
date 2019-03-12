@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import styled from "styled-components";
-import { injectIntl } from "react-intl";
+import { FormattedMessage, injectIntl } from "react-intl";
 import languages from "../i18n/languages";
 
 const Header = ({ intl: { locale } }) => {
@@ -10,15 +10,6 @@ const Header = ({ intl: { locale } }) => {
   };
   return (
     <HeaderNav>
-      {Object.keys(languages).map(key => (
-        <Link
-          style={{ color: key === locale ? "white" : "red" }}
-          key={languages[key].locale}
-          to={languages[key].default ? "/" : `/${languages[key].locale}`}
-          state={{ stopTransition: true }}>
-          {languages[key].locale}
-        </Link>
-      ))}
       <NavLogo to={"/"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,17 +39,23 @@ const Header = ({ intl: { locale } }) => {
         <span>Giu Magnani Website</span>
       </NavLogo>
       <NavLinks>
-        <Link to={getTo("/about")}>About</Link>
-        <Link to={getTo("/work")}>Work</Link>
-        <Link to={getTo("/journal")}>Journal</Link>
-        {/*<Link to={getTo('/shop')}>Shop</Link>*/}
-        <Link to={getTo("/contact")}>Contact</Link>
+        <Link to={getTo("/about")}><FormattedMessage id="menu.about" /></Link>
+        <Link to={getTo("/work")}><FormattedMessage id="menu.work" /></Link>
+        <Link to={getTo("/journal")}><FormattedMessage id="menu.journal" /></Link>
+        {/*<Link to={getTo('/shop')}><FormattedMessage id="menu.shop" /></Link>*/}
+        <Link to={getTo("/contact")}><FormattedMessage id="menu.contact" /></Link>
       </NavLinks>
-      {/*<NavLanguages>*/}
-      {/*<button>EN</button>*/}
-      {/*<button>ES</button>*/}
-      {/*<button>IT</button>*/}
-      {/*</NavLanguages>*/}
+      <NavLanguages>
+        {Object.keys(languages).map(key => (
+          <Link
+            style={{ color: key === locale ? "white" : "red" }}
+            key={languages[key].locale}
+            to={languages[key].default ? "/" : `/${languages[key].locale}`}
+            state={{ stopTransition: true }}>
+            {languages[key].locale}
+          </Link>
+        ))}
+      </NavLanguages>
     </HeaderNav>
   );
 };
@@ -102,12 +99,14 @@ const NavLanguages = styled.div`
   flex-grow: 1;
   text-align: right;
 
-  button {
+  a {
     background: none;
     border: 0;
     color: white;
     font-size: 16px;
     letter-spacing: 1px;
+    margin-left: 10px;
+    text-transform: uppercase;
   }
 `;
 

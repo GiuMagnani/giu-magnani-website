@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
 import posed, { PoseGroup } from "react-pose";
+import { FormattedMessage } from "react-intl";
 const ProjectProps = {
   enter: { opacity: 1 },
   exit: { opacity: 0 },
@@ -27,7 +28,7 @@ const LatestProjectItems = ({ projects, className }) => {
               <ProjectName>{node.frontmatter.title}</ProjectName>
               <ProjectDescription>{node.excerpt}</ProjectDescription>
             </ProjectBodyInner>
-            <ProjectLink to={node.fields.slug}>See full project →</ProjectLink>
+            <ProjectLink to={node.fields.slug}><FormattedMessage id="projects.seeProject" /> →</ProjectLink>
           </ProjectBody>
         </Project>
       ))}
