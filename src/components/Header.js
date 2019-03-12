@@ -3,11 +3,9 @@ import Link from "gatsby-link";
 import styled from "styled-components";
 import { FormattedMessage, injectIntl } from "react-intl";
 import languages from "../i18n/languages";
+import LocalizedLink from "./LocalizedLink";
 
 const Header = ({ intl: { locale } }) => {
-  const getTo = to => {
-    return languages[locale].default ? to : `/${languages[locale].locale}${to}`;
-  };
   return (
     <HeaderNav>
       <NavLogo to={"/"}>
@@ -39,11 +37,21 @@ const Header = ({ intl: { locale } }) => {
         <span>Giu Magnani Website</span>
       </NavLogo>
       <NavLinks>
-        <Link to={getTo("/about")}><FormattedMessage id="menu.about" /></Link>
-        <Link to={getTo("/work")}><FormattedMessage id="menu.work" /></Link>
-        <Link to={getTo("/journal")}><FormattedMessage id="menu.journal" /></Link>
-        {/*<Link to={getTo('/shop')}><FormattedMessage id="menu.shop" /></Link>*/}
-        <Link to={getTo("/contact")}><FormattedMessage id="menu.contact" /></Link>
+        <LocalizedLink to={"/about"}>
+          <FormattedMessage id="menu.about" />
+        </LocalizedLink>
+        <LocalizedLink to={"/work"}>
+          <FormattedMessage id="menu.work" />
+        </LocalizedLink>
+        <LocalizedLink to={"/journal"}>
+          <FormattedMessage id="menu.journal" />
+        </LocalizedLink>
+        {/*<LocalizedLink to={"/shop"}>*/}
+          {/*<FormattedMessage id="menu.shop" />*/}
+        {/*</LocalizedLink>*/}
+        <LocalizedLink to={"/contact"}>
+          <FormattedMessage id="menu.contact" />
+        </LocalizedLink>
       </NavLinks>
       <NavLanguages>
         {Object.keys(languages).map(key => (
@@ -69,7 +77,7 @@ const HeaderNav = styled.nav`
   margin-top: -20px;
 `;
 
-const NavLogo = styled(Link)`
+const NavLogo = styled(LocalizedLink)`
   padding-left: 30px;
   padding-top: 7px;
 

@@ -6,6 +6,7 @@ import Hero from "../components/Hero";
 import styled from "styled-components";
 import Menu from "../components/Menu";
 import { FormattedMessage } from "react-intl";
+import LocalizedLink from "../components/LocalizedLink";
 
 const BlogIndex = ({ location, data }) => {
   const journal = data.journal.edges;
@@ -24,16 +25,22 @@ const BlogIndex = ({ location, data }) => {
           </ProjectsHeading>
           <LatestProjectItems projects={projects} />
           <LatestProjectSeeMore>
-            <Link to={"/work"}><FormattedMessage id="projects.seeProjects" /> →</Link>
+            <LocalizedLink to={"/work"}>
+              <FormattedMessage id="projects.seeProjects" /> →
+            </LocalizedLink>
           </LatestProjectSeeMore>
         </div>
       </ProjectsWrapper>
       <JournalWrapper>
         <div className="container">
-          <LatestPostsHeading><FormattedMessage id="journal.intro" /></LatestPostsHeading>
+          <LatestPostsHeading>
+            <FormattedMessage id="journal.intro" />
+          </LatestPostsHeading>
           <LatestJournalItems journal={journal} />
           <LatestPostsSeeMore>
-            <Link to={"/journal"}><FormattedMessage id="journal.seeJournal" /> →</Link>
+            <LocalizedLink to={"/journal"}>
+              <FormattedMessage id="journal.seeJournal" /> →
+            </LocalizedLink>
           </LatestPostsSeeMore>
         </div>
       </JournalWrapper>
