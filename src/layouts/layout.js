@@ -11,6 +11,17 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SEO from "../SEO/SEO";
 import posed, { PoseGroup } from "react-pose";
+// i18n
+import { IntlProvider, addLocaleData } from "react-intl";
+// Messages
+import en from "../i18n/en.json";
+import es from "../i18n/es.json";
+import enData from "react-intl/locale-data/en";
+import esData from "react-intl/locale-data/es";
+import languages from "../i18n/languages";
+
+addLocaleData([...esData, ...enData]);
+const messages = { en, es };
 
 const transitionDuration = 150;
 const transitionDelay = 200;
@@ -27,7 +38,14 @@ const Transition = posed.div({
   exit: { opacity: 0, transition: { duration: transitionDuration } },
 });
 
-const Layout = ({location, children}) => {
+const Layout = ({ location, children, pageContext }) => {
+  const { locale } = pageContext;
+
+  const defaultLocale =
+    languages[Object.keys(languages).find(key => languages[key].default)]
+      .locale;
+  const pageLocale = locale || defaultLocale;
+
   const getLocalTitle = () => {
     const pathPrefix = config.pathPrefix ? config.pathPrefix : "/";
     const currentPath = location.pathname
@@ -49,24 +67,26 @@ const Layout = ({location, children}) => {
   };
 
   return (
-    <div>
-      <SEO />
-      <Helmet>
-        <title>{`${config.siteTitle} |  ${getLocalTitle()}`}</title>
-      </Helmet>
-      <ThemeProvider theme={Theme}>
-        <>
-          <GlobalStyle />
-          <Header />
-          <PoseGroup>
-            <Transition key={location.pathname}>
-              <Main>{children}</Main>
-            </Transition>
-          </PoseGroup>
-          <Footer config={config} />
-        </>
-      </ThemeProvider>
-    </div>
+    <IntlProvider locale={pageLocale} messages={messages[pageLocale]}>
+      <>
+        <SEO />
+        <Helmet>
+          <title>{`${config.siteTitle} |  ${getLocalTitle()}`}</title>
+        </Helmet>
+        <ThemeProvider theme={Theme}>
+          <>
+            <GlobalStyle />
+            <Header />
+            <PoseGroup>
+              <Transition key={location.pathname}>
+                <Main>{children}</Main>
+              </Transition>
+            </PoseGroup>
+            <Footer config={config} />
+          </>
+        </ThemeProvider>
+      </>
+    </IntlProvider>
   );
 };
 
