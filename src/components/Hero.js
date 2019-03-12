@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import giuNeonImage from "../../static/giu-magnani.jpg";
 import SocialLinks from "./SocialLinks";
+import { FormattedMessage } from "react-intl";
 
 const Hero = () => (
   <HeroDivWrapper>
     <HeroDiv className="container">
       <MainHeading>
+        <FormattedMessage id="home.heading" />
         <h1>I'm Giu Magnani.</h1>
         <h2>
           I’m a Front-End Developer and UI/UX Designer from Chile working and
@@ -20,7 +22,9 @@ const Hero = () => (
           with a company in USA which produces logo and print design services.
           In 2013, I went to London, UK.
         </p>
-        <HeroSocialLinksText>See what I’ve been sharing on Social Media:</HeroSocialLinksText>
+        <HeroSocialLinksText>
+          See what I’ve been sharing on Social Media:
+        </HeroSocialLinksText>
         <HeroSocialLinks isBlue={true} />
       </MainHeading>
       <HeroImg>
@@ -71,12 +75,12 @@ const MainHeading = styled.div`
     line-height: 1.2;
     margin-bottom: 2rem;
   }
-  
+
   @media (min-width: ${props => props.theme.md}) {
     h1 {
       font-size: 50px;
     }
-    
+
     h2 {
       font-size: 22px;
       font-weight: bold;
@@ -97,9 +101,9 @@ const MainHeading = styled.div`
       line-height: 1.2;
       margin-bottom: 1.5rem;
     }
-    
+
     p {
-      font-size: 20px; 
+      font-size: 20px;
     }
   }
 `;
@@ -131,7 +135,7 @@ const HeroImg = styled.div`
 
 const HeroSocialLinksText = styled.strong`
   text-align: center;
-  
+
   @media (min-width: ${props => props.theme.md}) {
     text-align: left;
     margin-bottom: 1rem;
@@ -143,7 +147,7 @@ const HeroSocialLinks = styled(SocialLinks)`
   width: 100%;
 
   ul {
-    justify-content: flex-start;  
+    justify-content: flex-start;
   }
 `;
 

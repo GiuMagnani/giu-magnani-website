@@ -1,5 +1,33 @@
+const locales = require("./src/i18n/languages");
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+
+  return new Promise(resolve => {
+    console.log(page);
+    deletePage(page);
+
+    Object.keys(locales).map(lang => {
+      console.log(lang);
+
+      const localizedPath = locales[lang].default
+        ? page.path
+        : locales[lang].locale + page.path;
+
+      return createPage({
+        ...page,
+        path: localizedPath,
+        context: {
+          locale: lang,
+        },
+      });
+    });
+
+    resolve();
+  });
+};
 
 exports.createPages = ({ graphql, actions }) => {
   const projectSingle = path.resolve(`./src/templates/work-single.js`);
@@ -22,18 +50,16 @@ exports.createPages = ({ graphql, actions }) => {
 
       const getComponent = () => {
         switch (type) {
-          case 'journal':
+          case "journal":
             return journalSingle;
-          case 'work':
+          case "work":
             return projectSingle;
-          case 'shop':
+          case "shop":
             return shopSingle;
           default:
             return null;
         }
       };
-
-      console.log(post.node.fields.slug);
 
       createPage({
         path: post.node.fields.slug,
@@ -67,7 +93,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => createPageByType(result, 'journal'));
+  ).then(result => createPageByType(result, "journal"));
 
   graphql(
     `
@@ -89,7 +115,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => createPageByType(result, 'work'));
+  ).then(result => createPageByType(result, "work"));
 
   graphql(
     `
@@ -111,7 +137,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => createPageByType(result, 'shop'));
+  ).then(result => createPageByType(result, "shop"));
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
