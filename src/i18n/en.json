@@ -23,5 +23,10 @@
   "journal.heading1": "My Journal",
   "journal.heading2": "Here I’ll post my thoughts and experiments on Art, Design and Development.",
   "journal.intro": "Latest on my Journal",
-  "footer.copyright": "Designed & Developed by Giu Magnani 2019"
+  "footer.copyright": "Designed & Developed by Giu Magnani 2019",
+  "contact.contactMe": "Contact me!",
+  "contact.name": "Name",
+  "contact.email": "Email",
+  "contact.message": "Message",
+  "contact.send": "Send!"
 }

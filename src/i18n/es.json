@@ -23,5 +23,10 @@
   "journal.heading1": "Mi Bitácora",
   "journal.heading2": "Aquí subiré mis ideas y experimentos sobre Arte, Diseño y Desarrollo.",
   "journal.intro": "Lo más reciente en mi Bitácora",
-  "footer.copyright": "Diseñado y Desarrollado por Giu Magnani 2019"
+  "footer.copyright": "Diseñado y Desarrollado por Giu Magnani 2019",
+  "contact.contactMe": "¡Contáctame!",
+  "contact.name": "Nombre",
+  "contact.email": "Email",
+  "contact.message": "Mensaje",
+  "contact.send": "¡Envía!"
 }

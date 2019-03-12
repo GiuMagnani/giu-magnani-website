@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import { FormattedMessage } from "react-intl";
 
 const Contact = () => {
   const [isNonProfit, setNonProfit] = useState(false);
@@ -9,7 +10,7 @@ const Contact = () => {
     <>
       <Intro>
         <div className="container">
-          <h1>Contact me!</h1>
+          <h1><FormattedMessage id="contact.contactMe" /></h1>
           <label htmlFor="sayHi">Just to say hi</label>
           <input name="reason" id="sayHi" type="radio" />
           <label htmlFor="forWork">Work</label>
@@ -60,19 +61,19 @@ const Contact = () => {
               />
             </FormGroup>
             <FormGroup>
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="name"><FormattedMessage id="contact.name" /></label>
               <input type="text" id="name" />
             </FormGroup>
             <FormGroup>
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email"><FormattedMessage id="contact.email" /></label>
               <input type="text" id="email" />
             </FormGroup>
             <FormGroup>
-              <TextareaLabel htmlFor="message">Message:</TextareaLabel>
+              <TextareaLabel htmlFor="message"><FormattedMessage id="contact.message" /></TextareaLabel>
               <textarea name="message" id="message" cols="30" rows="10" />
             </FormGroup>
             <FormButtonContainer>
-              <FormButton>Send!</FormButton>
+              <FormButton><FormattedMessage id="contact.send" /></FormButton>
             </FormButtonContainer>
           </Form>
         </div>
