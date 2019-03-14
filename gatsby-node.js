@@ -33,108 +33,92 @@ exports.createPages = ({ graphql, actions }) => {
 
   const { createPage } = actions;
 
-  const createPageByType = (result, type) => {
-    if (result.errors) {
-      throw result.errors;
-    }
-
-    // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges;
-    posts.forEach((post, index) => {
-      const previous =
-        index === posts.length - 1 ? null : posts[index + 1].node;
-      const next = index === 0 ? null : posts[index - 1].node;
-
-      const getComponent = () => {
-        switch (type) {
-          case "journal":
-            return journalSingle;
-          case "work":
-            return projectSingle;
-          case "shop":
-            return shopSingle;
-          default:
-            return null;
-        }
-      };
-
-      createPage({
-        path: post.node.fields.slug,
-        component: getComponent(),
-        context: {
-          slug: post.node.fields.slug,
-          previous,
-          next,
-        },
-      });
-    });
-  };
-
-  graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/journal/" } }
-        ) {
-          edges {
-            node {
-              fields {
-                slug
+  return new Promise(resolve => {
+    resolve(
+      graphql(
+        `
+          {
+            journal: allMarkdownRemark(
+              sort: { fields: [frontmatter___date], order: DESC }
+              filter: { fileAbsolutePath: { regex: "/journal/" } }
+            ) {
+              edges {
+                node {
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                  }
+                }
               }
-              frontmatter {
-                title
+            }
+            work: allMarkdownRemark(
+              sort: { fields: [frontmatter___date], order: DESC }
+              filter: { fileAbsolutePath: { regex: "/work/" } }
+            ) {
+              edges {
+                node {
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                  }
+                }
+              }
+            }
+            shop: allMarkdownRemark(
+              sort: { fields: [frontmatter___date], order: DESC }
+              filter: { fileAbsolutePath: { regex: "/shop/" } }
+            ) {
+              edges {
+                node {
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                  }
+                }
               }
             }
           }
+        `
+      ).then(result => {
+        if (result.errors) {
+          throw result.errors;
         }
-      }
-    `
-  ).then(result => createPageByType(result, "journal"));
 
-  graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/work/" } }
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
-        }
-      }
-    `
-  ).then(result => createPageByType(result, "work"));
+        let { work, journal, shop } = result.data;
+        work = work.edges;
+        journal = journal.edges;
+        shop = shop.edges;
 
-  graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/shop/" } }
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
-        }
-      }
-    `
-  ).then(result => createPageByType(result, "shop"));
+        const createPagesByType = (array, component) => {
+          array.forEach((post, index) => {
+            const previous =
+              index === array.length - 1 ? null : array[index + 1].node;
+            const next = index === 0 ? null : array[index - 1].node;
+
+            createPage({
+              path: post.node.fields.slug,
+              component: component,
+              context: {
+                slug: post.node.fields.slug,
+                previous,
+                next,
+              },
+            });
+          });
+        };
+
+        createPagesByType(work, projectSingle);
+        createPagesByType(journal, journalSingle);
+        createPagesByType(shop, shopSingle);
+      })
+    );
+  });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
