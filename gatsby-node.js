@@ -101,14 +101,22 @@ exports.createPages = ({ graphql, actions }) => {
               index === array.length - 1 ? null : array[index + 1].node;
             const next = index === 0 ? null : array[index - 1].node;
 
-            createPage({
-              path: post.node.fields.slug,
-              component: component,
-              context: {
-                slug: post.node.fields.slug,
-                previous,
-                next,
-              },
+            Object.keys(locales).map(lang => {
+              const localizedPath = locales[lang].default
+                ? post.node.fields.slug
+                : locales[lang].locale + post.node.fields.slug;
+
+              createPage({
+                path: localizedPath,
+                component: component,
+                context: {
+                  slug: localizedPath,
+                  locale: lang,
+                  previous,
+                  next,
+                },
+              });
+
             });
           });
         };
