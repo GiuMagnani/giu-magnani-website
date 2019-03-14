@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "gatsby-link";
 import styled from "styled-components";
 import { FormattedMessage, injectIntl } from "react-intl";
 import languages from "../i18n/languages";
 import LocalizedLink from "./LocalizedLink";
+import Menu from "./Menu";
 
 const Header = ({ intl: { locale } }) => {
+  const [isMenuOpen, setMenuVisibility] = useState(false);
+
   return (
     <HeaderNav>
       <NavLogo to={"/"}>
@@ -64,6 +67,8 @@ const Header = ({ intl: { locale } }) => {
           </Link>
         ))}
       </NavLanguages>
+      <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
+      <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>MENU</MenuButton>
     </HeaderNav>
   );
 };
@@ -96,9 +101,12 @@ const NavLinks = styled.div`
   padding-left: 30px;
 
   a {
+    font-size: 14px;
+    letter-spacing: 1px;
     color: white;
     text-decoration: none;
     padding-right: 30px;
+    text-transform: uppercase;
   }
 `;
 
@@ -111,11 +119,19 @@ const NavLanguages = styled.div`
     background: none;
     border: 0;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1px;
     margin-left: 10px;
     text-transform: uppercase;
   }
+`;
+
+const MenuButton = styled.button`
+  color: white;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  outline: 0;
 `;
 
 export default injectIntl(Header);
