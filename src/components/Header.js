@@ -50,7 +50,7 @@ const Header = ({ intl: { locale } }) => {
           <FormattedMessage id="menu.journal" />
         </LocalizedLink>
         {/*<LocalizedLink to={"/shop"}>*/}
-          {/*<FormattedMessage id="menu.shop" />*/}
+        {/*<FormattedMessage id="menu.shop" />*/}
         {/*</LocalizedLink>*/}
         <LocalizedLink to={"/contact"}>
           <FormattedMessage id="menu.contact" />
@@ -59,7 +59,7 @@ const Header = ({ intl: { locale } }) => {
       <NavLanguages>
         {Object.keys(languages).map(key => (
           <Link
-            style={{ color: key === locale ? "white" : "red" }}
+            className={key === locale ? "is-active" : ""}
             key={languages[key].locale}
             to={languages[key].default ? "/" : `/${languages[key].locale}`}
             state={{ stopTransition: true }}>
@@ -68,7 +68,9 @@ const Header = ({ intl: { locale } }) => {
         ))}
       </NavLanguages>
       <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
-      <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>MENU</MenuButton>
+      <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
+        MENU
+      </MenuButton>
     </HeaderNav>
   );
 };
@@ -80,7 +82,7 @@ const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   margin-top: -20px;
-  
+
   @media (min-width: ${props => props.theme.lg}) {
     margin-top: 0;
     position: fixed;
@@ -126,12 +128,19 @@ const NavLanguages = styled.div`
 
   a {
     background: none;
-    border: 0;
     color: white;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 1px;
-    margin-left: 10px;
     text-transform: uppercase;
+    padding: 4px 7px;
+    text-align: center;
+    margin-left: 10px;
+    //border: 1px solid white;
+  }
+
+  a.is-active {
+    background: white;
+    color: ${props => props.theme.main};
   }
 `;
 

@@ -1,82 +1,185 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { PageIntro, PageWrapper } from "../style/PageStyles";
+import SocialLinks from "../components/SocialLinks";
 
 const Contact = () => {
-  const [isNonProfit, setNonProfit] = useState(false);
+  // const [copySuccess, setCopySuccess] = useState('');
+  // const textAreaRef = useRef(null);
+
+  const [values, setValues] = useState({
+    nonProfit: false,
+    reason: "work",
+    type: "",
+    message: "",
+    name: "",
+    email: "",
+  });
+
+  const handleOnChange = e => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  // const copyToClipboard = (e) => {
+  //   console.log(textAreaRef.current);
+  //   // textAreaRef.current.select();
+  //   document.execCommand('copy');
+  //   // This is just personal preference.
+  //   // I prefer to not show the the whole text area selected.
+  //   e.target.focus();
+  //   setCopySuccess('Copied!');
+  // };
 
   return (
     <PageWrapper>
-      <PageIntro>
+      <ContactIntro>
         <div className="container">
           <FormattedMessage id="contact.contactMe" tagName="h1" />
-          <div>
-            <label htmlFor="sayHi">Just to say hi</label>
-            <input name="reason" id="sayHi" type="radio" />
-            <label htmlFor="forWork">Work</label>
-            <input name="reason" id="forWork" type="radio" />
-            Non-profit? If you have an idea please let me know. I'd love to get
-            involved in organizations pro-animals, vegetarianism/veganism,
-            environmental issues.
-            <input
-              name="nonProfit"
-              id="nonProfit"
-              type="checkbox"
-              value={isNonProfit}
-              onChange={() => setNonProfit(!isNonProfit)}
-            />
-            <br />
-            <button>Just copy email to clipboard</button>
-          </div>
+          <h2>
+            ¿Necesitas el diseño o desarrollo de una aplicación o sitio web?
+          </h2>
+          <h3>
+            Envíame un mensaje a través del formulario y me pondré en contacto
+            contigo lo antes que pueda.
+          </h3>
+          {/*<Links>*/}
+            {/*/!*Curriculum ES | Curriculum EN | Curriculum IT | Portfolio*!/*/}
+            {/*/!*<h3>*!/*/}
+              {/*/!*O escríbeme un Email a:{" "}*!/*/}
+              {/*/!*<a href="mailto:hello@giumagnani.com" ref={textAreaRef} >hello@giumagnani.com</a>*!/*/}
+              {/*/!*{*!/*/}
+                {/*/!*document.queryCommandSupported('copy') &&*!/*/}
+                {/*/!*<>*!/*/}
+                  {/*/!*<CopyEmailButton onClick={copyToClipboard}>C</CopyEmailButton>*!/*/}
+                  {/*/!*{copySuccess}*!/*/}
+                {/*/!*</>*!/*/}
+              {/*/!*}*!/*/}
+            {/*/!*</h3>*!/*/}
+          {/*</Links>*/}
         </div>
-      </PageIntro>
+      </ContactIntro>
       <FormWrapper>
         <div className="container">
-          // if reason === work // development | design | illustration
-          <label htmlFor="app">App</label>
-          <input name="projectType" id="app" type="radio" />
-          <label htmlFor="website">Website</label>
-          <input name="projectType" id="website" type="radio" />
-          <label htmlFor="other">E-Commerce</label>
-          <input name="projectType" id="other" type="radio" />
-          <div>Budget - Slider</div>
-          <div>Timeline - Slider</div>
-          <div>Company name Current Website</div>
-          // Steps of form
-          <Form action="contact">
-            {isNonProfit && (
-              <FormGroup>
-                <label htmlFor="name">Project Name:</label>
-                <input type="text" id="name" />
-              </FormGroup>
-            )}
-            <FormGroup>
-              <TextareaLabel htmlFor="projectDetails">
-                Project details
-              </TextareaLabel>
-              <textarea
-                name="projectDetails"
-                id="projectDetails"
-                cols="30"
-                rows="10"
+          <FormReason>
+            <FormReasonItem>
+              <input
+                name="reason"
+                id="work"
+                type="radio"
+                value="work"
+                onChange={handleOnChange}
+                defaultChecked={values.reason === "work"}
               />
-            </FormGroup>
+              <label htmlFor="work">I'd like to work with you</label>
+            </FormReasonItem>
+            <FormReasonItem>
+              <input
+                name="reason"
+                id="hi"
+                type="radio"
+                value="hi"
+                onChange={handleOnChange}
+                defaultChecked={values.reason === "hi"}
+              />
+              <label htmlFor="hi">Just to say hi!</label>
+            </FormReasonItem>
+          </FormReason>
+          <div>
+            {/*Non-profit? If you have an idea please let me know. I'd love to get*/}
+            {/*involved in organizations pro-animals, vegetarianism/veganism,*/}
+            {/*environmental issues.*/}
+            {/*<input*/}
+            {/*name="nonProfit"*/}
+            {/*id="nonProfit"*/}
+            {/*type="checkbox"*/}
+            {/*value={isNonProfit}*/}
+            {/*onChange={() => setNonProfit(!isNonProfit)}*/}
+            {/*/>*/}
+          </div>
+          {values.reason === "work" && (
+            <>
+              <FormReason>
+                <FormReasonItem>
+                  <input
+                    name="type"
+                    id="website"
+                    type="radio"
+                    value="website"
+                    onChange={handleOnChange}
+                    defaultChecked={values.type === "website"}
+                  />
+                  <label htmlFor="website">Website</label>
+                </FormReasonItem>
+                <FormReasonItem>
+                  <input
+                    name="type"
+                    id="app"
+                    type="radio"
+                    value="app"
+                    onChange={handleOnChange}
+                    defaultChecked={values.type === "app"}
+                  />
+                  <label htmlFor="app">App</label>
+                </FormReasonItem>
+                <FormReasonItem>
+                  <input
+                    name="type"
+                    id="other"
+                    type="radio"
+                    value="other"
+                    onChange={handleOnChange}
+                    defaultChecked={values.type === "other"}
+                  />
+                  <label htmlFor="other">Other</label>
+                </FormReasonItem>
+              </FormReason>
+              {/*<div>Budget - Slider</div>*/}
+              {/*<div>Timeline - Slider</div>*/}
+              {/*<div>Company name Current Website</div>*/}
+            </>
+          )}
+          <Form action="contact">
+            {/*{values.nonProfit && (*/}
+              {/*<FormGroup>*/}
+                {/*<label htmlFor="name">Project Name:</label>*/}
+                {/*<input type="text" id="name" />*/}
+              {/*</FormGroup>*/}
+            {/*)}*/}
             <FormGroup>
-              <label htmlFor="name"><FormattedMessage id="contact.name" /></label>
+              <label htmlFor="name">
+                <FormattedMessage id="contact.name" />
+              </label>
               <input type="text" id="name" />
             </FormGroup>
             <FormGroup>
-              <label htmlFor="email"><FormattedMessage id="contact.email" /></label>
+              <label htmlFor="email">
+                <FormattedMessage id="contact.email" />
+              </label>
               <input type="text" id="email" />
             </FormGroup>
             <FormGroup>
-              <TextareaLabel htmlFor="message"><FormattedMessage id="contact.message" /></TextareaLabel>
+              <TextareaLabel htmlFor="message">
+                {values.reason === "work" ? (
+                  <FormattedMessage id="contact.projectDetails" />
+                ) : (
+                  <FormattedMessage id="contact.message" />
+                )}
+              </TextareaLabel>
               <textarea name="message" id="message" cols="30" rows="10" />
             </FormGroup>
             <FormButtonContainer>
-              <FormButton><FormattedMessage id="contact.send" /></FormButton>
+              <FormButton>
+                <FormattedMessage id="contact.send" />
+              </FormButton>
             </FormButtonContainer>
           </Form>
         </div>
@@ -84,6 +187,13 @@ const Contact = () => {
     </PageWrapper>
   );
 };
+
+const ContactIntro = styled(PageIntro)`
+  @media (min-width: ${props => props.theme.lg}) {
+    padding-top: 140px;
+    padding-bottom: 80px;
+  }
+`;
 
 const FormWrapper = styled.section`
   border-width: 4px 0;
@@ -98,7 +208,7 @@ const FormWrapper = styled.section`
 `;
 
 const Form = styled.form`
-  border: 1px solid ${props => props.theme.main};
+  //border: 1px solid ${props => props.theme.main};
 `;
 
 const TextareaLabel = styled.label`
@@ -108,8 +218,9 @@ const TextareaLabel = styled.label`
 const FormGroup = styled.div`
   width: 100%;
   display: flex;
-  border: 0 solid ${props => props.theme.main};
+  border: 1px solid ${props => props.theme.main};
   border-bottom-width: 1px;
+  margin: 0.5rem 0;
 
   label {
     width: 150px;
@@ -152,26 +263,85 @@ const FormGroup = styled.div`
 
 const FormButtonContainer = styled.div`
   width: 100%;
-  border-style: solid;
-  border-color: ${props => props.theme.main};
-  border-width: 0;
+  margin: 0.5rem 0;
 `;
 
 const FormButton = styled.button`
   background-color: ${props => props.theme.main};
   font-size: 20px;
   color: white;
-  border: 0 solid ${props => props.theme.main};
-  border-width: 2px 0;
   margin: 0;
   padding: 0 20px;
   height: 56px;
   min-width: 50%;
-  border: 0;
   width: 100%;
 
   &:focus {
     outline: 0;
+  }
+`;
+
+const CopyEmailButton = styled.button`
+  display: inline;
+  font-size: 20px;
+  color: ${props => props.theme.main};
+  border: 1px solid ${props => props.theme.main};
+  margin: 0;
+  padding: 0 20px;
+  height: 56px;
+  width: 25px;
+
+  &:focus {
+    outline: 0;
+  }
+`;
+
+const Links = styled.div`
+  margin-top: 1.5rem;
+
+  a {
+    text-decoration: underline;
+  }
+`;
+
+const FormReason = styled.div`
+  border: 1px solid ${props => props.theme.main};
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+`;
+
+const FormReasonItem = styled.div`
+  position: relative;
+  width: 50%;
+  text-align: center;
+  height: 56px;
+  line-height: 56px;
+  border-right: 1px solid ${props => props.theme.main};
+
+  &:last-child {
+    border: 0;
+  }
+
+  label {
+    font-size: 20px;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+
+  input {
+    opacity: 0;
+    width: 0;
+    position: absolute;
+    visibility: hidden;
+  }
+
+  input:checked ~ label {
+    background-color: ${props => props.theme.main};
+    color: white;
   }
 `;
 

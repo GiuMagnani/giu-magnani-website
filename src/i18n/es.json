@@ -28,5 +28,9 @@
   "contact.name": "Nombre",
   "contact.email": "Email",
   "contact.message": "Mensaje",
-  "contact.send": "¡Envía!"
+  "contact.projectDetails": "Detalles del Proyecto",
+  "contact.companyName": "Nombre de la ",
+  "contact.companyWebsite": "Sitio actual",
+  "contact.send": "¡Envía!",
+  "cv.heading": "Descarga mi CV"
 }

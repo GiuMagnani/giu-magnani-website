@@ -6,6 +6,7 @@ const PageIntro = styled.header`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   padding: 2rem 0;
 
   @media (min-width: ${props => props.theme.lg}) {
@@ -20,18 +21,16 @@ const PageIntro = styled.header`
   h2,
   p {
     font-size: 55px;
-    line-height: 1.2;
+    line-height: 1.1;
     font-weight: bold;
   }
-
-  .container {
-    border-top: 0;
-    min-height: 50vh;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
+  
+  h3 {
+    margin: 1rem 0;
+    font-size: 23px;
+    max-width: 70%;
+    line-height: 1.1;
+    font-weight: normal;
   }
 `;
 
