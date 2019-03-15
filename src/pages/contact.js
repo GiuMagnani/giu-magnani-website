@@ -44,13 +44,8 @@ const Contact = () => {
       <ContactIntro>
         <div className="container">
           <FormattedMessage id="contact.contactMe" tagName="h1" />
-          <h2>
-            ¿Necesitas el diseño o desarrollo de una aplicación o sitio web?
-          </h2>
-          <h3>
-            Envíame un mensaje a través del formulario y me pondré en contacto
-            contigo lo antes que pueda.
-          </h3>
+          <FormattedMessage id="contact.heading2" tagName="h2" />
+          <FormattedMessage id="contact.heading3" tagName="h3" />
           {/*<Links>*/}
             {/*/!*Curriculum ES | Curriculum EN | Curriculum IT | Portfolio*!/*/}
             {/*/!*<h3>*!/*/}
@@ -79,7 +74,7 @@ const Contact = () => {
                 onChange={handleOnChange}
                 defaultChecked={values.reason === "work"}
               />
-              <label htmlFor="work">I'd like to work with you</label>
+              <FormattedMessage id="contact.reasonWork" tagName="label" htmlFor="work" />
             </FormReasonItem>
             <FormReasonItem>
               <input
@@ -90,7 +85,7 @@ const Contact = () => {
                 onChange={handleOnChange}
                 defaultChecked={values.reason === "hi"}
               />
-              <label htmlFor="hi">Just to say hi!</label>
+              <FormattedMessage id="contact.reasonHi" tagName="label" htmlFor="hi" />
             </FormReasonItem>
           </FormReason>
           <div>
@@ -117,7 +112,7 @@ const Contact = () => {
                     onChange={handleOnChange}
                     defaultChecked={values.type === "website"}
                   />
-                  <label htmlFor="website">Website</label>
+                  <FormattedMessage id="contact.website" tagName="label"/>
                 </FormReasonItem>
                 <FormReasonItem>
                   <input
@@ -128,7 +123,7 @@ const Contact = () => {
                     onChange={handleOnChange}
                     defaultChecked={values.type === "app"}
                   />
-                  <label htmlFor="app">App</label>
+                  <FormattedMessage id="contact.app" tagName="label"/>
                 </FormReasonItem>
                 <FormReasonItem>
                   <input
@@ -139,7 +134,7 @@ const Contact = () => {
                     onChange={handleOnChange}
                     defaultChecked={values.type === "other"}
                   />
-                  <label htmlFor="other">Other</label>
+                  <FormattedMessage id="contact.other" tagName="label"/>
                 </FormReasonItem>
               </FormReason>
               {/*<div>Budget - Slider</div>*/}

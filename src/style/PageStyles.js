@@ -29,7 +29,7 @@ const PageIntro = styled.header`
     margin: 1rem 0;
     font-size: 23px;
     max-width: 70%;
-    line-height: 1.1;
+    line-height: 1.2;
     font-weight: normal;
   }
 `;

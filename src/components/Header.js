@@ -68,9 +68,9 @@ const Header = ({ intl: { locale } }) => {
         ))}
       </NavLanguages>
       <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
-      <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
-        MENU
-      </MenuButton>
+      {/*<MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>*/}
+        {/*MENU*/}
+      {/*</MenuButton>*/}
     </HeaderNav>
   );
 };
@@ -112,8 +112,8 @@ const NavLinks = styled.div`
   padding-left: 30px;
 
   a {
-    font-size: 14px;
-    letter-spacing: 1px;
+    font-size: 13px;
+    letter-spacing: 2px;
     color: white;
     text-decoration: none;
     padding-right: 30px;
