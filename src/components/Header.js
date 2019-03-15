@@ -80,6 +80,15 @@ const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   margin-top: -20px;
+  
+  @media (min-width: ${props => props.theme.lg}) {
+    margin-top: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
 `;
 
 const NavLogo = styled(LocalizedLink)`

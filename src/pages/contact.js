@@ -126,14 +126,14 @@ const FormGroup = styled.div`
 
   label {
     width: 150px;
-    padding: 20px;
+    padding: 0 20px;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
     border-right: 1px solid ${props => props.theme.main};
     height: 100%;
-    min-height: 60px;
+    min-height: 56px;
     display: flex;
     align-items: center;
   }
@@ -143,8 +143,9 @@ const FormGroup = styled.div`
     width: 100%;
     font-size: 22px;
     padding: 20px;
+    line-height: 56px;
     border: 0;
-    height: 60px;
+    height: 56px;
 
     &:focus {
       outline: 0;
@@ -154,6 +155,7 @@ const FormGroup = styled.div`
   textarea {
     resize: none;
     height: 300px;
+    line-height: 1.5;
   }
 
   ${TextareaLabel} {
@@ -175,7 +177,8 @@ const FormButton = styled.button`
   border: 0 solid ${props => props.theme.main};
   border-width: 2px 0;
   margin: 0;
-  padding: 20px;
+  padding: 0 20px;
+  height: 56px;
   min-width: 50%;
   border: 0;
   width: 100%;

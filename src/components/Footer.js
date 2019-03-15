@@ -69,6 +69,11 @@ const FooterWrapper = styled.footer`
   }
 
   @media (min-width: ${props => props.theme.lg}) {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    
     .container {
       flex-direction: row;
     }

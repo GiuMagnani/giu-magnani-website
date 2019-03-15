@@ -92,6 +92,7 @@ const LatestPostsSeeMore = styled.div`
   @media (min-width: ${props => props.theme.lg}) {
     a {
       width: calc(50% + 7px);
+      font-size: 20px;
 
       &:hover {
         background: ${props => props.theme.main};
