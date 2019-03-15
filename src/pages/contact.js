@@ -2,34 +2,37 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
+import { PageIntro, PageWrapper } from "../style/PageStyles";
 
 const Contact = () => {
   const [isNonProfit, setNonProfit] = useState(false);
 
   return (
-    <>
-      <Intro>
+    <PageWrapper>
+      <PageIntro>
         <div className="container">
-          <h1><FormattedMessage id="contact.contactMe" /></h1>
-          <label htmlFor="sayHi">Just to say hi</label>
-          <input name="reason" id="sayHi" type="radio" />
-          <label htmlFor="forWork">Work</label>
-          <input name="reason" id="forWork" type="radio" />
-          Non-profit? If you have an idea please let me know. I'd love to get
-          involved in organizations pro-animals, vegetarianism/veganism,
-          environmental issues.
-          <input
-            name="nonProfit"
-            id="nonProfit"
-            type="checkbox"
-            value={isNonProfit}
-            onChange={() => setNonProfit(!isNonProfit)}
-          />
-          <br />
-          <button>Just copy email to clipboard</button>
+          <FormattedMessage id="contact.contactMe" tagName="h1" />
+          <div>
+            <label htmlFor="sayHi">Just to say hi</label>
+            <input name="reason" id="sayHi" type="radio" />
+            <label htmlFor="forWork">Work</label>
+            <input name="reason" id="forWork" type="radio" />
+            Non-profit? If you have an idea please let me know. I'd love to get
+            involved in organizations pro-animals, vegetarianism/veganism,
+            environmental issues.
+            <input
+              name="nonProfit"
+              id="nonProfit"
+              type="checkbox"
+              value={isNonProfit}
+              onChange={() => setNonProfit(!isNonProfit)}
+            />
+            <br />
+            <button>Just copy email to clipboard</button>
+          </div>
         </div>
-      </Intro>
-      <FormContainer>
+      </PageIntro>
+      <FormWrapper>
         <div className="container">
           // if reason === work // development | design | illustration
           <label htmlFor="app">App</label>
@@ -77,30 +80,14 @@ const Contact = () => {
             </FormButtonContainer>
           </Form>
         </div>
-      </FormContainer>
-    </>
+      </FormWrapper>
+    </PageWrapper>
   );
 };
 
-const Intro = styled.header`
-  min-height: 40vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-  border-bottom: 1px solid ${props => props.theme.main};
-
-  h1 {
-    font-size: 60px;
-    line-height: 1.2;
-    font-weight: bold;
-  }
-`;
-
-const FormContainer = styled.div`
+const FormWrapper = styled.section`
   border-width: 4px 0;
   margin-top: 0.5rem;
-  margin-bottom: 4rem;
   border-top: 1px solid ${props => props.theme.main};
 
   .container {

@@ -28,5 +28,6 @@
   "contact.name": "Name",
   "contact.email": "Email",
   "contact.message": "Message",
-  "contact.send": "Send!"
+  "contact.send": "Send!",
+  "cv.heading": "Download my CV"
 }

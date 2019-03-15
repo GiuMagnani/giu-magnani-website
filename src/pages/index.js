@@ -6,13 +6,14 @@ import Hero from "../components/Hero";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 import LocalizedLink from "../components/LocalizedLink";
+import { PageWrapper } from "../style/PageStyles";
 
 const BlogIndex = ({ location, data }) => {
   const journal = data.journal.edges;
   const projects = data.projects.edges;
 
   return (
-    <>
+    <PageWrapper>
       <Hero />
       <ProjectsWrapper>
         <div className="container">
@@ -40,7 +41,7 @@ const BlogIndex = ({ location, data }) => {
           </LatestPostsSeeMore>
         </div>
       </JournalWrapper>
-    </>
+    </PageWrapper>
   );
 };
 
@@ -113,7 +114,6 @@ const JournalWrapper = styled.section`
   .container {
     border: 1px solid ${props => props.theme.main};
     border-top: 0;
-    border-bottom: 0;
     position: relative;
     padding-top: 0.5rem;
 

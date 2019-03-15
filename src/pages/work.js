@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Link, graphql } from "gatsby";
 import LatestProjectItems from "../components/LatestProjectItems";
 import { FormattedMessage } from "react-intl";
+import { PageIntro, PageWrapper } from "../style/PageStyles";
 
 const Work = ({ location, data }) => {
   const items = data.allMarkdownRemark.edges;
@@ -40,49 +41,46 @@ const Work = ({ location, data }) => {
   };
 
   return (
-    <ProjectsWrapper>
-      <Intro>
+    <PageWrapper>
+      <PageIntro>
         <div className="container">
-          <p>
+          <h2>
             <FormattedMessage id="projects.latest" />{" "}
-            <a
+            <FilterLink
               onClick={() => toggleFilter("Graphic Design")}
               className={filters["Graphic Design"] ? "is-active" : ""}>
               <FormattedMessage id="projects['Graphic Design']" />
-            </a>{" "}
-            <a
+            </FilterLink>{" "}
+            <FilterLink
               onClick={() => toggleFilter("UX/UI Design")}
               className={filters["UX/UI Design"] ? "is-active" : ""}>
               <FormattedMessage id="projects['UX/UI Design']" />
-            </a>{" "}
-            <a
+            </FilterLink>{" "}
+            <FilterLink
               onClick={() => toggleFilter("Front-End Development")}
               className={filters["Front-End Development"] ? "is-active" : ""}>
               <FormattedMessage id="projects['Front-End Development']" />
-            </a>{" "}
+            </FilterLink>{" "}
             <FormattedMessage id="projects.and" />{" "}
-            <a
+            <FilterLink
               onClick={() => toggleFilter("Illustration")}
               className={filters["Illustration"] ? "is-active" : ""}>
               <FormattedMessage id="projects['Illustration']" />
-            </a><FormattedMessage id="projects.projects" />
-          </p>
+            </FilterLink>
+            <FormattedMessage id="projects.projects" />
+          </h2>
         </div>
-      </Intro>
+      </PageIntro>
       <ProjectListWrapper>
         <div className="container">
           <ProjectList projects={getFilteredItems()} />
         </div>
       </ProjectListWrapper>
-    </ProjectsWrapper>
+    </PageWrapper>
   );
 };
 
-const ProjectsWrapper = styled.section`
-  margin-bottom: 4rem;
-`;
-
-const ProjectListWrapper = styled.div`
+const ProjectListWrapper = styled.section`
   margin-top: 0.5rem;
   border-top: 1px solid ${props => props.theme.main};
 
@@ -97,88 +95,17 @@ const ProjectList = styled(LatestProjectItems)`
   padding-top: 1rem;
 `;
 
-const Intro = styled.header`
-  min-height: 40vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-  border-bottom: 1px solid ${props => props.theme.main};
+const FilterLink = styled.a`
+  font-size: 60px;
+  text-decoration: line-through;
+  font-weight: bold;
+  cursor: pointer;
 
-  p {
-    font-size: 60px;
-    line-height: 1.2;
-    font-weight: bold;
-  }
-
-  a {
-    font-size: 60px;
-    text-decoration: line-through;
-    font-weight: bold;
-    //opacity: 0.3;
-    cursor: pointer;
-  }
-
-  .is-active {
+  &.is-active {
     opacity: 1;
     text-decoration: underline;
   }
 `;
-
-const WorksContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-`;
-
-const WorkItem = styled(Link)`
-  width: 100%;
-  padding: 10px;
-  text-decoration: none;
-  margin-bottom: 2rem;
-
-  small {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: monospace;
-    display: block;
-    margin-bottom: 2rem;
-  }
-
-  h3 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 0.75rem;
-    margin-top: 1rem;
-  }
-
-  p {
-    font-size: 15px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: block;
-    line-height: 1.4;
-    padding-bottom: 5px;
-  }
-
-  .gatsby-image-wrapper {
-    height: 250px;
-    overflow: hidden;
-    margin-bottom: 5px;
-  }
-
-  @media (min-width: ${props => props.theme.md}) {
-    width: 50%;
-  }
-
-  @media (min-width: ${props => props.theme.lg}) {
-    width: 33.33%;
-  }
-`;
-
-export default Work;
 
 export const pageQuery = graphql`
   query ProjectsQuery {
@@ -210,3 +137,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default Work;

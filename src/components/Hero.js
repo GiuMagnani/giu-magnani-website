@@ -14,11 +14,11 @@ const Hero = () => (
         <h2>
           <FormattedMessage id="home.heading2" />
         </h2>
-        <p>
+        <Summary>
           <FormattedMessage id="home.summary" />
-        </p>
+        </Summary>
         <HeroSocialLinksText>
-          <FormattedMessage id="home.socialIntro" />
+          <FormattedMessage id="home.socialIntro" tagName="strong" />
         </HeroSocialLinksText>
         <HeroSocialLinks isBlue={true} />
       </MainHeading>
@@ -37,7 +37,16 @@ const HeroDiv = styled.div`
   }
 `;
 
-const HeroDivWrapper = styled.div`
+const Summary = styled.p`
+  line-height: 1.2;
+  margin-bottom: 2rem;
+
+  @media (min-width: ${props => props.theme.lg}) {
+    font-size: 18px;
+  }
+`;
+
+const HeroDivWrapper = styled.section`
   border: 1px solid ${props => props.theme.main};
   border-width: 0 0 1px;
 `;
@@ -66,11 +75,6 @@ const MainHeading = styled.div`
     line-height: 1.1;
   }
 
-  p {
-    line-height: 1.2;
-    margin-bottom: 2rem;
-  }
-
   @media (min-width: ${props => props.theme.md}) {
     h1 {
       font-size: 50px;
@@ -95,10 +99,6 @@ const MainHeading = styled.div`
       font-size: 26px;
       line-height: 1.2;
       margin-bottom: 1.5rem;
-    }
-
-    p {
-      font-size: 20px;
     }
   }
 `;
@@ -128,8 +128,10 @@ const HeroImg = styled.div`
   }
 `;
 
-const HeroSocialLinksText = styled.strong`
+const HeroSocialLinksText = styled.p`
   text-align: center;
+  font-size: 14px;
+  margin: 0;
 
   @media (min-width: ${props => props.theme.md}) {
     text-align: left;

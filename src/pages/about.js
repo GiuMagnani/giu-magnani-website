@@ -1,22 +1,23 @@
 import React from "react";
 import Layout from "../layouts/layout";
 import styled from "styled-components";
+import { PageIntro, PageWrapper } from "../style/PageStyles";
 
 const About = () => {
   const getRandom = (max, min) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
   return (
-    <>
-      <Intro>
+    <PageWrapper>
+      <PageIntro>
         <div className="container">
           <h1>Hi! I'm Giu Magnani.</h1>
-          <p>
+          <h2>
             Front-End Developer and UI/UX Designer based in Milan, Italy. I'm a
             creative and passionate professional who loves Web as much as
             Design.
-          </p>
+          </h2>
         </div>
-      </Intro>
+      </PageIntro>
       <AboutWrapper>
         <div className="container">
           <AboutInner>
@@ -58,38 +59,12 @@ const About = () => {
           </Colophon>
         </div>
       </AboutWrapper>
-    </>
+    </PageWrapper>
   );
 };
 
-const Intro = styled.header`
-  border-bottom: 1px solid ${props => props.theme.main};
-
-  h1 {
-    font-size: 30px;
-    padding-bottom: 1rem;
-  }
-
-  p {
-    font-size: 55px;
-    line-height: 1.2;
-    font-weight: bold;
-  }
-
-  .container {
-    border-top: 0;
-    min-height: 50vh;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`;
-
-const AboutWrapper = styled.div`
+const AboutWrapper = styled.section`
   margin-top: 0.5rem;
-  margin-bottom: 4rem;
   border-top: 1px solid ${props => props.theme.main};
 
   .container {
@@ -111,7 +86,7 @@ const Highlight = styled.strong`
   font-size: 30px;
   font-weight: bold;
   display: block;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 1rem;
 `;
 
 const Colophon = styled.div`

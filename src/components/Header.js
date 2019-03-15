@@ -92,8 +92,8 @@ const HeaderNav = styled.nav`
 `;
 
 const NavLogo = styled(LocalizedLink)`
-  padding-left: 30px;
-  padding-top: 7px;
+  padding-left: 20px;
+  padding-top: 4px;
 
   span {
     visibility: hidden;
@@ -141,6 +141,8 @@ const MenuButton = styled.button`
   letter-spacing: 1px;
   text-transform: uppercase;
   outline: 0;
+  margin-right: 20px;
+  padding: 0;
 `;
 
 export default injectIntl(Header);

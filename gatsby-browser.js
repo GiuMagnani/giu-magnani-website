@@ -13,7 +13,7 @@ export const wrapPageElement = ({ props, element }) => {
   const pageLocale = locale || defaultLocale;
 
   return (
-    <IntlProvider locale={locale} messages={messages[pageLocale]}>
+    <IntlProvider locale={locale} messages={messages[pageLocale]} textComponent={ React.Fragment }>
       <Layout locale={locale} {...props}>
         {element}
       </Layout>

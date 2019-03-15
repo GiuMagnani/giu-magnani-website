@@ -4,6 +4,7 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import LatestJournalItems from "../components/LatestJournalItems";
 import { FormattedMessage } from "react-intl";
+import { PageIntro, PageWrapper } from "../style/PageStyles";
 // import posed from "react-pose";
 
 // const Section = posed.section({
@@ -14,12 +15,11 @@ import { FormattedMessage } from "react-intl";
 const Journal = ({ data }) => {
   const items = data.allMarkdownRemark.edges;
   return (
-    <>
-      <JournalWrapper>
-        <Intro>
+      <PageWrapper>
+        <PageIntro>
           <div className="container">
-            <h1><FormattedMessage id="journal.heading1" /></h1>
-            <p><FormattedMessage id="journal.heading2" /></p>
+            <FormattedMessage id="journal.heading1" tagName="h1" />
+            <FormattedMessage id="journal.heading2" tagName="h2" />
           </div>
           {/*Filter by:*/}
           {/*<ul>*/}
@@ -27,52 +27,17 @@ const Journal = ({ data }) => {
           {/*<li>Code</li>*/}
           {/*<li>Other stuff</li>*/}
           {/*</ul>*/}
-        </Intro>
+        </PageIntro>
         <JournalListWrapper>
           <div className="container">
             <JournalList journal={items} />
           </div>
         </JournalListWrapper>
-        {/*<JournalList>*/}
-        {/*{ items.map(({node}, index) => (*/}
-        {/*<JournalItem key={ index } to={node.fields.slug}>*/}
-        {/*<JournalIndex>0{ index + 1 }</JournalIndex>*/}
-        {/*<JournalDate>{ node.frontmatter.date }</JournalDate>*/}
-        {/*<h3>{ node.frontmatter.title }</h3>*/}
-        {/*<p>{ node.excerpt }</p>*/}
-        {/*</JournalItem>*/}
-        {/*)) }*/}
-        {/*</JournalList>*/}
-      </JournalWrapper>
-    </>
+      </PageWrapper>
   );
 };
 
-const Intro = styled.header`
-  min-height: 40vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-  border-bottom: 1px solid ${props => props.theme.main};
-
-  h1 {
-    font-size: 30px;
-    padding-bottom: 1rem;
-  }
-
-  p {
-    font-size: 55px;
-    line-height: 1.2;
-    font-weight: bold;
-  }
-`;
-
-const JournalWrapper = styled.div`
-  margin-bottom: 4rem;
-`;
-
-const JournalListWrapper = styled.div`
+const JournalListWrapper = styled.section`
   margin-top: 0.5rem;
   border-top: 1px solid ${props => props.theme.main};
 
@@ -88,8 +53,6 @@ const JournalList = styled(LatestJournalItems)`
     margin-top: 0;
   }
 `;
-
-export default Journal;
 
 export const pageQuery = graphql`
   query JournalQuery {
@@ -112,3 +75,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default Journal;
