@@ -79,8 +79,8 @@ const LatestPostsSeeMore = styled.div`
     color: ${props => props.theme.main};
     border: 1px solid ${props => props.theme.main};
     border-top: 0;
-    height: 40px;
-    line-height: 38px;
+    height: 56px;
+    line-height: 56px;
     display: block;
     text-decoration: none;
     letter-spacing: 1px;
