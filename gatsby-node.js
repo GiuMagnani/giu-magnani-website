@@ -101,23 +101,25 @@ exports.createPages = ({ graphql, actions }) => {
               index === array.length - 1 ? null : array[index + 1].node;
             const next = index === 0 ? null : array[index - 1].node;
 
-            Object.keys(locales).map(lang => {
-              const localizedPath = locales[lang].default
-                ? post.node.fields.slug
-                : locales[lang].locale + post.node.fields.slug;
+            // Object.keys(locales).map(lang => {
+            //   const localizedPath = locales[lang].default
+            //     ? post.node.fields.slug
+            //     : locales[lang].locale + post.node.fields.slug;
 
               createPage({
-                path: localizedPath,
+                path: post.node.fields.slug,
+                // path: localizedPath,
                 component: component,
                 context: {
-                  slug: localizedPath,
-                  locale: lang,
+                  slug: post.node.fields.slug,
+                  // slug: localizedPath,
+                  // locale: lang,
                   previous,
                   next,
                 },
               });
-
-            });
+            //
+            // });
           });
         };
 
