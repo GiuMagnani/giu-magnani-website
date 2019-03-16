@@ -132,7 +132,7 @@ const JournalWrapper = styled.section`
 const LatestProjectSeeMore = styled(LatestPostsSeeMore)``;
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query IndexQuery($locale: String!) {
     site {
       siteMetadata {
         rssMetadata {
@@ -143,7 +143,10 @@ export const pageQuery = graphql`
     journal: allMarkdownRemark(
       limit: 4
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/journal/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/journal/" }
+        fields: { langKey: { eq: $locale } }
+      }
     ) {
       edges {
         node {
@@ -161,7 +164,10 @@ export const pageQuery = graphql`
     projects: allMarkdownRemark(
       limit: 8
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/work/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/work/" }
+        fields: { langKey: { eq: $locale } }
+      }
     ) {
       edges {
         node {

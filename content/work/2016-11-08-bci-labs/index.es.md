@@ -16,4 +16,4 @@ Se necesitaba crear una landing page para explicar resumidamente lo que hace Bci
 
 Se realizó el diseño y el desarrollo web del sitio. El diseño es responsive, usando el método mobile-first.
 
-![Bci Labs mobile website](../content/work/2016-11-08-bci-labs/bci-labs-1.jpg)
+![Bci Labs mobile website](bci-labs-1.jpg)

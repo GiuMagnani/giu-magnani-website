@@ -29,7 +29,7 @@ exports.onCreatePage = ({ page, actions }) => {
 exports.createPages = ({ graphql, actions }) => {
   const projectSingle = path.resolve(`./src/templates/work-single.js`);
   const journalSingle = path.resolve(`./src/templates/journal-single.js`);
-  const shopSingle = path.resolve(`./src/templates/shop-single.js`);
+  // const shopSingle = path.resolve(`./src/templates/shop-single.js`);
 
   const { createPage } = actions;
 
@@ -46,6 +46,8 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   fields {
                     slug
+                    langKey
+                    directoryName
                   }
                   frontmatter {
                     title
@@ -68,21 +70,6 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-            shop: allMarkdownRemark(
-              sort: { fields: [frontmatter___date], order: DESC }
-              filter: { fileAbsolutePath: { regex: "/shop/" } }
-            ) {
-              edges {
-                node {
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    title
-                  }
-                }
-              }
-            }
           }
         `
       ).then(result => {
@@ -90,10 +77,10 @@ exports.createPages = ({ graphql, actions }) => {
           throw result.errors;
         }
 
-        let { work, journal, shop } = result.data;
+        let { work, journal } = result.data;
         work = work.edges;
         journal = journal.edges;
-        shop = shop.edges;
+        // shop = shop.edges;
 
         const createPagesByType = (array, component) => {
           array.forEach((post, index) => {
@@ -105,7 +92,8 @@ exports.createPages = ({ graphql, actions }) => {
               const localizedPath = locales[lang].default
                 ? post.node.fields.slug
                 : locales[lang].locale + post.node.fields.slug;
-
+              // console.log(localizedPath);
+              // console.log(post);
               createPage({
                 // path: post.node.fields.slug,
                 path: localizedPath,
@@ -113,19 +101,34 @@ exports.createPages = ({ graphql, actions }) => {
                 context: {
                   // slug: post.node.fields.slug,
                   slug: localizedPath,
+                  directoryName: post.node.fields.directoryName,
                   locale: lang,
                   previous,
                   next,
                 },
               });
-
             });
           });
         };
 
         createPagesByType(work, projectSingle);
         createPagesByType(journal, journalSingle);
-        createPagesByType(shop, shopSingle);
+        // createPagesByType(shop, shopSingle);
+        // shop: allMarkdownRemark(
+        //     sort: { fields: [frontmatter___date], order: DESC }
+        //   filter: { fileAbsolutePath: { regex: "/shop/" } }
+        // ) {
+        //     edges {
+        //       node {
+        //         fields {
+        //           slug
+        //         }
+        //         frontmatter {
+        //           title
+        //         }
+        //       }
+        //     }
+        //   }
       })
     );
   });
@@ -136,12 +139,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode });
-    // console.log(node);
-    // console.log(value);
+
     createNodeField({
-      name: `slug`,
+      name: 'directoryName',
       node,
-      value,
+      value: path.basename(path.dirname(node.fileAbsolutePath)),
     });
   }
 };

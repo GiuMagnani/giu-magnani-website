@@ -15,25 +15,25 @@ import { PageIntro, PageWrapper } from "../style/PageStyles";
 const Journal = ({ data }) => {
   const items = data.allMarkdownRemark.edges;
   return (
-      <PageWrapper>
-        <PageIntro>
-          <div className="container">
-            <FormattedMessage id="journal.heading1" tagName="h1" />
-            <FormattedMessage id="journal.heading2" tagName="h2" />
-          </div>
-          {/*Filter by:*/}
-          {/*<ul>*/}
-          {/*<li>Art</li>*/}
-          {/*<li>Code</li>*/}
-          {/*<li>Other stuff</li>*/}
-          {/*</ul>*/}
-        </PageIntro>
-        <JournalListWrapper>
-          <div className="container">
-            <JournalList journal={items} />
-          </div>
-        </JournalListWrapper>
-      </PageWrapper>
+    <PageWrapper>
+      <PageIntro>
+        <div className="container">
+          <FormattedMessage id="journal.heading1" tagName="h1" />
+          <FormattedMessage id="journal.heading2" tagName="h2" />
+        </div>
+        {/*Filter by:*/}
+        {/*<ul>*/}
+        {/*<li>Art</li>*/}
+        {/*<li>Code</li>*/}
+        {/*<li>Other stuff</li>*/}
+        {/*</ul>*/}
+      </PageIntro>
+      <JournalListWrapper>
+        <div className="container">
+          <JournalList journal={items} />
+        </div>
+      </JournalListWrapper>
+    </PageWrapper>
   );
 };
 
@@ -55,10 +55,13 @@ const JournalList = styled(LatestJournalItems)`
 `;
 
 export const pageQuery = graphql`
-  query JournalQuery {
+  query JournalQuery($locale: String!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: ASC }
-      filter: { fileAbsolutePath: { regex: "/journal/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/journal/" }
+        fields: { langKey: { eq: $locale } }
+      }
     ) {
       edges {
         node {

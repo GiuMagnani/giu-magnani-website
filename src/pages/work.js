@@ -45,26 +45,38 @@ const Work = ({ location, data }) => {
       <PageIntro>
         <div className="container">
           <h2>
-            <FormattedMessage id="projects.latest" />{" "}
-            <FilterLink
-              onClick={() => toggleFilter("Graphic Design")}
-              className={filters["Graphic Design"] ? "is-active" : ""}>
-              <FormattedMessage id="projects['Graphic Design']" />
+            <FormattedMessage id="projects.latest" /> {/*<FilterLink*/}
+            {/*onClick={() => toggleFilter("Graphic Design")}*/}
+            {/*className={filters["Graphic Design"] ? "is-active" : ""}>*/}
+            {/*<FormattedMessage id="projects['Graphic Design']" />,*/}
+            {/*</FilterLink>{" "}*/}
+            {/*<FilterLink*/}
+            {/*onClick={() => toggleFilter("UX/UI Design")}*/}
+            {/*className={filters["UX/UI Design"] ? "is-active" : ""}>*/}
+            {/*<FormattedMessage id="projects['UX/UI Design']" />,*/}
+            {/*</FilterLink>{" "}*/}
+            {/*<FilterLink*/}
+            {/*onClick={() => toggleFilter("Front-End Development")}*/}
+            {/*className={filters["Front-End Development"] ? "is-active" : ""}>*/}
+            {/*<FormattedMessage id="projects['Front-End Development']" />*/}
+            {/*</FilterLink>{" "}*/}
+            {/*<FormattedMessage id="projects.and" />{" "}*/}
+            {/*<FilterLink*/}
+            {/*onClick={() => toggleFilter("Illustration")}*/}
+            {/*className={filters["Illustration"] ? "is-active" : ""}>*/}
+            {/*<FormattedMessage id="projects['Illustration']" />*/}
+            {/*</FilterLink>*/}
+            <FilterLink className="is-active">
+              <FormattedMessage id="projects['Graphic Design']" />,
             </FilterLink>{" "}
-            <FilterLink
-              onClick={() => toggleFilter("UX/UI Design")}
-              className={filters["UX/UI Design"] ? "is-active" : ""}>
-              <FormattedMessage id="projects['UX/UI Design']" />
+            <FilterLink className="is-active">
+              <FormattedMessage id="projects['UX/UI Design']" />,
             </FilterLink>{" "}
-            <FilterLink
-              onClick={() => toggleFilter("Front-End Development")}
-              className={filters["Front-End Development"] ? "is-active" : ""}>
+            <FilterLink className="is-active">
               <FormattedMessage id="projects['Front-End Development']" />
             </FilterLink>{" "}
             <FormattedMessage id="projects.and" />{" "}
-            <FilterLink
-              onClick={() => toggleFilter("Illustration")}
-              className={filters["Illustration"] ? "is-active" : ""}>
+            <FilterLink className="is-active">
               <FormattedMessage id="projects['Illustration']" />
             </FilterLink>
             <FormattedMessage id="projects.projects" />
@@ -73,7 +85,7 @@ const Work = ({ location, data }) => {
       </PageIntro>
       <ProjectListWrapper>
         <div className="container">
-          <ProjectList projects={getFilteredItems()} />
+          <ProjectList projects={data.allMarkdownRemark.edges} />
         </div>
       </ProjectListWrapper>
     </PageWrapper>
@@ -99,7 +111,7 @@ const FilterLink = styled.a`
   font-size: 60px;
   text-decoration: line-through;
   font-weight: bold;
-  cursor: pointer;
+  //cursor: pointer;
 
   &.is-active {
     opacity: 1;
@@ -108,10 +120,13 @@ const FilterLink = styled.a`
 `;
 
 export const pageQuery = graphql`
-  query ProjectsQuery {
+  query ProjectsQuery($locale: String!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: ASC }
-      filter: { fileAbsolutePath: { regex: "/work/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/work/" }
+        fields: { langKey: { eq: $locale } }
+      }
     ) {
       edges {
         node {
