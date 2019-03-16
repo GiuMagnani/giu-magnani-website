@@ -120,13 +120,11 @@ exports.createPages = ({ graphql, actions }) => {
             Object.keys(locales).map(lang => {
               if (lang === defaultLocale || !post.node.frontmatter.title) return;
 
-              const localizedPath = locales[lang].locale + post.node.fields.slug;
-
               createPage({
-                path: localizedPath,
+                path: post.node.fields.slug,
                 component: component,
                 context: {
-                  slug: localizedPath,
+                  slug: post.node.fields.slug,
                   directoryName: post.node.fields.directoryName,
                   locale: lang,
                   previous,
@@ -138,30 +136,6 @@ exports.createPages = ({ graphql, actions }) => {
         };
         createPagesByType(work, projectSingle);
         createPagesByType(journal, journalSingle);
-        // defaultLangPosts.forEach((post, index) => {
-        //   const previous =
-        //     index === array.length - 1 ? null : array[index + 1].node;
-        //   const next = index === 0 ? null : array[index - 1].node;
-        //
-        //   Object.keys(locales).map(lang => {
-        //     const localizedPath = locales[lang].default
-        //       ? post.node.fields.slug
-        //       : locales[lang].locale + post.node.fields.slug;
-        //
-        //     createPage({
-        //       path: localizedPath,
-        //       component: component,
-        //       context: {
-        //         slug: localizedPath,
-        //         directoryName: post.node.fields.directoryName,
-        //         locale: lang,
-        //         previous,
-        //         next,
-        //       },
-        //     });
-        //   });
-        // });
-        // };
 
         // createPagesByType(shop, shopSingle);
         // shop: allMarkdownRemark(
