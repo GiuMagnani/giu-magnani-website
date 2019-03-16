@@ -86,6 +86,7 @@ const MenuGroup = styled(posed.nav(MenuProps))`
   flex-direction: column;
   height: 100%;
   padding: 1rem;
+  opacity: 0;
 
   li {
     list-style-type: none;

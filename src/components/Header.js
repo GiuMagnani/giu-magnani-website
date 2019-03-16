@@ -6,8 +6,23 @@ import languages from "../i18n/languages";
 import LocalizedLink from "./LocalizedLink";
 import Menu from "./Menu";
 
-const Header = ({ intl: { locale } }) => {
+const Header = ({ location, intl: { locale } }) => {
   const [isMenuOpen, setMenuVisibility] = useState(false);
+
+  const getLocalizedPath = key => {
+    if (key === locale) {
+      // return same path
+      return location.pathname;
+    } else {
+      // default language, return pathname without locale
+      if (languages[key].default === true) {
+        return `/${location.pathname.split(`/${locale}/`)[1]}`;
+      } else {
+        // return locale + pathname
+        return `/${key}${location.pathname}`;
+      }
+    }
+  };
 
   return (
     <HeaderNav>
@@ -61,15 +76,15 @@ const Header = ({ intl: { locale } }) => {
           <Link
             className={key === locale ? "is-active" : ""}
             key={languages[key].locale}
-            to={languages[key].default ? "/" : `/${languages[key].locale}`}
-            state={{ stopTransition: true }}>
+            to={getLocalizedPath(key)}
+            state={{ stopTransition: false }}>
             {languages[key].locale}
           </Link>
         ))}
       </NavLanguages>
-      <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
+      {/*<Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />*/}
       {/*<MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>*/}
-        {/*MENU*/}
+      {/*MENU*/}
       {/*</MenuButton>*/}
     </HeaderNav>
   );

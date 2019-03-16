@@ -34,6 +34,7 @@ const Transition = posed.div({
 
 const Layout = ({ location, children }) => {
   const shouldAnimate = !(location.state && location.state.stopTransition);
+  // const shouldAnimate = false;
 
   const getLocalTitle = () => {
     const pathPrefix = config.pathPrefix ? config.pathPrefix : "/";
@@ -64,12 +65,12 @@ const Layout = ({ location, children }) => {
       <ThemeProvider theme={Theme}>
         <>
           <GlobalStyle />
-          <Header />
-          <PoseGroup>
-            <Transition key={location.pathname} shouldAnimate={shouldAnimate}>
+          <Header location={location} />
+          {/*<PoseGroup>*/}
+            {/*<Transition key={location.pathname} shouldAnimate={shouldAnimate}>*/}
               <Main>{children}</Main>
-            </Transition>
-          </PoseGroup>
+            {/*</Transition>*/}
+          {/*</PoseGroup>*/}
           <Footer config={config} />
         </>
       </ThemeProvider>
