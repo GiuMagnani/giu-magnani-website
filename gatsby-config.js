@@ -40,6 +40,7 @@ module.exports = {
       options: {
         langKeyDefault: "en",
         useLangKeyLayout: false,
+        prefixDefault: false,
         pagesPaths: [`${__dirname}/content`]
       },
     },

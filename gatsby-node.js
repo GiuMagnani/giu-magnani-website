@@ -1,6 +1,6 @@
-const locales = require("./src/i18n/languages");
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const locales = require("./src/i18n/locales");
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
@@ -63,6 +63,8 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   fields {
                     slug
+                    langKey
+                    directoryName
                   }
                   frontmatter {
                     title
@@ -83,23 +85,47 @@ exports.createPages = ({ graphql, actions }) => {
         // shop = shop.edges;
 
         const createPagesByType = (array, component) => {
-          array.forEach((post, index) => {
+          const defaultLocale = "en";
+          const defaultLangPosts = array.filter(post => {
+            return post.node.fields.langKey === defaultLocale;
+          });
+
+          defaultLangPosts.forEach((post, index) => {
+            const previous =
+              index === array.length - 1 ? null : array[index + 1].node;
+            const next = index === 0 ? null : array[index - 1].node;
+
+            createPage({
+              path: post.node.fields.slug,
+              component: component,
+              context: {
+                slug: post.node.fields.slug,
+                directoryName: post.node.fields.directoryName,
+                locale: defaultLocale,
+                previous,
+                next,
+              },
+            });
+          });
+
+          const translatedPosts = array.filter(post => {
+            return post.node.fields.langKey !== defaultLocale;
+          });
+
+          translatedPosts.forEach((post, index) => {
             const previous =
               index === array.length - 1 ? null : array[index + 1].node;
             const next = index === 0 ? null : array[index - 1].node;
 
             Object.keys(locales).map(lang => {
-              const localizedPath = locales[lang].default
-                ? post.node.fields.slug
-                : locales[lang].locale + post.node.fields.slug;
-              // console.log(localizedPath);
-              // console.log(post);
+              if (lang === defaultLocale || !post.node.frontmatter.title) return;
+
+              const localizedPath = locales[lang].locale + post.node.fields.slug;
+
               createPage({
-                // path: post.node.fields.slug,
                 path: localizedPath,
                 component: component,
                 context: {
-                  // slug: post.node.fields.slug,
                   slug: localizedPath,
                   directoryName: post.node.fields.directoryName,
                   locale: lang,
@@ -110,9 +136,33 @@ exports.createPages = ({ graphql, actions }) => {
             });
           });
         };
-
         createPagesByType(work, projectSingle);
         createPagesByType(journal, journalSingle);
+        // defaultLangPosts.forEach((post, index) => {
+        //   const previous =
+        //     index === array.length - 1 ? null : array[index + 1].node;
+        //   const next = index === 0 ? null : array[index - 1].node;
+        //
+        //   Object.keys(locales).map(lang => {
+        //     const localizedPath = locales[lang].default
+        //       ? post.node.fields.slug
+        //       : locales[lang].locale + post.node.fields.slug;
+        //
+        //     createPage({
+        //       path: localizedPath,
+        //       component: component,
+        //       context: {
+        //         slug: localizedPath,
+        //         directoryName: post.node.fields.directoryName,
+        //         locale: lang,
+        //         previous,
+        //         next,
+        //       },
+        //     });
+        //   });
+        // });
+        // };
+
         // createPagesByType(shop, shopSingle);
         // shop: allMarkdownRemark(
         //     sort: { fields: [frontmatter___date], order: DESC }
@@ -128,7 +178,7 @@ exports.createPages = ({ graphql, actions }) => {
         //         }
         //       }
         //     }
-        //   }
+        // };
       })
     );
   });
@@ -141,7 +191,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const value = createFilePath({ node, getNode });
 
     createNodeField({
-      name: 'directoryName',
+      name: "directoryName",
       node,
       value: path.basename(path.dirname(node.fileAbsolutePath)),
     });

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 import posed from "react-pose";
 import { FormattedMessage, injectIntl } from "react-intl";
-import languages from "../i18n/languages";
+import locales from "../i18n/locales";
 
 const fullScreenMenuProps = {
   open: { x: 0, transition: { duration: 350 } },
@@ -22,7 +22,7 @@ const Item = posed.li({
 
 const Menu = ({ intl: { locale }, isMenuOpen, setMenuVisibility }) => {
   const getTo = to => {
-    return languages[locale].default ? to : `/${languages[locale].locale}${to}`;
+    return locales[locale].default ? to : `/${locales[locale].locale}${to}`;
   };
   return (
     <MenuWrapper pose={isMenuOpen ? "open" : "closed"}>

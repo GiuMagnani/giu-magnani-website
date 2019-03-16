@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "gatsby-link";
 import styled from "styled-components";
 import { FormattedMessage, injectIntl } from "react-intl";
-import languages from "../i18n/languages";
+import locales from "../i18n/locales";
 import LocalizedLink from "./LocalizedLink";
 import Menu from "./Menu";
 
@@ -15,7 +15,7 @@ const Header = ({ location, intl: { locale } }) => {
       return location.pathname;
     } else {
       // default language, return pathname without locale
-      if (languages[key].default === true) {
+      if (locales[key].default === true) {
         return `/${location.pathname.split(`/${locale}/`)[1]}`;
       } else {
         // return locale + pathname
@@ -72,13 +72,13 @@ const Header = ({ location, intl: { locale } }) => {
         </LocalizedLink>
       </NavLinks>
       <NavLanguages>
-        {Object.keys(languages).map(key => (
+        {Object.keys(locales).map(key => (
           <Link
             className={key === locale ? "is-active" : ""}
-            key={languages[key].locale}
+            key={locales[key].locale}
             to={getLocalizedPath(key)}
             state={{ stopTransition: false }}>
-            {languages[key].locale}
+            {locales[key].locale}
           </Link>
         ))}
       </NavLanguages>
