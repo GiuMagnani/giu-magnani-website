@@ -2,6 +2,8 @@ import React from "react";
 import Layout from "../layouts/layout";
 import styled from "styled-components";
 import { PageIntro, PageWrapper } from "../style/PageStyles";
+import { FormattedMessage } from "react-intl";
+import Tools from "../components/Tools";
 
 const About = () => {
   const getRandom = (max, min) =>
@@ -10,45 +12,37 @@ const About = () => {
     <PageWrapper>
       <PageIntro>
         <div className="container">
-          <h1>Hi! I'm Giu Magnani.</h1>
-          <h2>
-            Front-End Developer and UI/UX Designer based in Milan, Italy. I'm a
-            creative and passionate professional who loves Web as much as
-            Design.
-          </h2>
+          <FormattedMessage id="about.heading1" tagName="h1" />
+          <FormattedMessage id="about.heading2" tagName="h2" />
         </div>
       </PageIntro>
       <AboutWrapper>
         <div className="container">
           <AboutInner>
             <MainText>
-              <p>
-                I started working with small business and participating in
-                design contests to build a strong portfolio and references. With
-              </p>
-              <Highlight>Santiago, Chile</Highlight>
-              <p>
-                perseverance and hard work, in 2012 I was contacted to work
-                remotely with a company in USA which produces logo and print
-                design services. In 2013, I went
-              </p>
-              <Highlight>London, UK</Highlight>
-              <p>
-                to London, UK to find new perspectives and inspiration, where I
-                had the pleasure to work with a vintage lighting signs company
-                and a Swedish design studio. In January 2014, with more than 3
-                years of experience, I launched my new design brand, to fully
-                pursue what I love, Web Development, Design and Illustration.
-              </p>
-              <Highlight>Milan, Italy</Highlight>
-              <p>
-                Right now I'm living in Milan, Italy. I'm working as a Front-End
-                Developer, I keep learning and facing new challenges to improve
-                every day more and more.
-              </p>
+              <FormattedMessage id="about.bio1" tagName="p" />
+              <Highlight>
+                <FormattedMessage id="about.quote1" />
+              </Highlight>
+              <br />
+              <FormattedMessage id="about.bio2" tagName="p" />
+              <Highlight>
+                <FormattedMessage id="about.quote2" />
+              </Highlight>
+              <br />
+              <FormattedMessage id="about.bio3" tagName="p" />
+              <Highlight>
+                <FormattedMessage id="about.quote3" />
+              </Highlight>
+              <br />
+              <FormattedMessage id="about.bio4" tagName="p" />
+              <Highlight>
+                <FormattedMessage id="about.quote4" />
+              </Highlight>
             </MainText>
             <MainImage>a</MainImage>
           </AboutInner>
+          <Tools />
           <Colophon x={getRandom(0, 100)} y={getRandom(0, 100)}>
             <div>
               This site was built with <a>React</a>, <a>GatsbyJS</a> and{" "}
@@ -67,7 +61,7 @@ const AboutWrapper = styled.section`
   margin-top: 0.5rem;
   border-top: 1px solid ${props => props.theme.main};
 
-  .container {
+  > .container {
     border: 1px solid ${props => props.theme.main};
     border-top: 0;
     padding: 0 1rem 1rem;
