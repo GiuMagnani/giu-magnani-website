@@ -1,12 +1,14 @@
 const config = require("./data/SiteConfig");
 const { ACTIVE_ENV, CONTEXT } = process.env;
 
-console.log(ACTIVE_ENV, CONTEXT);
-
 let activeEnv = ACTIVE_ENV;
 
-if (!activeEnv || CONTEXT === 'branch-deploy') {
+if (!activeEnv || CONTEXT === "branch-deploy") {
   activeEnv = "development";
+}
+
+if (CONTEXT === "branch-deploy") {
+  activeEnv = "branch-deploy";
 }
 
 require("dotenv").config({
@@ -40,13 +42,13 @@ module.exports = {
         resolveEnv: () => activeEnv,
         env: {
           production: {
-            policy: [{ userAgent: '*', allow: '/' }],
+            policy: [{ userAgent: "*", allow: "/" }],
           },
           development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }]
+            policy: [{ userAgent: "*", disallow: ["/"] }],
           },
-          'branch-deploy': {
-            policy: [{ userAgent: '*', disallow: ['/'] }]
+          "branch-deploy": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
           },
         },
       },
