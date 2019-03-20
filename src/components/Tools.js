@@ -14,6 +14,8 @@ const ToolsItem = ({ name, index }) => (
 
 const designTools = [
   "Pencil",
+  "Sketchbook",
+  "Graphic Tablet",
   "Adobe Illustrator",
   "Adobe Photoshop",
   "Adobe Xd",
@@ -21,13 +23,11 @@ const designTools = [
   "InVision",
   "",
   "",
-  "",
-  "",
 ];
 
 const developmentTools = [
-  "HTML5",
-  "CSS3",
+  "HTML",
+  "CSS",
   "JavaScript",
   "jQuery",
   "React",

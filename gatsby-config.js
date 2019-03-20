@@ -1,7 +1,11 @@
 const config = require("./data/SiteConfig");
-let activeEnv = process.env.ACTIVE_ENV;
+const { ACTIVE_ENV, CONTEXT } = process.env;
 
-if (!activeEnv) {
+console.log(ACTIVE_ENV, CONTEXT);
+
+let activeEnv = ACTIVE_ENV;
+
+if (!activeEnv || CONTEXT === 'branch-deploy') {
   activeEnv = "development";
 }
 
@@ -29,6 +33,25 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://www.giumagnani.com",
+        sitemap: "https://www.giumagnani.com/sitemap.xml",
+        resolveEnv: () => activeEnv,
+        env: {
+          production: {
+            policy: [{ userAgent: '*', allow: '/' }],
+          },
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content`,
@@ -41,7 +64,7 @@ module.exports = {
         langKeyDefault: "en",
         useLangKeyLayout: false,
         prefixDefault: false,
-        pagesPaths: [`${__dirname}/content`]
+        pagesPaths: [`${__dirname}/content`],
       },
     },
     {
@@ -64,9 +87,9 @@ module.exports = {
             },
           },
           {
-            resolve: 'gatsby-remark-external-links',
+            resolve: "gatsby-remark-external-links",
             options: {
-              target: '_blank',
+              target: "_blank",
             },
           },
           "gatsby-remark-prismjs",
