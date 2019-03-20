@@ -3,3 +3,12 @@
 
 # Redirect default Netlify subdomain to primary domain
 https://giumagnani.netlify.com/* https://www.giumagnani.com/:splat 301!
+http://giumagnani.com/intrepido-website https://www.giumagnani.com/work/intrepido-website/ 301!
+https://giumagnani.com/logo-collection-ii https://www.giumagnani.com/work/logo-design-collection-2/ 301!
+https://giumagnani.com/logo-design-projects https://www.giumagnani.com/work/logo-design-collection-1/ 301!
+https://giumagnani.com/cook-icons-pattern https://www.giumagnani.com/work/logo-design-illustration-1/ 301!
+https://giumagnani.com/i-read-clouds https://www.giumagnani.com/work/bookmarks-illustration/ 301!
+https://giumagnani.com/logos-2010-2012 https://www.giumagnani.com/work/logo-design-collection-1/ 301!
+https://giumagnani.com/logo-collection-2012-2013 https://www.giumagnani.com/work/logo-design-collection-1/ 301!
+https://giumagnani.com/biographical-dictionary-of-colonial-chile https://www.giumagnani.com/work/dictionary-chile-graphic-design/ 301!
+http://giumagnani.com/212487/2470353/work/logo-illustration-1 https://www.giumagnani.com/work/logo-design-illustration-1/ 301!

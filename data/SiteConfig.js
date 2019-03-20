@@ -1,5 +1,5 @@
 module.exports = {
-  siteTitle: "Giu Magnani Portfolio", // Site title.
+  siteTitle: "Giu Magnani", // Site title.
   siteTitleAlt: "Giu Magnani UX/UI Designer, Front-End Developer and Illustrator", // Alternative site title for SEO.
   siteUrl: "https://www.giumagnani.com", // Domain of your website without pathPrefix.
   siteDescription: "I’m a Front-End Developer, UI/UX Designer and Illustrator from Chile working and living in Milan, Italy.", // Website description used for RSS feeds/meta description tag.
