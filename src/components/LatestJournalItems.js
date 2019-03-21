@@ -9,9 +9,9 @@ const LatestJournalItems = ({ journal, className }) => (
         return (
           <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
             <JournalIndex>{`${
-              (index + 1).toString().length === 1
-                ? "0" + (index + 1)
-                : index + 1
+              (journal.length - (index + 1)).toString().length === 1
+                ? "0" + (journal.length - (index + 1))
+                : journal.length - (index + 1)
             }`}</JournalIndex>
             <small>{node.frontmatter.date}</small>
             <h3>{node.frontmatter.title}</h3>
