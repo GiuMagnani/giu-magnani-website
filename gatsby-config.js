@@ -28,7 +28,7 @@ module.exports = {
       feed_url: config.siteUrl + pathPrefix + config.siteRss,
       title: config.siteTitle,
       description: config.siteDescription,
-      image_url: `${config.siteUrl + pathPrefix}/logos/logo-512x512.png`,
+      image_url: `${config.siteUrl + pathPrefix}/icons/logo-512x512.png`,
       author: config.userName,
       copyright: config.copyright,
     },
@@ -51,6 +51,13 @@ module.exports = {
             policy: [{ userAgent: "*", disallow: ["/"] }],
           },
         },
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images`,
+        name: 'images',
       },
     },
     {
@@ -136,17 +143,17 @@ module.exports = {
         display: "minimal-ui",
         icons: [
           {
-            src: "/logos/giu-magnani-logo-192.png",
+            src: "/icons/giu-magnani-logo-192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/logos/giu-magnani-logo-256.png",
+            src: "/icons/giu-magnani-logo-256.png",
             sizes: "256x256",
             type: "image/png",
           },
           {
-            src: "/logos/giu-magnani-logo-512.png",
+            src: "/icons/giu-magnani-logo-512.png",
             sizes: "512x512",
             type: "image/png",
           },

@@ -6,7 +6,7 @@ module.exports = {
   siteFBAppID: "",
   userName: "Giu Magnani",
   googleAnalyticsID: "UA-47304762-1",
-  siteLogo: "/logos/giu-magnani-logo-1024.png",
+  siteLogo: "/icons/giu-magnani-logo-1024.png",
   pathPrefix: "/",
   copyright: "© 2019 Designed & Developed by Giu Magnani",
   themeColor: "#2222ff",

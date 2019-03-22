@@ -11,10 +11,11 @@ import { PageWrapper } from "../style/PageStyles";
 const BlogIndex = ({ location, data }) => {
   const journal = data.journal.edges;
   const projects = data.projects.edges;
-
+  const heroImage = data.heroImage;
+  console.log(heroImage);
   return (
     <PageWrapper>
-      <Hero />
+      <Hero heroImage={heroImage}/>
       <ProjectsWrapper>
         <div className="container">
           <ProjectsHeading>
@@ -140,6 +141,13 @@ export const pageQuery = graphql`
         }
       }
     }
+    heroImage: file(relativePath: { eq: "giu-magnani.jpg" }) {
+      childImageSharp {
+        sizes(quality: 100, maxWidth: 600) {
+          ...GatsbyImageSharpSizes_withWebp
+        }
+      }
+    }
     journal: allMarkdownRemark(
       limit: 4
       sort: { fields: [frontmatter___date], order: DESC }
@@ -183,11 +191,10 @@ export const pageQuery = graphql`
               childImageSharp {
                 sizes(
                   quality: 100
-                  maxWidth: 800
+                  maxWidth: 700
                   duotone: { highlight: "#ffffff", shadow: "#2222ff" }
-                  toFormat: PNG
                 ) {
-                  ...GatsbyImageSharpSizes
+                  ...GatsbyImageSharpSizes_withWebp
                 }
               }
             }

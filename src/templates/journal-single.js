@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
+import SEO from "../SEO/SEO";
+import Helmet from "react-helmet";
 
 const JournalSingle = ({ data, pageContext }) => {
   const post = data.markdownRemark;
@@ -9,7 +11,20 @@ const JournalSingle = ({ data, pageContext }) => {
 
   return (
     <>
-      {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/}
+      <SEO
+        postNode={{
+          title: post.frontmatter.title,
+          excerpt: post.excerpt,
+          featuredImage:
+            post.frontmatter.featuredImage &&
+            post.frontmatter.featuredImage.publicURL,
+        }}
+        postPath={post.fields.slug}
+        postSEO={true}
+      />
+      <Helmet>
+        <title>{`${siteTitle} | ${post.frontmatter.title}`}</title>
+      </Helmet>
       <ContentWrapper className="container">
         <Intro>
           <small>{post.frontmatter.date}</small>
@@ -107,16 +122,26 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        featuredImage {
+          publicURL
+          childImageSharp {
+            sizes(quality: 100, maxWidth: 1240) {
+              ...GatsbyImageSharpSizes_withWebp
+            }
+          }
+        }
       }
     }
   }

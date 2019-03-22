@@ -2,6 +2,8 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 import posed from "react-pose";
+import SEO from "../SEO/SEO";
+import Helmet from "react-helmet";
 
 const IntroProps = {
   enter: { opacity: 1, y: "0%", transition: { duration: 150 } },
@@ -21,7 +23,20 @@ const WorkSingle = props => {
   return (
     <>
       <ContentWrapper className="container">
-        {/*<SEO title={ post.frontmatter.title } description={ post.excerpt } />*/}
+        <SEO
+          postNode={{
+            title: post.frontmatter.title,
+            excerpt: post.excerpt,
+            featuredImage:
+              post.frontmatter.featuredImage &&
+              post.frontmatter.featuredImage.publicURL,
+          }}
+          postPath={post.fields.slug}
+          postSEO={true}
+        />
+        <Helmet>
+          <title>{`${siteTitle} | ${post.frontmatter.title}`}</title>
+        </Helmet>
         <Intro>
           <IntroDetails>
             <div>
@@ -139,7 +154,7 @@ const IntroImage = styled.div`
 `;
 
 const Intro = styled.header`
-  min-height: calc(100vh - 59px);
+  min-height: calc(100vh - 97px);
   display: flex;
   border: 1px solid ${props => props.theme.main};
   border-top: 0;
@@ -151,6 +166,10 @@ const Intro = styled.header`
     text-transform: uppercase;
     letter-spacing: 3px;
     display: block;
+  }
+
+  @media (min-width: ${props => props.theme.lg}) {
+    margin-top: 60px;
   }
 `;
 
@@ -231,16 +250,26 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        featuredImage {
+          publicURL
+          childImageSharp {
+            sizes(quality: 100, maxWidth: 1240) {
+              ...GatsbyImageSharpSizes_withWebp
+            }
+          }
+        }
         tags
         categories
         tools

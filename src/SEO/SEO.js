@@ -1,9 +1,9 @@
 import React from "react";
 import Helmet from "react-helmet";
 import config from "../../data/SiteConfig";
-// import favicon16 from "../../images/favicon-16x16.png";
-// import favicon32 from "../../images/favicon-32x32.png";
-// import appleTouchIcon from "../../images/apple-touch-icon.png";
+import favicon16 from "../images/favicon-16x16.png";
+import favicon32 from "../images/favicon-32x32.png";
+import appleTouchIcon from "../images/apple-touch-icon.png";
 
 export default props => {
   const { postNode, postPath, postSEO } = props;
@@ -14,11 +14,9 @@ export default props => {
   if (postSEO) {
     const postMeta = postNode;
     title = postMeta.title;
-    description = postMeta.description
-      ? postMeta.description
-      : postNode.excerpt;
-    image = postMeta.cover;
-    postURL = config.siteUrl + config.pathPrefix + postPath;
+    description = postNode.excerpt;
+    image = postMeta.featuredImage || config.siteLogo;
+    postURL = config.siteUrl + postPath;
   } else {
     title = config.siteTitle;
     description = config.siteDescription;
@@ -71,9 +69,9 @@ export default props => {
   return (
     <Helmet>
       {/* Images */ }
-      {/*<link rel="apple-touch-icon" sizes="180x180" href={ appleTouchIcon } />*/}
-      {/*<link rel="icon" type="image/png" sizes="32x32" href={ favicon32 } />*/}
-      {/*<link rel="icon" type="image/png" sizes="16x16" href={ favicon16 } />*/}
+      <link rel="apple-touch-icon" sizes="180x180" href={ appleTouchIcon } />
+      <link rel="icon" type="image/png" sizes="32x32" href={ favicon32 } />
+      <link rel="icon" type="image/png" sizes="16x16" href={ favicon16 } />
 
       {/* General tags */ }
       <meta name="description" content={ description } />

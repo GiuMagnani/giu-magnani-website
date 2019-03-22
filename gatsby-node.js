@@ -118,7 +118,8 @@ exports.createPages = ({ graphql, actions }) => {
             const next = index === 0 ? null : array[index - 1].node;
 
             Object.keys(locales).map(lang => {
-              if (lang === defaultLocale || !post.node.frontmatter.title) return;
+              if (lang === defaultLocale || !post.node.frontmatter.title)
+                return;
 
               createPage({
                 path: post.node.fields.slug,
@@ -162,7 +163,17 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
+    // console.log(node.frontmatter.featuredImage);
+    //
+    // if (node.frontmatter.featuredImage) {
+    //   const path = `../../static/${node.frontmatter.featuredImage}`;
+    //
+    //   createNodeField({
+    //     node,
+    //     name: "image",
+    //     value: path,
+    //   });
+    // }
 
     createNodeField({
       name: "directoryName",

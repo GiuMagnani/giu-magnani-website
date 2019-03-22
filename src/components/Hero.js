@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import giuNeonImage from "../../static/giu-magnani.jpg";
+import giuNeonImage from "../images/giu-magnani.jpg";
 import SocialLinks from "./SocialLinks";
 import { FormattedMessage } from "react-intl";
+import Img from "gatsby-image";
 
-const Hero = () => (
+const Hero = ({ heroImage }) => (
   <HeroDivWrapper>
     <HeroDiv className="container">
       <MainHeading>
@@ -23,7 +24,10 @@ const Hero = () => (
         <HeroSocialLinks isBlue={true} />
       </MainHeading>
       <HeroImg>
-        <img src={giuNeonImage} alt="Giu Magnani 3D Neon Logo" />
+        <Img
+          sizes={heroImage.childImageSharp.sizes}
+          alt="Giu Magnani 3D Neon Logo"
+        />
       </HeroImg>
     </HeroDiv>
   </HeroDivWrapper>
@@ -104,26 +108,45 @@ const MainHeading = styled.div`
 `;
 
 const HeroImg = styled.div`
-  width: 100%;
   position: absolute;
+  z-index: -1;
   bottom: 0;
   right: 0;
-  z-index: -1;
+  height: 100%;
+  width: 100%;
 
-  img {
-    height: 40vh;
-    opacity: 0.3;
-    position: absolute;
-    right: 0;
+  .gatsby-image-wrapper {
+    opacity: 0;
+    position: absolute !important;
+    right: -5%; 
     bottom: 0;
+    height: auto;
+  }
+
+  @media (min-width: 600px) {
+    .gatsby-image-wrapper {
+      opacity: 1;
+      width: 300px;
+    }
   }
 
   @media (min-width: ${props => props.theme.lg}) {
-    height: 100%;
-
-    img {
-      height: 60vh;
+    .gatsby-image-wrapper {
+      right: -6%;
+      width: 500px;
       opacity: 1;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .gatsby-image-wrapper {
+      right: -10%;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .gatsby-image-wrapper {
+      right: -12.5%;
     }
   }
 `;

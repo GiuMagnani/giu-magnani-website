@@ -1,4 +1,9 @@
 {
+  "title.home": "Home",
+  "title.about": "About",
+  "title.work": "Work",
+  "title.journal": "Journal",
+  "title.contact": "Contact",
   "home.title": "Home",
   "home.heading1": "Hi! I'm Giu Magnani.",
   "home.heading2": "I’m a Front-End Developer and UI/UX Designer from Chile working and living in Milan, Italy.",

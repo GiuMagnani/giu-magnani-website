@@ -11,6 +11,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SEO from "../SEO/SEO";
 import posed, { PoseGroup } from "react-pose";
+import { FormattedMessage, injectIntl } from "react-intl";
 
 const transitionDuration = 150;
 const transitionDelay = 200;
@@ -32,7 +33,7 @@ const Transition = posed.div({
   },
 });
 
-const Layout = ({ location, children }) => {
+const Layout = ({ location, children, locale }) => {
   const shouldAnimate = !(location.state && location.state.stopTransition);
   // const shouldAnimate = false;
 
@@ -40,28 +41,30 @@ const Layout = ({ location, children }) => {
     const pathPrefix = config.pathPrefix ? config.pathPrefix : "/";
     const currentPath = location.pathname
       .replace(pathPrefix, "")
+      .replace(`${locale}/`, "")
       .replace("/", "");
-    let title = "";
+
     if (currentPath === "") {
-      title = "Home";
+      return "title.home";
     } else if (currentPath === "about") {
-      title = "About";
+      return "title.about";
     } else if (currentPath === "work") {
-      title = "Work";
+      return "title.work";
     } else if (currentPath === "contact") {
-      title = "Contact";
+      return "title.contact";
     } else if (currentPath === "journal") {
-      title = "Journal";
+      return "title.journal";
+    } else {
+      return "title.home";
     }
-    return title;
   };
 
   return (
     <>
       <SEO />
-      <Helmet>
-        <title>{`${config.siteTitle} |  ${getLocalTitle()}`}</title>
-      </Helmet>
+      <FormattedMessage id={getLocalTitle()}>
+        {title => <Helmet><title>{`${config.siteTitle} | ${title}`}</title></Helmet>}
+      </FormattedMessage>
       <ThemeProvider theme={Theme}>
         <>
           <GlobalStyle />
@@ -82,4 +85,4 @@ const Main = styled.main`
   min-height: calc(100vh - 98px);
 `;
 
-export default Layout;
+export default injectIntl(Layout);

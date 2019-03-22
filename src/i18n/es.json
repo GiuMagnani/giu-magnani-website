@@ -1,4 +1,9 @@
 {
+  "title.home": "Inicio",
+  "title.about": "Sobre Mí",
+  "title.work": "Trabajo",
+  "title.journal": "Bitácora",
+  "title.contact": "Contacto",
   "home.title": "Inicio",
   "home.heading1": "¡Hola! Soy Giu Magnani.",
   "home.heading2": "Soy un Front-End Developer y Diseñador UI de Chile trabajando y viviendo en Milán, Italia.",

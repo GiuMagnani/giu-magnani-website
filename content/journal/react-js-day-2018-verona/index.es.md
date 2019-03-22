@@ -2,7 +2,7 @@
 title: React JS Day 2018 Verona
 subtitle: Advanced patterns and best practices with React 
 date: "2018-10-08"
-featuredImage: "react-js-day-2018-verona"
+featuredImage: "react-js-day-2018-verona.jpg"
 ---
 
 The 5th of October, in Verona, Italy the [**reactjsday**](https://2018.reactjsday.it/) took place, organized by [Grusp](https://www.grusp.org/it/) and [fevr](http://www.fevr.it/), developers from all over the world came together in this lovely city to talk about React. I'll try to share with you the experience of this remarkable event.
