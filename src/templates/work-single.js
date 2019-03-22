@@ -155,6 +155,8 @@ const Intro = styled.header`
 `;
 
 const Content = styled.div`
+  overflow: hidden;
+
   h2,
   h3,
   h4,
