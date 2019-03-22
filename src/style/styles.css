@@ -48,6 +48,7 @@ body {
   border-color: #2222ff;
   min-height: 100vh;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 @media (min-width: 992px) {

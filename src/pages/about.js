@@ -127,19 +127,27 @@ const Colophon = styled.div`
 `;
 
 const MainImage = styled.div`
-  width: 50%;
   background: ${props => props.theme.main};
   padding: 1rem;
   flex: 1;
   margin: 1rem 0 1rem 1rem;
+  width: 100%;
+
+  @media (min-width: ${props => props.theme.md}) {
+    width: 50%;
+  }
 `;
 
 const MainText = styled.div`
   border: 1px solid ${props => props.theme.main};
   margin: 1rem 0;
   padding: 2rem 1rem;
-  width: 50%;
   flex: 1;
+  width: 100%;
+
+  @media (min-width: ${props => props.theme.md}) {
+    width: 50%;
+  }
 `;
 
 const AboutInner = styled.div`

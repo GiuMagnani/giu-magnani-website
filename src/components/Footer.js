@@ -40,7 +40,9 @@ class Footer extends React.Component {
           </FooterEmailLink>
           <FooterSocialLinks />
           <FooterCopyright>
-            <span><FormattedMessage id="footer.copyright" /></span>
+            <span>
+              <FormattedMessage id="footer.copyright" />
+            </span>
           </FooterCopyright>
         </div>
       </FooterWrapper>
@@ -59,9 +61,6 @@ const FooterWrapper = styled.footer`
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    border-style: solid;
-    border-color: white;
-    border-width: 0 1px;
   }
 
   a {
@@ -73,9 +72,12 @@ const FooterWrapper = styled.footer`
     bottom: 0;
     width: 100%;
     left: 0;
-    
+
     .container {
       flex-direction: row;
+      border-style: solid;
+      border-color: white;
+      border-width: 0 1px;
     }
   }
 `;

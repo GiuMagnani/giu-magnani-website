@@ -97,6 +97,7 @@ const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   margin-top: -20px;
+  overflow: hidden;
 
   @media (min-width: ${props => props.theme.lg}) {
     margin-top: 0;
