@@ -12,7 +12,7 @@ const BlogIndex = ({ location, data }) => {
   const journal = data.journal.edges;
   const projects = data.projects.edges;
   const heroImage = data.heroImage;
-  console.log(heroImage);
+
   return (
     <PageWrapper>
       <Hero heroImage={heroImage}/>
