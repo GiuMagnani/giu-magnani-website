@@ -203,6 +203,7 @@ const ProjectLink = styled(Link)`
     margin-top: 0;
     position: relative;
     border-width: 1px 0 0;
+    padding-left: 2rem;
     
     // &::after {
     //   content: "";

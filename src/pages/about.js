@@ -2,7 +2,10 @@ import React from "react";
 import Layout from "../layouts/layout";
 import styled from "styled-components";
 import { PageIntro, PageWrapper } from "../style/PageStyles";
-import { FormattedMessage } from "react-intl";
+import {
+  FormattedHTMLMessage,
+  FormattedMessage
+} from "react-intl";
 import Tools from "../components/Tools";
 
 const About = () => {
@@ -44,12 +47,7 @@ const About = () => {
           </AboutInner>
           <Tools />
           <Colophon x={getRandom(0, 100)} y={getRandom(0, 100)}>
-            <div>
-              This site was built with <a>React</a>, <a>GatsbyJS</a> and{" "}
-              <a>Styled Components</a>. The font used is <a>Chakra Petch</a>{" "}
-              from Google Fonts, designed by{" "}
-              <a href="http://font.cadsondemak.com/foundry/">Cadson Demak</a>.
-            </div>
+            <FormattedHTMLMessage id="about.colophon" tagName="div"/>
           </Colophon>
         </div>
       </AboutWrapper>
@@ -132,9 +130,12 @@ const MainImage = styled.div`
   flex: 1;
   margin: 1rem 0 1rem 1rem;
   width: 100%;
+  display: none;
 
   @media (min-width: ${props => props.theme.md}) {
-    width: 50%;
+    display: block;
+    width: 30%;
+    flex-basis: 30%;
   }
 `;
 
@@ -146,7 +147,8 @@ const MainText = styled.div`
   width: 100%;
 
   @media (min-width: ${props => props.theme.md}) {
-    width: 50%;
+    width: 70%;
+    flex-basis: 70%;
   }
 `;
 

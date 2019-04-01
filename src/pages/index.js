@@ -116,12 +116,12 @@ const JournalWrapper = styled.section`
     border: 1px solid ${props => props.theme.main};
     border-top: 0;
     position: relative;
-    padding-top: 0.5rem;
+    margin-top: 0.5rem;
 
     &::after {
       content: "";
       position: absolute;
-      top: 0.5rem;
+      top: 0;
       left: 0;
       width: 100%;
       height: 1px;
@@ -163,7 +163,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "DD MMMM, YYYY")
+            date(formatString: "DD MMMM, YYYY", locale: $locale )
             title
           }
         }
