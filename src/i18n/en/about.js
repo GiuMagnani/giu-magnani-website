@@ -14,7 +14,7 @@ export default {
   "about.bio4":
     "With everything I’ve learned, in 2018, I received a very interesting job offer from Italy to work as a Front-End Developer for a big company in Milan, where I’m currently developing a web application using Vue.js, Vuex, TypeScript and integrating API requests.",
   "about.quote4": "Always learning!",
-  "about.colophon": `This site was built with <a href="https://reactjs.org/">React</a>, <a href="https://www.gatsbyjs.org/">GatsbyJS</a> and <a href="https://www.styled-components.com/">Styled Components</a>. The font used is <a href="https://fonts.google.com/?query=chak&selection.family=Chakra+Petch">Chakra Petch</a> from Google Fonts, designed by<a href="https://font.cadsondemak.com/foundry/">Cadson Demak</a>.`
+  "about.colophon": `This site was built with <a href="https://reactjs.org/">React</a>, <a href="https://www.gatsbyjs.org/">GatsbyJS</a> and <a href="https://www.styled-components.com/">Styled Components</a>. The font used is <a href="https://fonts.google.com/?query=chak&selection.family=Chakra+Petch">Chakra Petch</a> from Google Fonts, designed by <a href="https://font.cadsondemak.com/foundry/">Cadson Demak</a>.`
 };
 
 
