@@ -42,6 +42,6 @@ The link of the project on the site of the biennial: https://goo.gl/RhwqjF
 ![Biographical Dictionary - 16](dictionary-16.jpg)
 _BOOK PRINT DETAILS:
 Paperback. 17 x 13 cm.
-84 pages printed in four colours.
+84 pages printed in four colours
 500 printed and free distributed books
 The original text is in the public domain: http://www.memoriachilena.cl/602/w3-article-8209.html_
