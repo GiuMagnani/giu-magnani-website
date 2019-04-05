@@ -6,9 +6,9 @@ tags: [illustration, bookmark, illustrator, drawing, kid]
 categories: [Illustration]
 ---
 
-Illustrations made for a bookmarks competition from Chile, the theme was the reading encouragement. 
+Illustrations made for a bookmarks competition from Chile, the theme was "Reading Encouragement". 
 
-Done in Illustrator from a pencil sketch.
+Done in Adobe Illustrator from some pencil sketches.
 
 ![Bookmark 1 - Read to the Moon and Back](read-book.jpg)
 ![Bookmark 2 - Stellar Book](stellar.jpg)
