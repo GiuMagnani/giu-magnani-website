@@ -10,15 +10,17 @@ Second version of the competition organized by Antalis-GMS and the INACAP Apoqui
 
 The concept used to solve the problem was "Hero".
 
+![Paper Hero - 1](paper-1.jpg)
+
 The Design discipline needs strength and passion to effectively communicate the message. Making reference to Clark Kent's "transformation" into Superman, the paper hands tear the paper to show us his red interior, with hearts at different levels representing the designer's deeply love for his work.
+
+![Paper Hero - 2](paper-2.jpg)
 
 "The important thing in Life is not triumph, but the struggle."
 – Pierre de Coubertin
 
-The poster won the first prize in the contest.
-
-![Paper Hero - 1](paper-1.jpg)
-![Paper Hero - 2](paper-2.jpg)
 ![Paper Hero - 3](paper-3.jpg)
 ![Paper Hero - 4](paper-4.jpg)
 ![Paper Hero - 5](paper-5.png)
+
+The poster won the first prize in the contest.
