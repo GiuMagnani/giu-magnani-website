@@ -29,3 +29,8 @@ fields:
 - type: list
   name: colors
   label: colors
+- type: color
+  name: colour
+  config:
+    color_format: Hex
+  label: Colour
