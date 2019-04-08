@@ -10,12 +10,16 @@ sections:
   create: all
   match: "**/*"
   new_doc_ext: md
+  templates:
+  - journal-template
 - type: directory
   path: content/work
   label: Work
   create: all
   match: "**/*"
   new_doc_ext: md
+  templates:
+  - project-template
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
