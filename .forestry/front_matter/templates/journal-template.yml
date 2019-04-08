@@ -1,0 +1,16 @@
+---
+label: Journal Template
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: subtitle
+  label: subtitle
+- type: datetime
+  name: date
+  label: date
+- type: file
+  name: featuredImage
+  label: featuredImage
