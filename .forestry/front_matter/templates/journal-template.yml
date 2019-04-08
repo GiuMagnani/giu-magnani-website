@@ -14,3 +14,5 @@ fields:
 - type: file
   name: featuredImage
   label: featuredImage
+pages:
+- content/journal/gatsby-website-with-forestry-cms/editing-the-content-of-my-gatsbyjs-with-forestry-io-cms.md
