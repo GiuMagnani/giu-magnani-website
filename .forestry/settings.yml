@@ -5,7 +5,7 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
-  path: journal
+  path: content/journal
   label: Journal
   create: all
   match: "**/*"
