@@ -1,0 +1,31 @@
+---
+label: Project Template
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: datetime
+  name: date
+  label: date
+- type: file
+  name: featuredImage
+  label: featuredImage
+- type: list
+  name: tags
+  label: tags
+- type: list
+  name: categories
+  label: categories
+- type: list
+  name: tools
+  label: tools
+- type: text
+  name: behance_url
+  label: behance_url
+- type: text
+  name: dribbble_url
+  label: dribbble_url
+- type: list
+  name: colors
+  label: colors
