@@ -15,5 +15,5 @@ fields:
   name: featuredImage
   label: featuredImage
 pages:
-- content/journal/gatsby-website-with-forestry-cms/editing-the-content-of-my-gatsbyjs-with-forestry-io-cms-1.md
+- content/journal/gatsby-website-with-forestry-cms/editing-the-content-of-my-gatsbyjs-with-forestry-io-cms.es.md
 - content/journal/gatsby-website-with-forestry-cms/editing-the-content-of-my-gatsbyjs-with-forestry-io-cms.md
