@@ -57,7 +57,7 @@ const JournalList = styled(LatestJournalItems)`
 export const pageQuery = graphql`
   query JournalQuery($locale: String!) {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/journal/" }
         fields: { langKey: { eq: $locale } }
