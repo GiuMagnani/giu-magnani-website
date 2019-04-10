@@ -5,15 +5,28 @@ fields:
 - type: text
   name: title
   label: title
-- type: text
-  name: subtitle
-  label: subtitle
+  config:
+    required: true
 - type: datetime
   name: date
   label: date
+  default: 2019-04-10 23:19:18 +0200
+  config:
+    date_format: YYYY/MM/DD
+    required: true
+    display_utc: false
 - type: file
   name: featuredImage
   label: featuredImage
+- type: tag_list
+  label: Categories
+  name: categories
+  description: Choose the main categories of the project (Illustration, Front-End
+    Dev, etc).
+- type: tag_list
+  description: Choose some tags to describe the project.
+  label: Tags
+  name: tags
 pages:
 - content/journal/gatsby-website-with-forestry-cms/index.es.md
 - content/journal/gatsby-website-with-forestry-cms/index.md
