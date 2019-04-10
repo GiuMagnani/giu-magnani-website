@@ -34,3 +34,5 @@ fields:
   config:
     color_format: Hex
   label: Colour
+pages:
+- content/work/pixel-art-illustrations/pixel-art-illustrations.md
