@@ -23,6 +23,7 @@ fields:
   name: categories
   description: Choose the main categories of the project (Illustration, Front-End
     Dev, etc).
+  default: []
 - type: tag_list
   description: Choose some tags to describe the project.
   label: Tags
