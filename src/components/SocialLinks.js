@@ -16,7 +16,7 @@ const SocialLinks = ({ isBlue, className }) => {
     <SocialLinksWrapper is-blue={isBlue} className={className}>
       <ul>
         {Object.keys(links).map(key => (
-          <li>
+          <li key={key}>
             <a href={links[key]} rel="noopener" target="_blank">
               <Icon name={key} />
             </a>

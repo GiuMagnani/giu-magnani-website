@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
+import Img from "gatsby-image";
 import styled from "styled-components";
 import posed from "react-pose";
 import SEO from "../SEO/SEO";
 import Helmet from "react-helmet";
+import { Icon } from "../components/Icons/Icons";
 
 const IntroProps = {
   enter: { opacity: 1, y: "0%", transition: { duration: 150 } },
@@ -47,27 +49,42 @@ const WorkSingle = props => {
               {post.frontmatter.tags && (
                 <li>
                   {post.frontmatter.tags.map((tag, index) => (
-                    <span key={index}>{tag} </span>
+                    <span key={index}>
+                      {`${tag}${
+                        index === post.frontmatter.tags.length - 1 ||
+                        post.frontmatter.tags.length === 1
+                          ? ""
+                          : " | "
+                      }`}
+                    </span>
                   ))}
                 </li>
               )}
               {post.frontmatter.tools && (
                 <li>
                   {post.frontmatter.tools.map((tool, index) => (
-                    <span key={index}>{tool} </span>
+                    <span key={index}>
+                      {`${tool}${
+                        index === post.frontmatter.tools.length - 1 ||
+                        post.frontmatter.tools.length === 1
+                          ? ""
+                          : " | "
+                      }`}
+                    </span>
                   ))}
                 </li>
               )}
               {(post.frontmatter.dribbble_url ||
                 post.frontmatter.behance_url ||
                 post.frontmatter.github_url) && (
-                <li>
+                <LinkIcon>
+                  <span>SEE IT ALSO ON</span>
                   {post.frontmatter.dribbble_url && (
                     <a
                       href={post.frontmatter.dribbble_url}
                       rel="noopener"
                       target="_blank">
-                      Dribbble
+                      <Icon name="dribbble" />
                     </a>
                   )}
                   {post.frontmatter.behance_url && (
@@ -75,7 +92,7 @@ const WorkSingle = props => {
                       href={post.frontmatter.behance_url}
                       rel="noopener"
                       target="_blank">
-                      Behance
+                      <Icon name="behance" />
                     </a>
                   )}
                   {post.frontmatter.github_url && (
@@ -83,10 +100,10 @@ const WorkSingle = props => {
                       href={post.frontmatter.github_url}
                       rel="noopener"
                       target="_blank">
-                      GitHub
+                      <Icon name="github" />
                     </a>
                   )}
-                </li>
+                </LinkIcon>
               )}
               {post.frontmatter.colors && (
                 <li>
@@ -106,6 +123,9 @@ const WorkSingle = props => {
           </IntroDetails>
           <IntroImage />
         </Intro>
+        <FeaturedImage>
+          <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
+        </FeaturedImage>
         <Content dangerouslySetInnerHTML={{ __html: post.html }} />
         <Pagination>
           <li>
@@ -128,7 +148,9 @@ const WorkSingle = props => {
   );
 };
 
-const ContentWrapper = styled.article``;
+const ContentWrapper = styled.article`
+padding-bottom: 38px;
+`;
 
 const IntroDetails = styled(posed.div(IntroProps))`
   border: 1px solid ${props => props.theme.main};
@@ -161,11 +183,44 @@ const IntroDetails = styled(posed.div(IntroProps))`
   }
 `;
 
+const LinkIcon = styled.li`
+  height: 2rem;
+  padding: 0;
+  text-align: left;
+  line-height: 2rem;
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-right: 0.5rem;
+  }
+
+  a {
+    display: inline-block;
+    height: 100%;
+    width: 1rem;
+    margin-right: 1rem;
+  }
+`;
+
 const IntroImage = styled.div`
   border: 1px solid ${props => props.theme.main};
   flex: 1;
   margin-left: 1rem;
   background: ${props => props.theme.main};
+  max-height: calc(100vh - 98px - 2rem);
+`;
+
+const FeaturedImage = styled.section`
+  margin: 1rem 0;
+  border: 1px solid ${props => props.theme.main};
+  max-height: 80vh;
+  overflow: hidden;
+
+  .gatsby-image-wrapper {
+    max-height: calc(80vh - 1rem);
+    border: 1rem solid white;
+  }
 `;
 
 const Intro = styled.header`
@@ -240,13 +295,15 @@ const SingleTitle = styled(posed.h1(H1Props))`
 `;
 
 const Pagination = styled.ul`
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100px;
   list-style-type: none;
+  border: 1px solid ${props => props.theme.main};
+  padding: 1rem;
 
   li {
     a {
