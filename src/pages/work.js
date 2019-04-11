@@ -122,7 +122,7 @@ const FilterLink = styled.a`
 export const pageQuery = graphql`
   query ProjectsQuery($locale: String!) {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/work/" }
         fields: { langKey: { eq: $locale } }

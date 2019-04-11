@@ -63,13 +63,28 @@ const WorkSingle = props => {
                 post.frontmatter.github_url) && (
                 <li>
                   {post.frontmatter.dribbble_url && (
-                    <a href={post.frontmatter.dribbble_url}>dribbble</a>
+                    <a
+                      href={post.frontmatter.dribbble_url}
+                      rel="noopener"
+                      target="_blank">
+                      Dribbble
+                    </a>
                   )}
                   {post.frontmatter.behance_url && (
-                    <a href={post.frontmatter.behance_url}>behance</a>
+                    <a
+                      href={post.frontmatter.behance_url}
+                      rel="noopener"
+                      target="_blank">
+                      Behance
+                    </a>
                   )}
                   {post.frontmatter.github_url && (
-                    <a href={post.frontmatter.github_url}>GitHub</a>
+                    <a
+                      href={post.frontmatter.github_url}
+                      rel="noopener"
+                      target="_blank">
+                      GitHub
+                    </a>
                   )}
                 </li>
               )}
