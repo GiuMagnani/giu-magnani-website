@@ -144,7 +144,7 @@ export const pageQuery = graphql`
     heroImage: file(relativePath: { eq: "giu-magnani.jpg" }) {
       childImageSharp {
         sizes(quality: 100, maxWidth: 600) {
-          ...GatsbyImageSharpSizes_withWebp
+          ...GatsbyImageSharpSizes_withWebp_noBase64
         }
       }
     }
