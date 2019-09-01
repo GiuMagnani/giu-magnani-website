@@ -1,8 +1,8 @@
 module.exports = {
   siteTitle: "Giu Magnani",
-  siteTitleAlt: "Giu Magnani Front-End Web Developer, UI Designer and Illustrator",
+  siteTitleAlt: "Giu Magnani, Italian Front-End Web Developer, UI Designer and Illustrator.",
   siteUrl: "https://www.giumagnani.com",
-  siteDescription: "I’m a Front-End Web Developer, UI Designer and Illustrator from Chile working and living in Milan, Italy.",
+  siteDescription: "I’m a Front-End Web Developer, UI Designer and Illustrator from Italy. I'm an italian Web Designer, based in Milano (MI), Bergamo (BG) and Treviglio. Born in Santiago, Chile (SCL)",
   siteFBAppID: "",
   userName: "Giu Magnani",
   googleAnalyticsID: "UA-47304762-1",
