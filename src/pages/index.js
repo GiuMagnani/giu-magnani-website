@@ -133,76 +133,58 @@ const JournalWrapper = styled.section`
 const LatestProjectSeeMore = styled(LatestPostsSeeMore)``;
 
 export const pageQuery = graphql`
-  query IndexQuery($locale: String!) {
-    site {
-      siteMetadata {
-        rssMetadata {
-          title
-        }
-      }
-    }
-    heroImage: file(relativePath: { eq: "giu-magnani.jpg" }) {
-      childImageSharp {
-        sizes(quality: 100, maxWidth: 600) {
-          ...GatsbyImageSharpSizes_withWebp_noBase64
-        }
-      }
-    }
-    journal: allMarkdownRemark(
-      limit: 4
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        fileAbsolutePath: { regex: "/journal/" }
-        fields: { langKey: { eq: $locale } }
-      }
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY", locale: $locale )
-            title
-          }
-        }
-      }
-    }
-    projects: allMarkdownRemark(
-      limit: 8
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        fileAbsolutePath: { regex: "/work/" }
-        fields: { langKey: { eq: $locale } }
-      }
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            categories
-            date
-            featuredImage {
-              childImageSharp {
-                sizes(
-                  quality: 100
-                  maxWidth: 700
-                  duotone: { highlight: "#ffffff", shadow: "#2222ff" }
-                ) {
-                  ...GatsbyImageSharpSizes_withWebp
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+         query IndexQuery($locale: String!) {
+           site {
+             siteMetadata {
+               rssMetadata {
+                 title
+               }
+             }
+           }
+           heroImage: file(relativePath: { eq: "giu-magnani.jpg" }) {
+             childImageSharp {
+               sizes(quality: 100, maxWidth: 600) {
+                 ...GatsbyImageSharpSizes_withWebp_noBase64
+               }
+             }
+           }
+           journal: allMarkdownRemark(limit: 4, sort: { fields: [frontmatter___date], order: DESC }, filter: { fileAbsolutePath: { regex: "/journal/" }, fields: { langKey: { eq: $locale } } }) {
+             edges {
+               node {
+                 excerpt
+                 fields {
+                   slug
+                 }
+                 frontmatter {
+                   date(formatString: "MMMM DD, YYYY", locale: $locale)
+                   title
+                 }
+               }
+             }
+           }
+           projects: allMarkdownRemark(limit: 8, sort: { fields: [frontmatter___date], order: DESC }, filter: { fileAbsolutePath: { regex: "/work/" }, fields: { langKey: { eq: $locale } } }) {
+             edges {
+               node {
+                 excerpt
+                 fields {
+                   slug
+                 }
+                 frontmatter {
+                   title
+                   categories
+                   date(formatString: "MMMM DD, YYYY")
+                   featuredImage {
+                     childImageSharp {
+                       sizes(quality: 100, maxWidth: 700, duotone: { highlight: "#ffffff", shadow: "#2222ff" }) {
+                         ...GatsbyImageSharpSizes_withWebp
+                       }
+                     }
+                   }
+                 }
+               }
+             }
+           }
+         }
+       `;
 
 export default BlogIndex;

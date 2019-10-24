@@ -2,18 +2,11 @@
 title: Ilustraciones Pixel Art
 date: 2019-04-10T00:00:00+02:00
 featuredImage: "llama.png"
-tags:
-  - illustration
-  - pixel art
-categories:
-  - Illustration
-tools:
-  - Aseprite
-  - Adobe Photoshop
+tags: [illustration, pixel art]
+categories: [Illustration]
+tools: [Aseprite, Adobe Photoshop]
 behance_url: ""
 dribbble_url: https://dribbble.com/shots/3942731-Machu-Picchu-Llama
-colors: []
-colour: ""
 ---
 
 Estas son algunas de mis ilustraciones con Pixel Art que he hecho. Una cosa que realmente amo del Pixel Art es la facilidad con la que puede pasar de una idea al producto final. La simplicidad de los píxeles es fascinante.
