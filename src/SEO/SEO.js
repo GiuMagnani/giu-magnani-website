@@ -11,19 +11,23 @@ export default props => {
   let description;
   let image;
   let postURL;
+  let fbShareImage = '/facebook-share-image.png';
+  let twShareImage = '/twitter-share-image.png';
+
   if (postSEO) {
     const postMeta = postNode;
     title = postMeta.title;
     description = postNode.excerpt;
-    image = postMeta.featuredImage || config.siteLogo;
+    image = postMeta.featuredImage || fbShareImage;
     postURL = config.siteUrl + postPath;
   } else {
     title = config.siteTitle;
     description = config.siteDescription;
-    image = config.siteLogo;
+    image = fbShareImage;
   }
   const realPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
   image = config.siteUrl + realPrefix + image;
+  twShareImage = config.siteUrl + realPrefix + twShareImage;
   const blogURL = config.siteUrl + config.pathPrefix;
   const schemaOrgJSONLD = [
     {
@@ -97,7 +101,7 @@ export default props => {
       <meta name="twitter:creator" content={ config.userTwitter ? config.userTwitter : "" } />
       <meta name="twitter:title" content={ title } />
       <meta name="twitter:description" content={ description } />
-      <meta name="twitter:image" content={ image } />
+      <meta name="twitter:image" content={ twShareImage } />
     </Helmet>
   );
 };
