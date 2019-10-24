@@ -21,6 +21,7 @@ const WorkSingle = props => {
   const post = props.data.markdownRemark;
   const siteTitle = props.data.site.siteMetadata.title;
   const { previous, next } = props.pageContext;
+  console.log(props);
 
   return (
     <>
@@ -149,7 +150,7 @@ const WorkSingle = props => {
 };
 
 const ContentWrapper = styled.article`
-padding-bottom: 38px;
+  padding-bottom: 38px;
 `;
 
 const IntroDetails = styled(posed.div(IntroProps))`

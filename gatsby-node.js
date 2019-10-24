@@ -92,8 +92,8 @@ exports.createPages = ({ graphql, actions }) => {
 
           defaultLangPosts.forEach((post, index) => {
             const previous =
-              index === array.length - 1 ? null : array[index + 1].node;
-            const next = index === 0 ? null : array[index - 1].node;
+              index === defaultLangPosts.length - 1 ? null : defaultLangPosts[index + 1].node;
+            const next = index === 0 ? null : defaultLangPosts[index - 1].node;
 
             createPage({
               path: post.node.fields.slug,
@@ -114,8 +114,8 @@ exports.createPages = ({ graphql, actions }) => {
 
           translatedPosts.forEach((post, index) => {
             const previous =
-              index === array.length - 1 ? null : array[index + 1].node;
-            const next = index === 0 ? null : array[index - 1].node;
+              index === translatedPosts.length - 1 ? null : translatedPosts[index + 1].node;
+            const next = index === 0 ? null : translatedPosts[index - 1].node;
 
             Object.keys(locales).map(lang => {
               if (lang === defaultLocale || !post.node.frontmatter.title)
