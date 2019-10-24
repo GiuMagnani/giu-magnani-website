@@ -163,6 +163,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
+    // console.log(node.frontmatter.title);
     // console.log(node.frontmatter.featuredImage);
     //
     // if (node.frontmatter.featuredImage) {
