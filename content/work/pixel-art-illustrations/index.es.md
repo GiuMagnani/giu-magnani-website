@@ -1,6 +1,6 @@
 ---
 title: Ilustraciones Pixel Art
-date: 2019-04-10T00:00:00+02:00
+date: 2019-04-10
 featuredImage: "llama.png"
 tags: [illustration, pixel art]
 categories: [Illustration]
