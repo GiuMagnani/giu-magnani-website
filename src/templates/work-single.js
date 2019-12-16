@@ -21,22 +21,10 @@ const WorkSingle = props => {
   const post = props.data.markdownRemark;
   const siteTitle = props.data.site.siteMetadata.title;
   const { previous, next } = props.pageContext;
-  console.log(props);
 
-  return (
-    <>
+  return <>
       <ContentWrapper className="container">
-        <SEO
-          postNode={{
-            title: post.frontmatter.title,
-            excerpt: post.excerpt,
-            featuredImage:
-              post.frontmatter.featuredImage &&
-              post.frontmatter.featuredImage.publicURL,
-          }}
-          postPath={post.fields.slug}
-          postSEO={true}
-        />
+        <SEO postNode={{ title: post.frontmatter.title, excerpt: post.excerpt, featuredImage: post.frontmatter.featuredImage && post.frontmatter.featuredImage.publicURL }} postPath={post.fields.slug} postSEO={true} />
         <Helmet>
           <title>{`${siteTitle} | ${post.frontmatter.title}`}</title>
         </Helmet>
@@ -47,8 +35,7 @@ const WorkSingle = props => {
               <SingleTitle>{post.frontmatter.title}</SingleTitle>
             </div>
             <ul>
-              {post.frontmatter.tags && (
-                <li>
+              {post.frontmatter.tags && <li>
                   {post.frontmatter.tags.map((tag, index) => (
                     <span key={index}>
                       {`${tag}${
@@ -59,10 +46,8 @@ const WorkSingle = props => {
                       }`}
                     </span>
                   ))}
-                </li>
-              )}
-              {post.frontmatter.tools && (
-                <li>
+                </li>}
+              {post.frontmatter.tools && <li>
                   {post.frontmatter.tools.map((tool, index) => (
                     <span key={index}>
                       {`${tool}${
@@ -73,41 +58,20 @@ const WorkSingle = props => {
                       }`}
                     </span>
                   ))}
-                </li>
-              )}
-              {(post.frontmatter.dribbble_url ||
-                post.frontmatter.behance_url ||
-                post.frontmatter.github_url) && (
-                <LinkIcon>
+                </li>}
+              {(post.frontmatter.dribbble_url || post.frontmatter.behance_url || post.frontmatter.github_url) && <LinkIcon>
                   <span>SEE IT ALSO ON</span>
-                  {post.frontmatter.dribbble_url && (
-                    <a
-                      href={post.frontmatter.dribbble_url}
-                      rel="noopener"
-                      target="_blank">
+                  {post.frontmatter.dribbble_url && <a href={post.frontmatter.dribbble_url} rel="noopener" target="_blank">
                       <Icon name="dribbble" />
-                    </a>
-                  )}
-                  {post.frontmatter.behance_url && (
-                    <a
-                      href={post.frontmatter.behance_url}
-                      rel="noopener"
-                      target="_blank">
+                    </a>}
+                  {post.frontmatter.behance_url && <a href={post.frontmatter.behance_url} rel="noopener" target="_blank">
                       <Icon name="behance" />
-                    </a>
-                  )}
-                  {post.frontmatter.github_url && (
-                    <a
-                      href={post.frontmatter.github_url}
-                      rel="noopener"
-                      target="_blank">
+                    </a>}
+                  {post.frontmatter.github_url && <a href={post.frontmatter.github_url} rel="noopener" target="_blank">
                       <Icon name="github" />
-                    </a>
-                  )}
-                </LinkIcon>
-              )}
-              {post.frontmatter.colors && (
-                <li>
+                    </a>}
+                </LinkIcon>}
+              {post.frontmatter.colors && <li>
                   {post.frontmatter.colors.map((color, index) => (
                     <span
                       key={index}
@@ -118,35 +82,29 @@ const WorkSingle = props => {
                       }}
                     />
                   ))}
-                </li>
-              )}
+                </li>}
             </ul>
           </IntroDetails>
           <IntroImage />
         </Intro>
         <FeaturedImage>
-          <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
+          <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} alt={post.frontmatter.altFeaturedImage || post.frontmatter.title} />
         </FeaturedImage>
         <Content dangerouslySetInnerHTML={{ __html: post.html }} />
         <Pagination>
           <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+            {previous && <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
-              </Link>
-            )}
+              </Link>}
           </li>
           <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
+            {next && <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →
-              </Link>
-            )}
+              </Link>}
           </li>
         </Pagination>
       </ContentWrapper>
-    </>
-  );
+    </>;
 };
 
 const ContentWrapper = styled.article`
@@ -288,6 +246,17 @@ const Content = styled.div`
   .gatsby-resp-image-wrapper {
     margin: 3rem auto;
   }
+
+  .caption {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .gatsby-resp-image-wrapper + .caption {
+    margin-top: -2rem;
+  }
 `;
 
 const SingleTitle = styled(posed.h1(H1Props))`
@@ -343,6 +312,7 @@ export const pageQuery = graphql`
             }
           }
         }
+        altFeaturedImage
         tags
         categories
         tools

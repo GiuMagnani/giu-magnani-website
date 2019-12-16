@@ -10,8 +10,7 @@ const ProjectProps = {
 };
 
 const LatestProjectItems = ({ projects, className }) => {
-  return (
-    <PoseGroup>
+  return <PoseGroup>
       {projects.map(({ node }, index) => (
         <Project key={index} className={className}>
           {/*<ProjectIndex>{`${(index + 1).toString().length === 1 ? '0' + (index + 1) : index + 1}`}</ProjectIndex>*/}
@@ -24,16 +23,21 @@ const LatestProjectItems = ({ projects, className }) => {
           <ProjectBody>
             <ProjectDate>{node.frontmatter.date}</ProjectDate>
             <ProjectBodyInner>
-              <ProjectAreas>{node.frontmatter.categories}</ProjectAreas>
+              <ProjectAreas>
+                {node.frontmatter.categories.map(category => (
+                  <span>{category}</span>
+                ))}
+              </ProjectAreas>
               <ProjectName>{node.frontmatter.title}</ProjectName>
               <ProjectDescription>{node.excerpt}</ProjectDescription>
             </ProjectBodyInner>
-            <ProjectLink to={node.fields.slug}><FormattedMessage id="projects.seeProject" /> →</ProjectLink>
+            <ProjectLink to={node.fields.slug}>
+              <FormattedMessage id="projects.seeProject" /> →
+            </ProjectLink>
           </ProjectBody>
         </Project>
       ))}
-    </PoseGroup>
-  );
+    </PoseGroup>;
 };
 
 const ProjectBody = styled.div`
@@ -135,6 +139,14 @@ const ProjectAreas = styled.h3`
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 2rem;
+
+  span {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 
   @media (min-width: ${props => props.theme.lg}) {
     margin-bottom: 1rem;

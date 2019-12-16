@@ -7,7 +7,7 @@ categories: [graphic design, logo design]
 ---
 
 This is my second collection of Logos (marks). These were designed between 2012-2013 and for the same US company.
-See the first collection: http://giumagnani.com/212487/1680436/gallery/logo-collection-2012-2013
+See the first collection: https://www.giumagnani.com/work/logo-design-collection-1/
 
 ![Logo Collection 2](logo-collection-2-0.jpg)
 ![Logo Collection 2](logo-collection-2-1.jpg)

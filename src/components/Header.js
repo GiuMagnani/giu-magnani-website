@@ -82,10 +82,10 @@ const Header = ({ location, intl: { locale } }) => {
           </Link>
         ))}
       </NavLanguages>
-      {/*<Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />*/}
-      {/*<MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>*/}
-      {/*MENU*/}
-      {/*</MenuButton>*/}
+      <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
+      <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
+      MENU
+      </MenuButton>
     </HeaderNav>
   );
 };

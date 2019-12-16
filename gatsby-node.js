@@ -34,47 +34,38 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise(resolve => {
-    resolve(
-      graphql(
-        `
-          {
-            journal: allMarkdownRemark(
-              sort: { fields: [frontmatter___date], order: DESC }
-              filter: { fileAbsolutePath: { regex: "/journal/" } }
-            ) {
-              edges {
-                node {
-                  fields {
-                    slug
-                    langKey
-                    directoryName
-                  }
-                  frontmatter {
-                    title
-                  }
+    resolve(graphql(`
+        {
+          journal: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, filter: { fileAbsolutePath: { regex: "/journal/" } }) {
+            edges {
+              node {
+                fields {
+                  slug
+                  langKey
+                  directoryName
                 }
-              }
-            }
-            work: allMarkdownRemark(
-              sort: { fields: [frontmatter___date], order: DESC }
-              filter: { fileAbsolutePath: { regex: "/work/" } }
-            ) {
-              edges {
-                node {
-                  fields {
-                    slug
-                    langKey
-                    directoryName
-                  }
-                  frontmatter {
-                    title
-                  }
+                frontmatter {
+                  title
                 }
               }
             }
           }
-        `
-      ).then(result => {
+          work: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, filter: { fileAbsolutePath: { regex: "/work/" } }) {
+            edges {
+              node {
+                fields {
+                  slug
+                  langKey
+                  directoryName
+                }
+                frontmatter {
+                  title
+                }
+              }
+            }
+          }
+        }
+      `).then(result => {
         if (result.errors) {
           throw result.errors;
         }
@@ -91,8 +82,7 @@ exports.createPages = ({ graphql, actions }) => {
           });
 
           defaultLangPosts.forEach((post, index) => {
-            const previous =
-              index === defaultLangPosts.length - 1 ? null : defaultLangPosts[index + 1].node;
+            const previous = index === defaultLangPosts.length - 1 ? null : defaultLangPosts[index + 1].node;
             const next = index === 0 ? null : defaultLangPosts[index - 1].node;
 
             createPage({
@@ -102,6 +92,7 @@ exports.createPages = ({ graphql, actions }) => {
                 slug: post.node.fields.slug,
                 directoryName: post.node.fields.directoryName,
                 locale: defaultLocale,
+                originalIndex: index,
                 previous,
                 next,
               },
@@ -113,13 +104,11 @@ exports.createPages = ({ graphql, actions }) => {
           });
 
           translatedPosts.forEach((post, index) => {
-            const previous =
-              index === translatedPosts.length - 1 ? null : translatedPosts[index + 1].node;
+            const previous = index === translatedPosts.length - 1 ? null : translatedPosts[index + 1].node;
             const next = index === 0 ? null : translatedPosts[index - 1].node;
 
             Object.keys(locales).map(lang => {
-              if (lang === defaultLocale || !post.node.frontmatter.title)
-                return;
+              if (lang === defaultLocale || !post.node.frontmatter.title) return;
 
               createPage({
                 path: post.node.fields.slug,
@@ -128,6 +117,7 @@ exports.createPages = ({ graphql, actions }) => {
                   slug: post.node.fields.slug,
                   directoryName: post.node.fields.directoryName,
                   locale: lang,
+                  originalIndex: index,
                   previous,
                   next,
                 },
@@ -154,8 +144,7 @@ exports.createPages = ({ graphql, actions }) => {
         //       }
         //     }
         // };
-      })
-    );
+      }));
   });
 };
 

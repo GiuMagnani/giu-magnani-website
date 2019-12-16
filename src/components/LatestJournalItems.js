@@ -2,26 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-const LatestJournalItems = ({ journal, className }) => (
-  <LatestPostsContainer className={className}>
-    <LatestPosts>
-      {journal.map(({ node }, index) => {
-        return (
-          <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
-            <JournalIndex>{`${
-              (journal.length - (index + 1)).toString().length === 1
-                ? "0" + (journal.length - (index + 1))
-                : journal.length - (index + 1)
-            }`}</JournalIndex>
-            <small>{node.frontmatter.date}</small>
-            <h3>{node.frontmatter.title}</h3>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </LatestPostsItem>
-        );
-      })}
-    </LatestPosts>
-  </LatestPostsContainer>
-);
+const LatestJournalItems = ({ journal, className }) => {
+  return (
+    <LatestPostsContainer className={className}>
+      <LatestPosts>
+        {journal.map(({ node }, index) => {
+          return (
+            <LatestPostsItem key={node.fields.slug} to={node.fields.slug}>
+              <JournalIndex>{`${
+                (journal.length - (index + 1)).toString().length === 1
+                  ? "0" + (journal.length - (index + 1))
+                  : journal.length - (index + 1)
+              }`}</JournalIndex>
+              <small>{node.frontmatter.date}</small>
+              <h3>{node.frontmatter.title}</h3>
+              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            </LatestPostsItem>
+          );
+        })}
+      </LatestPosts>
+    </LatestPostsContainer>
+  );
+};
 
 const LatestPosts = styled.div`
   border-width: 1px;

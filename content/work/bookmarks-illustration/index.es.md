@@ -2,10 +2,10 @@
 title: Marcadores de Libro Ilustrados
 date: "2014-06-23"
 featuredImage: "read-book.jpg"
+altFeaturedImage: "Marcadores de Libro Ilustrados - Ilustración y Dibujo - Giu Magnani Ilustrador de Treviglio - Bergamo, Italia (Italy)"
 tags: [illustration, bookmark, illustrator, drawing, kid]
 categories: [Illustration]
 ---
-
 
 Ilustraciones hechas para un concurso de Marcadores de Libros de Chile, el tema fue "Fomentar la Lectura".
 

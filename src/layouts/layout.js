@@ -61,7 +61,7 @@ const Layout = ({ location, children, locale }) => {
 
   return (
     <>
-      <SEO />
+      <SEO locale={locale} />
       <FormattedMessage id={getLocalTitle()}>
         {title => <Helmet><title>{`${config.siteTitle} | ${title}`}</title></Helmet>}
       </FormattedMessage>

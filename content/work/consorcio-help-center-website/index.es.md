@@ -2,6 +2,7 @@
 title: Centro de Ayuda Consorcio
 date: "2016-10-12"
 featuredImage: "consorcio-1.png"
+altFeaturedImage: "Consorcio Centro de Ayuda Diseño UX UI y Desarrollo Web (HTML, CSS y JS) - Giu Magnani Diseñador y Desarrollador Web de Treviglio - Bergamo, Italia (Italy)"
 tags: [web, design, development, ux, ui, front-end]
 categories: [Front-End Development, UX/UI Design]
 ---

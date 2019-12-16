@@ -40,11 +40,10 @@ const Work = ({ location, data }) => {
     return filteredItems;
   };
 
-  return (
-    <PageWrapper>
+  return <PageWrapper>
       <PageIntro>
         <div className="container">
-          <h2>
+          <h2 as="h1">
             <FormattedMessage id="projects.latest" /> {/*<FilterLink*/}
             {/*onClick={() => toggleFilter("Graphic Design")}*/}
             {/*className={filters["Graphic Design"] ? "is-active" : ""}>*/}
@@ -68,15 +67,11 @@ const Work = ({ location, data }) => {
             {/*</FilterLink>*/}
             <FilterLink className="is-active">
               <FormattedMessage id="projects['Graphic Design']" />,
-            </FilterLink>{" "}
-            <FilterLink className="is-active">
+            </FilterLink> <FilterLink className="is-active">
               <FormattedMessage id="projects['UX/UI Design']" />,
-            </FilterLink>{" "}
-            <FilterLink className="is-active">
+            </FilterLink> <FilterLink className="is-active">
               <FormattedMessage id="projects['Front-End Development']" />
-            </FilterLink>{" "}
-            <FormattedMessage id="projects.and" />{" "}
-            <FilterLink className="is-active">
+            </FilterLink> <FormattedMessage id="projects.and" /> <FilterLink className="is-active">
               <FormattedMessage id="projects['Illustration']" />
             </FilterLink>
             <FormattedMessage id="projects.projects" />
@@ -88,8 +83,7 @@ const Work = ({ location, data }) => {
           <ProjectList projects={data.allMarkdownRemark.edges} />
         </div>
       </ProjectListWrapper>
-    </PageWrapper>
-  );
+    </PageWrapper>;
 };
 
 const ProjectListWrapper = styled.section`
@@ -117,6 +111,12 @@ const FilterLink = styled.a`
     opacity: 1;
     text-decoration: underline;
   }
+`;
+
+const WorkHeading = styled.h1`
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: bold;
 `;
 
 export const pageQuery = graphql`

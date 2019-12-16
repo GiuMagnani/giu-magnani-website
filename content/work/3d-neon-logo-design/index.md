@@ -2,6 +2,7 @@
 title: 3D Neon Logo
 date: "2014-05-27"
 featuredImage: "3d_logo.jpg"
+altFeaturedImage: "3D Logo Design - Giu Magnani Diseñador y Desarrollador Web de Treviglio - Bergamo, Italia (Italy)"
 tags: [3d, logo, neon, branding]
 categories: [graphic design, logo design, 3D]
 ---

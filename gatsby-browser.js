@@ -6,19 +6,10 @@ import esData from "react-intl/locale-data/es";
 import { messages, defaultLocale } from "./src/i18n/i18n";
 addLocaleData([...esData, ...enData]);
 
-const transitionDelay = 200;
-
 console.log(
-  `%cWelcome to GiuMagnani.com version 0.1!`,
+  `%cWelcome to GiuMagnani.com version 1.0!`,
   `font-size:10px;background:#ffffff;color:#2222ff;padding: 2px 5px;`
 );
-
-console.log(
-  `%cYou can see the code in my GitHub repo:`,
-  `font-size:10px;background:#ffffff;color:#2222ff;padding: 2px 5px;`
-);
-
-console.log(`https://github.com/GiuMagnani/giu-magnani-website`);
 
 export const wrapPageElement = ({ props, element }) => {
   const locale = props.pageContext.locale;

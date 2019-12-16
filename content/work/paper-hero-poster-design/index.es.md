@@ -2,6 +2,7 @@
 title: Paper Hero Poster Design
 date: "2016-11-15"
 featuredImage: "paper-1.jpg"
+altFeaturedImage: "Diseño de Afice para concurso - Ilustración y Diseño - Giu Magnani Diseñador e Ilustrador de Treviglio - Bergamo, Italia (Italy)"
 tags: [design, paper, crafts, graphic design, heart]
 categories: [graphic design]
 ---

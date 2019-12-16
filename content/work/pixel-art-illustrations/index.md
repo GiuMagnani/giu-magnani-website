@@ -2,6 +2,7 @@
 title: Pixel Art Illustrations
 date: 2019-04-09
 featuredImage: "llama.png"
+altFeaturedImage: "Pixel Art Illustrations - Giu Magnani Designer and Illustrator from Treviglio - Bergamo, Italia (Italy)"
 tags: [illustration, pixel art]
 categories: [Illustration]
 tools: [Aseprite, Adobe Photoshop]

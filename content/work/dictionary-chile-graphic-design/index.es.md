@@ -2,6 +2,7 @@
 title: Diccionario Biográfico Colonial de Chile
 date: "2018-10-13"
 featuredImage: "dictionary-15.jpg"
+altFeaturedImage: "Diccionario Biográfico Colonial de Chile - Ilustración y Diseño Editorial - Giu Magnani Diseñador e Ilustrador de Treviglio - Bergamo, Italia (Italy)"
 tags: [editorial, book, design, graphic, illustration, graphic]
 categories: [graphic design]
 ---

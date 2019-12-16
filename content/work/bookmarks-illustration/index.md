@@ -2,6 +2,7 @@
 title: Illustrated Bookmarks
 date: "2014-06-23"
 featuredImage: "read-book.jpg"
+altFeaturedImage: "Illustrated Bookmarks - Illustration and Drawings - Giu Magnani Illustrator from Treviglio - Bergamo, Italia (Italy)"
 tags: [illustration, bookmark, illustrator, drawing, kid]
 categories: [Illustration]
 ---

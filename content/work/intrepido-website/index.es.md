@@ -2,6 +2,7 @@
 title: Intrépido Website
 date: "2018-10-18"
 featuredImage: "intrepido-5.jpg"
+altFeaturedImage: "Intrépido Website - UX UI Diseño y Desarrollo Web - Giu Magnani Diseñador y Desarrollador Web de Treviglio - Bergamo, Italia (Italy)"
 tags: [web, development, design, ui/ux, front end, web design]
 categories: [Front-End Development, UX/UI Design]
 ---

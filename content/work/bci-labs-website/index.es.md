@@ -2,6 +2,7 @@
 title: Bci Labs
 date: "2016-11-08"
 featuredImage: "bci-labs-1.jpg"
+altFeaturedImage: "Bci Labs UX UI Diseño & Desarrollo WordPress - Giu Magnani Diseñador y Desarrollador Web de Treviglio - Bergamo, Italia (Italy)"
 tags: [front-end, ui, ux, design, web development, wordpress]
 categories: [Front-End Development, UX/UI Design]
 tools: [WordPress, jQuery, HTML5, CSS3, Sketch]

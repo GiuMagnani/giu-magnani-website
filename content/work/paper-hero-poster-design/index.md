@@ -2,6 +2,7 @@
 title: Paper Hero Poster Design
 date: "2016-11-15"
 featuredImage: "paper-1.jpg"
+altFeaturedImage: "Poster Design for Competition - Giu Magnani Designer and Illustrator from Treviglio - Bergamo, Italia (Italy)"
 tags: [design, paper, crafts, graphic design, heart]
 categories: [graphic design]
 ---
