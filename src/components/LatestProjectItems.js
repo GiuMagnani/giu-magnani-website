@@ -25,7 +25,7 @@ const LatestProjectItems = ({ projects, className }) => {
             <ProjectBodyInner>
               <ProjectAreas>
                 {node.frontmatter.categories.map(category => (
-                  <span>{category}</span>
+                  <span key={category}>{category}</span>
                 ))}
               </ProjectAreas>
               <ProjectName>{node.frontmatter.title}</ProjectName>

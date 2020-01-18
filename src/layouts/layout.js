@@ -33,7 +33,8 @@ const Transition = posed.div({
   },
 });
 
-const Layout = ({ location, children, locale }) => {
+const Layout = ({ location, children, locale, pageContext }) => {
+  const isLanding = pageContext.isLanding;
   const shouldAnimate = !(location.state && location.state.stopTransition);
   // const shouldAnimate = false;
 
@@ -68,7 +69,7 @@ const Layout = ({ location, children, locale }) => {
       <ThemeProvider theme={Theme}>
         <>
           <GlobalStyle />
-          <Header location={location} />
+          <Header location={location} isLanding={isLanding} />
           {/*<PoseGroup>*/}
             {/*<Transition key={location.pathname} shouldAnimate={shouldAnimate}>*/}
               <Main>{children}</Main>

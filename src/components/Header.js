@@ -6,7 +6,8 @@ import locales from "../i18n/locales";
 import LocalizedLink from "./LocalizedLink";
 import Menu from "./Menu";
 
-const Header = ({ location, intl: { locale } }) => {
+const Header = ({ location, intl: { locale }, isLanding }) => {
+  console.log(isLanding);
   const [isMenuOpen, setMenuVisibility] = useState(false);
 
   const getLocalizedPath = key => {
@@ -71,20 +72,22 @@ const Header = ({ location, intl: { locale } }) => {
           <FormattedMessage id="menu.contact" />
         </LocalizedLink>
       </NavLinks>
-      <NavLanguages>
-        {Object.keys(locales).map(key => (
-          <Link
-            className={key === locale ? "is-active" : ""}
-            key={locales[key].locale}
-            to={getLocalizedPath(key)}
-            state={{ stopTransition: false }}>
-            {locales[key].locale}
-          </Link>
-        ))}
-      </NavLanguages>
+      {!isLanding && (
+        <NavLanguages>
+          {Object.keys(locales).map(key => (
+            <Link
+              className={key === locale ? "is-active" : ""}
+              key={locales[key].locale}
+              to={getLocalizedPath(key)}
+              state={{ stopTransition: false }}>
+              {locales[key].locale}
+            </Link>
+          ))}
+        </NavLanguages>
+      )}
       <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
       <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
-      MENU
+        MENU
       </MenuButton>
     </HeaderNav>
   );
