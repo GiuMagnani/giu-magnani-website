@@ -4,9 +4,10 @@ const locales = require("./src/i18n/locales");
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
-  
+
   return new Promise(resolve => {
     deletePage(page);
+
     Object.keys(locales).map(lang => {
       const localizedPath = locales[lang].default
         ? page.path
@@ -141,7 +142,7 @@ exports.createPages = ({ graphql, actions }) => {
                 context: {
                   slug: post.node.fields.slug,
                   directoryName: post.node.fields.directoryName,
-                  locale: lang,
+                  locale: post.node.fields.langKey,
                   originalIndex: index,
                   previous,
                   next,
@@ -150,6 +151,7 @@ exports.createPages = ({ graphql, actions }) => {
             });
           });
         };
+
         createPagesByType(work, projectSingle);
         createPagesByType(journal, journalSingle);
 
@@ -190,6 +192,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
+    console.log(node);
     // console.log(node.frontmatter.title);
     // console.log(node.frontmatter.featuredImage);
     //

@@ -7,20 +7,26 @@ import LocalizedLink from "./LocalizedLink";
 import Menu from "./Menu";
 
 const Header = ({ location, intl: { locale }, isLanding }) => {
-  console.log(isLanding);
+  // console.log(isLanding);
   const [isMenuOpen, setMenuVisibility] = useState(false);
-
   const getLocalizedPath = key => {
     if (key === locale) {
       // return same path
       return location.pathname;
     } else {
-      // default language, return pathname without locale
       if (locales[key].default === true) {
+        // default language, return pathname without locale
         return `/${location.pathname.split(`/${locale}/`)[1]}`;
+      } else if (location.pathname === `/${locale}/`) {
+        // return link pathname removing current locale and adding new one
+        return `/${key}/`;
       } else {
         // return locale + pathname
-        return `/${key}${location.pathname}`;
+
+        let link = locales[locale].default === true
+          ? `/${key}${location.pathname}`
+          : location.pathname.replace(`/${locale}/`, `/${key}/`);
+        return link;
       }
     }
   };

@@ -3,9 +3,10 @@ import Layout from "./src/layouts/layout";
 import { IntlProvider, addLocaleData } from "react-intl";
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
+import itData from "react-intl/locale-data/it";
 import { messages, defaultLocale } from "./src/i18n/i18n";
 
-addLocaleData([...esData, ...enData]);
+addLocaleData([...esData, ...enData, ...itData]);
 
 export const wrapPageElement = ({ props, element }) => {
   const locale = props.pageContext.locale;

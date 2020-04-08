@@ -3,8 +3,9 @@ import Layout from "./src/layouts/layout";
 import { IntlProvider, addLocaleData } from "react-intl";
 import enData from "react-intl/locale-data/en";
 import esData from "react-intl/locale-data/es";
+import itData from "react-intl/locale-data/it";
 import { messages, defaultLocale } from "./src/i18n/i18n";
-addLocaleData([...esData, ...enData]);
+addLocaleData([...esData, ...enData, ...itData]);
 
 console.log(
   `%cWelcome to GiuMagnani.com version 1.0!`,
@@ -12,6 +13,7 @@ console.log(
 );
 
 export const wrapPageElement = ({ props, element }) => {
+  console.log(props.pageContext);
   const locale = props.pageContext.locale;
   const pageLocale = locale || defaultLocale;
 

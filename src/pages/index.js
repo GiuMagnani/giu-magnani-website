@@ -11,15 +11,17 @@ import { PageWrapper } from "../style/PageStyles";
 const BlogIndex = ({ location, data }) => {
   const journal = data.journal.edges;
   const projects = data.projects.edges;
+  const IllustrationProjects = data.IllustrationProjects.edges;
   const heroImage = data.heroImage;
 
   return (
     <PageWrapper>
-      <Hero heroImage={heroImage}/>
+      <Hero heroImage={heroImage} />
       <ProjectsWrapper>
         <div className="container">
           <ProjectsHeading>
-            <FormattedMessage id="projects.intro" />
+            {/* <FormattedMessage id="projects.intro" /> */}
+            These are some of my UX/UI Design and Front-End Development projects
           </ProjectsHeading>
           <LatestProjectItems projects={projects} />
           <LatestProjectSeeMore>
@@ -29,6 +31,21 @@ const BlogIndex = ({ location, data }) => {
           </LatestProjectSeeMore>
         </div>
       </ProjectsWrapper>
+      {/* Drawings */}
+      <JournalWrapper>
+        <div className="container">
+          <ProjectsHeading>
+            {/* <FormattedMessage id="projects.intro" /> */}I also draw, and
+            these are some of my favourite works
+          </ProjectsHeading>
+          <LatestProjectItems projects={IllustrationProjects} />
+          <LatestProjectSeeMore>
+            <LocalizedLink to={"/work"}>
+              <FormattedMessage id="projects.seeProjects" /> →
+            </LocalizedLink>
+          </LatestProjectSeeMore>
+        </div>
+      </JournalWrapper>
       <JournalWrapper>
         <div className="container">
           <LatestPostsHeading>
@@ -133,58 +150,107 @@ const JournalWrapper = styled.section`
 const LatestProjectSeeMore = styled(LatestPostsSeeMore)``;
 
 export const pageQuery = graphql`
-         query IndexQuery($locale: String!) {
-           site {
-             siteMetadata {
-               rssMetadata {
-                 title
-               }
-             }
-           }
-           heroImage: file(relativePath: { eq: "giu-magnani.jpg" }) {
-             childImageSharp {
-               sizes(quality: 100, maxWidth: 600) {
-                 ...GatsbyImageSharpSizes_withWebp_noBase64
-               }
-             }
-           }
-           journal: allMarkdownRemark(limit: 4, sort: { fields: [frontmatter___date], order: DESC }, filter: { fileAbsolutePath: { regex: "/journal/" }, fields: { langKey: { eq: $locale } } }) {
-             edges {
-               node {
-                 excerpt
-                 fields {
-                   slug
-                 }
-                 frontmatter {
-                   date(formatString: "MMMM DD, YYYY", locale: $locale)
-                   title
-                 }
-               }
-             }
-           }
-           projects: allMarkdownRemark(limit: 8, sort: { fields: [frontmatter___date], order: DESC }, filter: { fileAbsolutePath: { regex: "/work/" }, fields: { langKey: { eq: $locale } } }) {
-             edges {
-               node {
-                 excerpt
-                 fields {
-                   slug
-                 }
-                 frontmatter {
-                   title
-                   categories
-                   date(formatString: "MMMM DD, YYYY")
-                   featuredImage {
-                     childImageSharp {
-                       sizes(quality: 100, maxWidth: 700) {
-                         ...GatsbyImageSharpSizes_withWebp
-                       }
-                     }
-                   }
-                 }
-               }
-             }
-           }
-         }
-       `;
+  query IndexQuery($locale: String!) {
+    site {
+      siteMetadata {
+        rssMetadata {
+          title
+        }
+      }
+    }
+    heroImage: file(relativePath: { eq: "giu-magnani.jpg" }) {
+      childImageSharp {
+        sizes(quality: 100, maxWidth: 600) {
+          ...GatsbyImageSharpSizes_withWebp_noBase64
+        }
+      }
+    }
+    journal: allMarkdownRemark(
+      limit: 4
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        fileAbsolutePath: { regex: "/journal/" }
+        fields: { langKey: { eq: $locale } }
+      }
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY", locale: $locale)
+            title
+          }
+        }
+      }
+    }
+    projects: allMarkdownRemark(
+      limit: 5
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        fileAbsolutePath: { regex: "/work/" }
+        fields: { langKey: { eq: $locale } }
+        frontmatter: {
+          categories: {
+            in: ["Front-End Development", "UX/UI Design"]
+          }
+        }
+      }
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            categories
+            date(formatString: "MMMM DD, YYYY")
+            featuredImage {
+              childImageSharp {
+                sizes(quality: 100, maxWidth: 700) {
+                  ...GatsbyImageSharpSizes_withWebp
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    IllustrationProjects: allMarkdownRemark(
+      limit: 5
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        fileAbsolutePath: { regex: "/work/" }
+        fields: { langKey: { eq: $locale } }
+        frontmatter: { categories: { eq: "Illustration" } }
+      }
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            categories
+            date(formatString: "MMMM DD, YYYY")
+            featuredImage {
+              childImageSharp {
+                sizes(quality: 100, maxWidth: 700) {
+                  ...GatsbyImageSharpSizes_withWebp
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default BlogIndex;

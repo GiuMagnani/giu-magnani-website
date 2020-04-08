@@ -10,4 +10,9 @@ module.exports = {
     label: "Español",
     labelInt: "Spanish"
   },
+  it: {
+    locale: "it",
+    label: "Italiano",
+    labelInt: "Italian"
+  },
 };
