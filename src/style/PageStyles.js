@@ -67,4 +67,73 @@ const PageWrapper = styled.div`
   overflow: hidden;
 `;
 
-export { PageIntro, PageWrapper };
+const Content = styled.div`
+  overflow: hidden;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    max-width: 700px;
+    margin: 2rem auto;
+  }
+
+  h2 {
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+
+  em {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+
+    a {
+      font-size: 14px;
+    }
+  }
+
+  p {
+    margin: 1rem auto;
+    font-size: 21px;
+  }
+
+  a {
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .gatsby-resp-image-wrapper {
+    margin: 3rem auto;
+  }
+
+  .caption {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .gatsby-resp-image-wrapper + .caption {
+    margin-top: -2rem;
+  }
+
+  .images-400w {
+    .gatsby-resp-image-wrapper {
+      max-width: 400px !important;
+      margin: 1rem auto;
+    }
+
+    .gatsby-resp-image-wrapper + .caption {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+`;
+
+export { PageIntro, PageWrapper, Content };

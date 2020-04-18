@@ -3,6 +3,8 @@ import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 import SEO from "../SEO/SEO";
 import Helmet from "react-helmet";
+import { Content } from "../style/PageStyles";
+import RandomBlock from "../components/RandomBlock";
 
 const JournalSingle = ({ data, pageContext }) => {
   const post = data.markdownRemark;
@@ -23,10 +25,14 @@ const JournalSingle = ({ data, pageContext }) => {
         postSEO={true}
       />
       <Helmet>
-        <title>{`${siteTitle} | ${post.frontmatter.title}`}</title>
+        <title>{`${post.frontmatter.title} | ${siteTitle}`}</title>
       </Helmet>
       <ContentWrapper className="container">
         <Intro>
+          {/* <RandomBlock
+            title={post.frontmatter.title}
+            date={post.frontmatter.date}
+          /> */}
           <small>{post.frontmatter.date}</small>
           <SingleTitle>{post.frontmatter.title}</SingleTitle>
         </Intro>
@@ -57,11 +63,12 @@ const JournalSingle = ({ data, pageContext }) => {
 const ContentWrapper = styled.article``;
 
 const Intro = styled.header`
-  min-height: 50vh;
+  min-height: 30vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  padding-top: 60px;
 
   small {
     margin-bottom: 0.75rem;
@@ -69,26 +76,6 @@ const Intro = styled.header`
     text-transform: uppercase;
     letter-spacing: 3px;
     display: block;
-  }
-`;
-
-const Content = styled.div`
-  p {
-    margin: 1rem auto;
-    max-width: 590px;
-    font-size: 18px;
-  }
-
-  a {
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: underline;
-  }
-
-  img,
-  .gatsby-resp-image-link {
-    display: block;
-    margin: 3rem auto;
   }
 `;
 
@@ -137,7 +124,7 @@ export const pageQuery = graphql`
         featuredImage {
           publicURL
           childImageSharp {
-            sizes(quality: 100, maxWidth: 1240) {
+            sizes(quality: 100, maxWidth: 700) {
               ...GatsbyImageSharpSizes_withWebp
             }
           }

@@ -13,7 +13,6 @@ console.log(
 );
 
 export const wrapPageElement = ({ props, element }) => {
-  console.log(props.pageContext);
   const locale = props.pageContext.locale;
   const pageLocale = locale || defaultLocale;
 

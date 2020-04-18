@@ -6,6 +6,7 @@ import posed from "react-pose";
 import SEO from "../SEO/SEO";
 import Helmet from "react-helmet";
 import { Icon } from "../components/Icons/Icons";
+import { Content } from "../style/PageStyles";
 
 const IntroProps = {
   enter: { opacity: 1, y: "0%", transition: { duration: 150 } },
@@ -173,12 +174,16 @@ const IntroImage = styled.div`
 const FeaturedImage = styled.section`
   margin: 1rem 0;
   border: 1px solid ${props => props.theme.main};
-  max-height: 80vh;
+  /* max-height: 80vh; */
   overflow: hidden;
 
   .gatsby-image-wrapper {
-    max-height: calc(80vh - 1rem);
+    /* max-height: calc(80vh - 1rem); */
     border: 1rem solid white;
+
+    /* img { */
+      /* height: 100%; */
+    /* } */
   }
 `;
 
@@ -199,63 +204,6 @@ const Intro = styled.header`
 
   @media (min-width: ${props => props.theme.lg}) {
     margin-top: 60px;
-  }
-`;
-
-const Content = styled.div`
-  overflow: hidden;
-
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    max-width: 700px;
-    margin: 2rem auto;
-  }
-
-  h2 {
-    line-height: 1.3;
-    margin-bottom: 2rem;
-  }
-
-  em {
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    font-style: italic;
-
-    a {
-      font-size: 14px;
-    }
-  }
-
-  p {
-    margin: 1rem auto;
-    font-size: 21px;
-  }
-
-  a {
-    font-size: 21px;
-    font-weight: bold;
-    text-decoration: underline;
-  }
-
-  .gatsby-resp-image-wrapper {
-    margin: 3rem auto;
-  }
-
-  .caption {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 3rem;
-    text-align: center;
-  }
-
-  .gatsby-resp-image-wrapper + .caption {
-    margin-top: -2rem;
   }
 `;
 
