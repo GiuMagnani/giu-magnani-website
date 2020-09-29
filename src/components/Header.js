@@ -91,10 +91,10 @@ const Header = ({ location, intl: { locale }, isLanding }) => {
           ))}
         </NavLanguages>
       )}
-      <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
-      <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
+      {/* <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} /> */}
+      {/* <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
         MENU
-      </MenuButton>
+      </MenuButton> */}
     </HeaderNav>
   );
 };

@@ -8,7 +8,7 @@ const links = {
   dribbble: "https://www.dribbble.com/GiuMagnani",
   pinterest: "https://www.pinterest.com/giumagnani",
   linkedin: "https://www.linkedin.com/in/giumagnani",
-  twitter: "https://www.twitter.com/_GiuMagnani",
+  // twitter: "https://www.twitter.com/_GiuMagnani",
 };
 
 const SocialLinks = ({ isBlue, className }) => {

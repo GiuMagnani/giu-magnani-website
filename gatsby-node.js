@@ -126,6 +126,7 @@ exports.createPages = ({ graphql, actions }) => {
           });
 
           translatedPosts.forEach((post, index) => {
+            // TODO: previous and next are wrong, -1 is the same post but in the other language (do -2 or sort the posts by languages first)
             const previous =
               index === translatedPosts.length - 1
                 ? null
