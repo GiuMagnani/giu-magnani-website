@@ -14,7 +14,7 @@ const LatestProjectItems = ({ projects, className }) => {
       {projects.map(({ node }, index) => (
         <Project key={index} className={className}>
           {/*<ProjectIndex>{`${(index + 1).toString().length === 1 ? '0' + (index + 1) : index + 1}`}</ProjectIndex>*/}
-          <ProjectImage>
+          <ProjectImage to={node.fields.slug}>
             <Img
               sizes={node.frontmatter.featuredImage.childImageSharp.sizes}
               alt={node.frontmatter.title}
@@ -28,7 +28,11 @@ const LatestProjectItems = ({ projects, className }) => {
                   <span key={category}>{category}</span>
                 ))}
               </ProjectAreas>
-              <ProjectName>{node.frontmatter.title}</ProjectName>
+              <ProjectName>
+                <Link to={node.fields.slug}>
+                  {node.frontmatter.title}
+                </Link>
+              </ProjectName>
               <ProjectDescription>{node.excerpt}</ProjectDescription>
             </ProjectBodyInner>
             <ProjectLink to={node.fields.slug}>
@@ -155,10 +159,11 @@ const ProjectAreas = styled.h3`
   }
 `;
 
-const ProjectImage = styled.div`
+const ProjectImage = styled(Link)`
   border: 1px solid ${props => props.theme.main};
   overflow: hidden;
   height: 300px;
+  display: block;
 
   .gatsby-image-wrapper {
     height: 100%;
