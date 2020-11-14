@@ -6,8 +6,8 @@ import { FormattedMessage, injectIntl } from "react-intl";
 import locales from "../i18n/locales";
 
 const fullScreenMenuProps = {
-  open: { x: 0, transition: { duration: 350 } },
-  closed: { x: "100%", transition: { duration: 350 } },
+  open: { opacity: 1, x: 0, transition: { duration: 350 } },
+  closed: {  opacity: 0, x: "100%", transition: { duration: 350 } },
 };
 
 const MenuProps = {
@@ -24,6 +24,29 @@ const Menu = ({ intl: { locale }, isMenuOpen, setMenuVisibility }) => {
   const getTo = to => {
     return locales[locale].default ? to : `/${locales[locale].locale}${to}`;
   };
+
+  const getLocalizedPath = key => {
+    if (key === locale) {
+      // return same path
+      return location.pathname;
+    } else {
+      if (locales[key].default === true) {
+        // default language, return pathname without locale
+        return `/${location.pathname.split(`/${locale}/`)[1]}`;
+      } else if (location.pathname === `/${locale}/`) {
+        // return link pathname removing current locale and adding new one
+        return `/${key}/`;
+      } else {
+        // return locale + pathname
+
+        let link = locales[locale].default === true
+          ? `/${key}${location.pathname}`
+          : location.pathname.replace(`/${locale}/`, `/${key}/`);
+        return link;
+      }
+    }
+  };
+
   return (
     <MenuWrapper pose={isMenuOpen ? "open" : "closed"}>
       <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
@@ -55,6 +78,19 @@ const Menu = ({ intl: { locale }, isMenuOpen, setMenuVisibility }) => {
             <FormattedMessage id="menu.contact" />
           </Link>
         </Item>
+        <Item key="5">
+          <NavLanguages>
+            {Object.keys(locales).map(key => (
+              <Link
+                className={key === locale ? "is-active" : ""}
+                key={locales[key].locale}
+                to={getLocalizedPath(key)}
+                state={{ stopTransition: false }}>
+                {locales[key].locale}
+              </Link>
+            ))}
+          </NavLanguages>
+        </Item>
       </MenuGroup>
       {/* random featured work with link, maybe another thing... */}
     </MenuWrapper>
@@ -70,7 +106,8 @@ const MenuWrapper = styled(posed.div(fullScreenMenuProps))`
   left: 0;
   z-index: 10;
   color: white;
-  padding: 15vh 0;
+  padding-top: 10vh;
+  opacity: 0;
 
   button {
     color: white;
@@ -82,8 +119,8 @@ const MenuGroup = styled(posed.nav(MenuProps))`
   font-weight: bold;
   display: flex;
   align-items: flex-start;
-  align-content: space-between;
-  justify-content: space-between;
+  /* align-content: space-between; */
+  /* justify-content: space-between; */
   flex-direction: column;
   height: 100%;
   padding: 1rem;
@@ -91,14 +128,19 @@ const MenuGroup = styled(posed.nav(MenuProps))`
 
   li {
     list-style-type: none;
+    padding-bottom: 30px;
 
     a {
       color: white;
     }
   }
 
-  @media (min-width: ${props => props.theme.md}) {
+  @media (min-width: ${props => props.theme.sm}) {
     font-size: 50px;
+
+    li {
+      padding-bottom: 50px;
+    }
   }
 `;
 
@@ -109,8 +151,31 @@ const MenuButton = styled.button`
   z-index: 1;
   cursor: pointer;
   font-size: 15px;
+  font-weight: bold;
   height: 20px;
   outline: 0;
+`;
+
+const NavLanguages = styled.div`
+  flex-grow: 1;
+  text-align: left;
+
+  a {
+    background: none;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 7px;
+    text-align: center;
+    margin-right: 10px;
+    //border: 1px solid white;
+  }
+
+  a.is-active {
+    background: white;
+    color: ${props => props.theme.main};
+  }
 `;
 
 export default injectIntl(Menu);

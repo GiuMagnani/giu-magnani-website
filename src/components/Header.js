@@ -192,6 +192,7 @@ const MenuButton = styled.button`
   outline: 0;
   margin-right: 20px;
   padding: 0;
+  font-weight: bold;
   cursor: pointer;
 
   @media (min-width: ${props => props.theme.md}) {
