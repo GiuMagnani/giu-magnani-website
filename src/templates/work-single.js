@@ -60,6 +60,9 @@ const WorkSingle = props => {
                     </span>
                   ))}
                 </li>}
+                {post.frontmatter.work_url && <li>
+                  <a href={post.frontmatter.work_url[1]} target="_blank">{post.frontmatter.work_url[0]}</a>
+                </li>}
               {(post.frontmatter.dribbble_url || post.frontmatter.behance_url || post.frontmatter.github_url) && <LinkIcon>
                   <span>SEE IT ALSO ON</span>
                   {post.frontmatter.dribbble_url && <a href={post.frontmatter.dribbble_url} rel="noopener" target="_blank">
@@ -72,7 +75,7 @@ const WorkSingle = props => {
                       <Icon name="github" />
                     </a>}
                 </LinkIcon>}
-              {post.frontmatter.colors && <li>
+              {/* {post.frontmatter.colors && <li>
                   {post.frontmatter.colors.map((color, index) => (
                     <span
                       key={index}
@@ -83,7 +86,7 @@ const WorkSingle = props => {
                       }}
                     />
                   ))}
-                </li>}
+                </li>} */}
             </ul>
           </IntroDetails>
           <IntroImage />
@@ -236,7 +239,7 @@ const Pagination = styled.ul`
 export default WorkSingle;
 
 export const pageQuery = graphql`
-  query ProjectSingleBySlug($slug: String!) {
+  query ProjectSingleBySlug($slug: String!, $locale: String!) {
     site {
       siteMetadata {
         title
@@ -251,7 +254,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMMM DD, YYYY", locale: $locale)
         featuredImage {
           publicURL
           childImageSharp {
@@ -264,6 +267,7 @@ export const pageQuery = graphql`
         tags
         categories
         tools
+        work_url
         behance_url
         dribbble_url
         colors

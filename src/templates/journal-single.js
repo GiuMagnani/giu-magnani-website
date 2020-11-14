@@ -105,7 +105,7 @@ const Pagination = styled.ul`
 export default JournalSingle;
 
 export const pageQuery = graphql`
-  query JournalSingleBySlug($slug: String!) {
+  query JournalSingleBySlug($slug: String!, $locale: String!) {
     site {
       siteMetadata {
         title
@@ -120,7 +120,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMMM DD, YYYY", locale: $locale)
         featuredImage {
           publicURL
           childImageSharp {
