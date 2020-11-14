@@ -91,10 +91,10 @@ const Header = ({ location, intl: { locale }, isLanding }) => {
           ))}
         </NavLanguages>
       )}
-      {/* <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} /> */}
-      {/* <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
+      <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
+      <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
         MENU
-      </MenuButton> */}
+      </MenuButton>
     </HeaderNav>
   );
 };
@@ -107,6 +107,7 @@ const HeaderNav = styled.nav`
   align-items: center;
   margin-top: -20px;
   overflow: hidden;
+  justify-content: space-between;
 
   @media (min-width: ${props => props.theme.lg}) {
     margin-top: 0;
@@ -115,6 +116,10 @@ const HeaderNav = styled.nav`
     left: 0;
     width: 100%;
     z-index: 10;
+  }
+
+  @media (min-width: ${props => props.theme.md}) {
+    justify-content: flex-start;
   }
 `;
 
@@ -135,6 +140,7 @@ const NavLinks = styled.div`
   display: flex;
   justify-content: flex-start;
   padding-left: 30px;
+  display: none;
 
   a {
     font-size: 13px;
@@ -144,12 +150,17 @@ const NavLinks = styled.div`
     padding-right: 30px;
     text-transform: uppercase;
   }
+
+  @media (min-width: ${props => props.theme.md}) {
+    display: block;
+  }
 `;
 
 const NavLanguages = styled.div`
   padding: 0 20px;
   flex-grow: 1;
   text-align: right;
+  display: none;
 
   a {
     background: none;
@@ -167,6 +178,10 @@ const NavLanguages = styled.div`
     background: white;
     color: ${props => props.theme.main};
   }
+
+  @media (min-width: ${props => props.theme.md}) {
+    display: block;
+  }
 `;
 
 const MenuButton = styled.button`
@@ -177,6 +192,11 @@ const MenuButton = styled.button`
   outline: 0;
   margin-right: 20px;
   padding: 0;
+  cursor: pointer;
+
+  @media (min-width: ${props => props.theme.md}) {
+    display: none;
+  }
 `;
 
 export default injectIntl(Header);

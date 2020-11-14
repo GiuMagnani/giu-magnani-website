@@ -21,7 +21,7 @@ const designTools = [
   "Adobe Xd",
   "Sketch",
   "InVision",
-  "",
+  "Blender",
   "",
 ];
 

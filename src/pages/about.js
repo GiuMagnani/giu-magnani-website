@@ -153,7 +153,7 @@ const MainText = styled.div`
 `;
 
 const AboutInner = styled.div`
-  text-align: justify;
+  text-align: left;
   position: relative;
   display: flex;
 
@@ -167,6 +167,9 @@ const AboutInner = styled.div`
     background-color: ${props => props.theme.main};
   }
 
+  @media (min-width: ${props => props.theme.md}) {
+    text-align: justify;
+  }
   // &::before {
   //   content: "";
   //   position: absolute;

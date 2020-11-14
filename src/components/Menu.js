@@ -70,6 +70,7 @@ const MenuWrapper = styled(posed.div(fullScreenMenuProps))`
   left: 0;
   z-index: 10;
   color: white;
+  padding: 15vh 0;
 
   button {
     color: white;
@@ -77,7 +78,7 @@ const MenuWrapper = styled(posed.div(fullScreenMenuProps))`
 `;
 
 const MenuGroup = styled(posed.nav(MenuProps))`
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   display: flex;
   align-items: flex-start;
@@ -95,13 +96,21 @@ const MenuGroup = styled(posed.nav(MenuProps))`
       color: white;
     }
   }
+
+  @media (min-width: ${props => props.theme.md}) {
+    font-size: 50px;
+  }
 `;
 
 const MenuButton = styled.button`
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  right: 35px;
+  top: 20px;
   z-index: 1;
+  cursor: pointer;
+  font-size: 15px;
+  height: 20px;
+  outline: 0;
 `;
 
 export default injectIntl(Menu);
