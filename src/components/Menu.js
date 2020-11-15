@@ -108,6 +108,7 @@ const MenuWrapper = styled(posed.div(fullScreenMenuProps))`
   color: white;
   padding-top: 10vh;
   opacity: 0;
+  transform: translateX(100%);
 
   button {
     color: white;
