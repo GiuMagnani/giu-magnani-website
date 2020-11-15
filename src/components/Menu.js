@@ -53,27 +53,27 @@ const Menu = ({ intl: { locale }, isMenuOpen, setMenuVisibility }) => {
         MENU
       </MenuButton>
       <MenuGroup pose={isMenuOpen ? "open" : "closed"}>
-        <Item key="0">
+        <Item onClick={() => setMenuVisibility(false)} key="0">
           <Link to={getTo("/about")}>
             <FormattedMessage id="menu.about" />
           </Link>
         </Item>
-        <Item key="1">
+        <Item onClick={() => setMenuVisibility(false)} key="1">
           <Link to={getTo("/work")}>
             <FormattedMessage id="menu.work" />
           </Link>
         </Item>
-        <Item key="2">
+        <Item onClick={() => setMenuVisibility(false)} key="2">
           <Link to={getTo("/journal")}>
             <FormattedMessage id="menu.journal" />
           </Link>
         </Item>
-        {/*<Item key="3">*/}
+        {/*<Item onClick={() => setMenuVisibility(false)} key="3">*/}
           {/*<Link to={getTo("/shop")}>*/}
             {/*<FormattedMessage id="menu.shop" />*/}
           {/*</Link>*/}
         {/*</Item>*/}
-        <Item key="4">
+        <Item onClick={() => setMenuVisibility(false)} key="4">
           <Link to={getTo("/contact")}>
             <FormattedMessage id="menu.contact" />
           </Link>
@@ -98,7 +98,7 @@ const Menu = ({ intl: { locale }, isMenuOpen, setMenuVisibility }) => {
 };
 
 const MenuWrapper = styled(posed.div(fullScreenMenuProps))`
-  background: blue;
+  background: ${props => props.theme.main};
   height: 100vh;
   width: 100vw;
   position: fixed;
