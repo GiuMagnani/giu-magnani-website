@@ -20,7 +20,7 @@ const Item = posed.li({
   closed: { opacity: 0 },
 });
 
-const Menu = ({ intl: { locale }, isMenuOpen, setMenuVisibility }) => {
+const Menu = ({ intl: { locale }, location, isMenuOpen, setMenuVisibility }) => {
   const getTo = to => {
     return locales[locale].default ? to : `/${locales[locale].locale}${to}`;
   };

@@ -102,7 +102,7 @@ const ProjectList = styled(LatestProjectItems)`
 `;
 
 const FilterLink = styled.a`
-  font-size: 60px;
+  font-size: 30px;
   text-decoration: line-through;
   font-weight: bold;
   //cursor: pointer;
@@ -110,6 +110,10 @@ const FilterLink = styled.a`
   &.is-active {
     opacity: 1;
     text-decoration: underline;
+  }
+
+  @media (min-width: ${props => props.theme.md}) {
+    font-size: 60px;
   }
 `;
 

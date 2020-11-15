@@ -91,7 +91,7 @@ const Header = ({ location, intl: { locale }, isLanding }) => {
           ))}
         </NavLanguages>
       )}
-      <Menu isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
+      <Menu location={location} isMenuOpen={isMenuOpen} setMenuVisibility={setMenuVisibility} />
       <MenuButton onClick={() => setMenuVisibility(!isMenuOpen)}>
         MENU
       </MenuButton>
