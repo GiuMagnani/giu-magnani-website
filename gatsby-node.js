@@ -121,23 +121,24 @@ exports.createPages = ({ graphql, actions }) => {
             });
           });
 
-          const translatedPosts = array.filter(post => {
-            return post.node.fields.langKey !== defaultLocale;
+          // const translatedPosts = array.filter(post => {
+          //   return post.node.fields.langKey !== defaultLocale;
+          // });
+
+          const translatedPostsES = array.filter(post => {
+            return post.node.fields.langKey === "es";
           });
 
-          translatedPosts.forEach((post, index) => {
-            // TODO: previous and next are wrong, -1 is the same post but in the other language (do -2 or sort the posts by languages first)
-            // const currentLanguagePosts = translatedPosts.filter(translatedPost => {
-            //   return translatedPost.node.fields.langKey === post.node.fields.langKey;
-            // });
+          const translatedPostsIT = array.filter(post => {
+            return post.node.fields.langKey === "it";
+          });
 
-            // console.log(currentLanguagePosts);
-
+          translatedPostsES.forEach((post, index) => {
             const previous =
-              index === translatedPosts.length - 1
+              index === translatedPostsES.length - 1
                 ? null
-                : translatedPosts[index + 1].node;
-            const next = index === 0 ? null : translatedPosts[index - 1].node;
+                : translatedPostsES[index + 1].node;
+            const next = index === 0 ? null : translatedPostsES[index - 1].node;
 
             Object.keys(locales).map(lang => {
               if (lang === defaultLocale || !post.node.frontmatter.title)
@@ -157,6 +158,65 @@ exports.createPages = ({ graphql, actions }) => {
               });
             });
           });
+          
+          translatedPostsIT.forEach((post, index) => {
+            const previous =
+              index === translatedPostsIT.length - 1
+                ? null
+                : translatedPostsIT[index + 1].node;
+            const next = index === 0 ? null : translatedPostsIT[index - 1].node;
+
+            Object.keys(locales).map(lang => {
+              if (lang === defaultLocale || !post.node.frontmatter.title)
+                return;
+
+              createPage({
+                path: post.node.fields.slug,
+                component: component,
+                context: {
+                  slug: post.node.fields.slug,
+                  directoryName: post.node.fields.directoryName,
+                  locale: post.node.fields.langKey,
+                  originalIndex: index,
+                  previous,
+                  next,
+                },
+              });
+            });
+          });
+
+          // translatedPosts.forEach((post, index) => {
+          //   // TODO: previous and next are wrong, -1 is the same post but in the other language (do -2 or sort the posts by languages first)
+          //   // const currentLanguagePosts = translatedPosts.filter(translatedPost => {
+          //   //   return translatedPost.node.fields.langKey === post.node.fields.langKey;
+          //   // });
+
+          //   // console.log(currentLanguagePosts);
+
+          //   const previous =
+          //     index === translatedPosts.length - 1
+          //       ? null
+          //       : translatedPosts[index + 1].node;
+          //   const next = index === 0 ? null : translatedPosts[index - 1].node;
+
+          //   Object.keys(locales).map(lang => {
+          //     if (lang === defaultLocale || !post.node.frontmatter.title)
+          //       return;
+
+          //     createPage({
+          //       path: post.node.fields.slug,
+          //       component: component,
+          //       context: {
+          //         slug: post.node.fields.slug,
+          //         directoryName: post.node.fields.directoryName,
+          //         locale: post.node.fields.langKey,
+          //         originalIndex: index,
+          //         previous,
+          //         next,
+          //       },
+          //     });
+          //   });
+          // });
         };
 
         createPagesByType(work, projectSingle);
