@@ -5,9 +5,10 @@ import { Icon } from "./Icons/Icons";
 const links = {
   behance: "https://www.behance.net/giumagnani",
   github: "https://www.github.com/giumagnani",
+  artstation: "https://www.artstation.com/giumagnani",
   dribbble: "https://www.dribbble.com/GiuMagnani",
-  pinterest: "https://www.pinterest.com/giumagnani",
   linkedin: "https://www.linkedin.com/in/giumagnani",
+  // pinterest: "https://www.pinterest.com/giumagnani",
   // twitter: "https://www.twitter.com/_GiuMagnani",
 };
 

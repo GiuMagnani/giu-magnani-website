@@ -63,7 +63,7 @@ const WorkSingle = props => {
                 {post.frontmatter.work_url && <li>
                   <a href={post.frontmatter.work_url[1]} target="_blank">{post.frontmatter.work_url[0]}</a>
                 </li>}
-              {(post.frontmatter.dribbble_url || post.frontmatter.behance_url || post.frontmatter.github_url) && <LinkIcon>
+              {(post.frontmatter.dribbble_url || post.frontmatter.behance_url || post.frontmatter.github_url || post.frontmatter.artstation_url) && <LinkIcon>
                   <span>SEE IT ALSO ON</span>
                   {post.frontmatter.dribbble_url && <a href={post.frontmatter.dribbble_url} rel="noopener" target="_blank">
                       <Icon name="dribbble" />
@@ -73,6 +73,9 @@ const WorkSingle = props => {
                     </a>}
                   {post.frontmatter.github_url && <a href={post.frontmatter.github_url} rel="noopener" target="_blank">
                       <Icon name="github" />
+                    </a>}
+                  {post.frontmatter.artstation_url && <a href={post.frontmatter.artstation_url} rel="noopener" target="_blank">
+                      <Icon name="artstation" />
                     </a>}
                 </LinkIcon>}
               {/* {post.frontmatter.colors && <li>
@@ -270,6 +273,7 @@ export const pageQuery = graphql`
         work_url
         behance_url
         dribbble_url
+        artstation_url
         colors
       }
     }
