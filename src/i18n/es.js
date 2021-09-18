@@ -70,6 +70,7 @@ const menu = {
 
 const projects = {
   "projects.intro": "Proyectos de Diseño UX/UI y Desarrollo Front-End",
+  "projects.introDrawings": "También dibujo, mira aquí mis ilustraciones favoritas.",
   "projects.seeProjects": "Mira todo mi Trabajo",
   "projects.seeProject": "Ver Proyecto completo",
   "projects.latest": "Últimos proyectos de",

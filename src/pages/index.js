@@ -20,8 +20,7 @@ const BlogIndex = ({ location, data }) => {
       <ProjectsWrapper>
         <div className="container">
           <ProjectsHeading>
-            {/* <FormattedMessage id="projects.intro" /> */}
-            These are some of my UX/UI Design and Front-End Development projects
+            <FormattedMessage id="projects.intro" />
           </ProjectsHeading>
           <LatestProjectItems projects={projects} />
           <LatestProjectSeeMore>
@@ -35,8 +34,7 @@ const BlogIndex = ({ location, data }) => {
       <JournalWrapper>
         <div className="container">
           <ProjectsHeading>
-            {/* <FormattedMessage id="projects.intro" /> */}I also draw, and
-            these are some of my favourite works
+          <FormattedMessage id="projects.introDrawings" />
           </ProjectsHeading>
           <LatestProjectItems projects={IllustrationProjects} />
           <LatestProjectSeeMore>

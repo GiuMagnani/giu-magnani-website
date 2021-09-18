@@ -71,6 +71,7 @@ const menu = {
 
 const projects = {
   "projects.intro": "UX/UI Design and Front-End Development Projects",
+  "projects.introDrawings": "I also draw, and these are some of my favourite works",
   "projects.seeProjects": "See all my Work",
   "projects.seeProject": "See full project",
   "projects.latest": "Latest",
