@@ -1,14 +1,30 @@
-@import url("https://fonts.googleapis.com/css?family=Chakra+Petch:400,700");
-
 /* Define the "system" font family */
 @font-face {
   font-family: system;
-  font-display: auto;
+  font-display: swap;
   font-style: normal;
   font-weight: 300;
   src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"),
     local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"),
     local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}
+
+@font-face {
+  font-family: 'Chakra Petch', system, sans-serif;
+  src: url('../fonts/ChakraPetch-Regular.woff2') format('woff2'),
+      url('../fonts/ChakraPetch-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Chakra Petch', system, sans-serif;
+  src: url('../fonts/ChakraPetch-Bold.woff2') format('woff2'),
+      url('../fonts/ChakraPetch-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 body,
